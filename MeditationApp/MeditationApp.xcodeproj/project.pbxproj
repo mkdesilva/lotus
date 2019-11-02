@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		18F196F4236D29C800582D0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F196F3236D29C800582D0D /* AppDelegate.swift */; };
-		18F196F6236D29C800582D0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F196F5236D29C800582D0D /* SceneDelegate.swift */; };
 		18F196F8236D29C800582D0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F196F7236D29C800582D0D /* ViewController.swift */; };
 		18F196FB236D29C800582D0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F196F9236D29C800582D0D /* Main.storyboard */; };
 		18F196FD236D29C800582D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F196FC236D29C800582D0D /* Assets.xcassets */; };
 		18F19700236D29C800582D0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F196FE236D29C800582D0D /* LaunchScreen.storyboard */; };
 		18F1970B236D29C900582D0D /* MeditationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1970A236D29C900582D0D /* MeditationAppTests.swift */; };
+		18F19717236D2BEE00582D0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F19716236D2BEE00582D0D /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +29,6 @@
 /* Begin PBXFileReference section */
 		18F196F0236D29C800582D0D /* MeditationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeditationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F196F3236D29C800582D0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18F196F5236D29C800582D0D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		18F196F7236D29C800582D0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18F196FA236D29C800582D0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18F196FC236D29C800582D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		18F19706236D29C900582D0D /* MeditationAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeditationAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F1970A236D29C900582D0D /* MeditationAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationAppTests.swift; sourceTree = "<group>"; };
 		18F1970C236D29C900582D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F19716236D2BEE00582D0D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +79,9 @@
 		18F196F2236D29C800582D0D /* MeditationApp */ = {
 			isa = PBXGroup;
 			children = (
-				18F196F3236D29C800582D0D /* AppDelegate.swift */,
-				18F196F5236D29C800582D0D /* SceneDelegate.swift */,
+				18F19715236D2B5F00582D0D /* Startup */,
 				18F196F7236D29C800582D0D /* ViewController.swift */,
-				18F196F9236D29C800582D0D /* Main.storyboard */,
 				18F196FC236D29C800582D0D /* Assets.xcassets */,
-				18F196FE236D29C800582D0D /* LaunchScreen.storyboard */,
 				18F19701236D29C800582D0D /* Info.plist */,
 			);
 			path = MeditationApp;
@@ -97,6 +94,17 @@
 				18F1970C236D29C900582D0D /* Info.plist */,
 			);
 			path = MeditationAppTests;
+			sourceTree = "<group>";
+		};
+		18F19715236D2B5F00582D0D /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				18F196F3236D29C800582D0D /* AppDelegate.swift */,
+				18F19716236D2BEE00582D0D /* SceneDelegate.swift */,
+				18F196F9236D29C800582D0D /* Main.storyboard */,
+				18F196FE236D29C800582D0D /* LaunchScreen.storyboard */,
+			);
+			path = Startup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +210,7 @@
 			files = (
 				18F196F8236D29C800582D0D /* ViewController.swift in Sources */,
 				18F196F4236D29C800582D0D /* AppDelegate.swift in Sources */,
-				18F196F6236D29C800582D0D /* SceneDelegate.swift in Sources */,
+				18F19717236D2BEE00582D0D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
