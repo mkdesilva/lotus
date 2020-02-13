@@ -108,7 +108,7 @@ final class SessionInProgressView: UIView {
 extension SessionInProgressView {
   
   @objc func tappedPauseButton() {
-    print("Tapped pause")
+    delegate.tappedPauseButton()
   }
   
   @objc func tappedEndButton() {

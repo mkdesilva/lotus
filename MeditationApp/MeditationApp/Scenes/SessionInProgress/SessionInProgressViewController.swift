@@ -12,8 +12,9 @@ protocol SessionInProgressViewControllerInterface: class {
   func displayDuration(viewModel: SessionInProgress.UpdateDuration.ViewModel)
 }
 
-protocol SessionInProgressViewControllerDelegate: class {
+protocol SessionInProgressViewDelegate: class {
   func tappedEndButton()
+  func tappedPauseButton()
 }
 
 class SessionInProgressViewController: UIViewController, SessionInProgressViewControllerInterface {
@@ -99,7 +100,10 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   }
 }
 
-extension SessionInProgressViewController: SessionInProgressViewControllerDelegate {
+extension SessionInProgressViewController: SessionInProgressViewDelegate {
+  func tappedPauseButton() {
+  }
+  
   func tappedEndButton() {
     print("Tapped end button")
   }
