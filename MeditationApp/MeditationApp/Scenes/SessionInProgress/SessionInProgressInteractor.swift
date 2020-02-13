@@ -28,13 +28,13 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   }
   
   func updateDuration(request: SessionInProgress.UpdateDuration.Request) {
-    session.currentDuration.tickDown(bySeconds: request.timeInterval)
-    
     guard !session.currentDuration.isZero else {
       sessionTimer.invalidate()
       endSession()
       return
     }
+    
+    session.currentDuration.tickDown(bySeconds: request.timeInterval)
     update(duration: session.currentDuration)
   }
   
