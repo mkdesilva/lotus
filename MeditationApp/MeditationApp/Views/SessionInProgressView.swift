@@ -54,6 +54,14 @@ final class SessionInProgressView: UIView {
     containerView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     containerView.addSubview(circleProgressView)
     
+    setupPauseView(containerView)
+    
+    setupVerticalStackView(containerView)
+    
+    circleProgressView.setup(centerIn: containerView)
+  }
+  
+  private func setupVerticalStackView(_ containerView: UIView) {
     let vStack = UIStackView(arrangedSubviews: [timeLabel, containerView, endButton])
     vStack.axis = .vertical
     vStack.alignment = .center
@@ -66,12 +74,42 @@ final class SessionInProgressView: UIView {
       trailingSpacing: 0,
       bottomSpacing: -150)
     vStack.layoutIfNeeded()
+  }
+  
+  private func setupPauseView(_ containerView: UIView) {
+    let pauseView = UIButton(type: .custom)
+    containerView.addSubview(pauseView)
+    pauseView.addTarget(self, action: #selector(tappedPauseButton), for: .touchUpInside)
     
-    circleProgressView.setup(centerIn: containerView)
+    pauseView.translatesAutoresizingMaskIntoConstraints = false
+    pauseView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+    pauseView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+    pauseView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.3).isActive = true
+    pauseView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.7).isActive = true
+    let bars = [UIView(), UIView()]
+    
+    let pauseStackView = UIStackView(arrangedSubviews: bars)
+    pauseView.addSubview(pauseStackView)
+    pauseStackView.addConstraintsEqualToSuperView()
+    pauseStackView.axis = .horizontal
+    pauseStackView.distribution = .equalCentering
+    pauseStackView.isUserInteractionEnabled = false
+    
+    for bar in bars {
+      bar.isUserInteractionEnabled = false
+      bar.translatesAutoresizingMaskIntoConstraints = false
+      bar.backgroundColor = .white
+      bar.layer.cornerRadius = 10
+      bar.widthAnchor.constraint(equalTo: pauseView.widthAnchor, multiplier: 0.35).isActive = true
+    }
   }
 }
 
 extension SessionInProgressView {
+  
+  @objc func tappedPauseButton() {
+    print("Tapped pause")
+  }
   
   @objc func tappedEndButton() {
     delegate.tappedEndButton()
