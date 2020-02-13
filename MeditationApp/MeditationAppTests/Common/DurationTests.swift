@@ -81,4 +81,20 @@ class DurationTests: XCTestCase {
     XCTAssertFalse(secondsNonZero.isZero)
     XCTAssertFalse(allNonZeroes.isZero)
   }
+  
+  func testDurationDescription() {
+    let duration = Duration(hours: 4, minutes: 12, seconds: 39)
+    
+    let durationDescription: String = duration.description
+    
+    XCTAssertEqual(durationDescription, "4h:12m:39s")
+  }
+  
+  func testDurationTickDown() {
+    let duration = Duration(hours: 3, minutes: 0, seconds: 0)
+    
+    duration.tickDown(bySeconds: 3)
+    
+    XCTAssertEqual(duration, Duration(hours: 2, minutes: 59, seconds: 57))
+  }
 }
