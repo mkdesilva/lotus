@@ -45,9 +45,6 @@ extension Duration {
     durationInSeconds -= bySeconds
     let newDuration = durationInSeconds.duration
     
-    print("Total Seconds: \(durationInSeconds)")
-    print("sec: \(newDuration.seconds)")
-    
     hours = newDuration.hours
     minutes = newDuration.minutes
     seconds = newDuration.seconds
@@ -81,7 +78,6 @@ extension Int {
     let hours = self / 3600
     let minutes = (self % 3600) / 60
     let seconds = (self % 3600) % 60
-    print("converted to: \(hours) \(minutes) \(seconds)")
     return Duration(hours: hours, minutes: minutes, seconds: seconds)
   }
 }
