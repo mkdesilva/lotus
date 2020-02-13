@@ -10,8 +10,22 @@ import UIKit
 
 class CircleProgressView: UIView {
   
-  func setup() {
-    let circlePath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+  var shapeLayer: CAShapeLayer!
+  
+  func setup(centerIn centerView: UIView) {
+    drawShape(centerView: centerView)
+  }
+
+  private func drawShape(centerView: UIView) {
+    
+    let center = CGPoint(x: centerView.bounds.midX, y: centerView.bounds.midY)
+    
+    let circlePath = UIBezierPath(
+      arcCenter: center,
+      radius: 100,
+      startAngle: -CGFloat.pi / 2,
+      endAngle: CGFloat.pi * 3/2,
+      clockwise: true)
     
     let backgroundLayer = CAShapeLayer()
     backgroundLayer.path = circlePath.cgPath
@@ -21,14 +35,23 @@ class CircleProgressView: UIView {
     
     layer.addSublayer(backgroundLayer)
     
-    let shapeLayer = CAShapeLayer()
+    shapeLayer = CAShapeLayer()
     shapeLayer.path = circlePath.cgPath
     shapeLayer.fillColor = nil
     shapeLayer.strokeColor = Colors.slateBlue.color.cgColor
     shapeLayer.lineWidth = 10
     shapeLayer.lineCap = .round
-    shapeLayer.strokeEnd = 0.25
+    shapeLayer.strokeEnd = 0
     
     layer.addSublayer(shapeLayer)
+  }
+  
+  func animate(durationInSeconds: Int) {
+    let animation = CABasicAnimation(keyPath: "strokeEnd")
+    animation.toValue = 1
+    animation.duration = Double(durationInSeconds)
+    animation.fillMode = .forwards
+    animation.isRemovedOnCompletion = false
+    shapeLayer.add(animation, forKey: "strokeEnd")
   }
 }

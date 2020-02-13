@@ -21,7 +21,7 @@ protocol CreateSessionViewControllerInterface: class {
 class CreateSessionViewController: UIViewController, CreateSessionViewControllerInterface {
   
   var interactor: CreateSessionInteractorInterface!
-  var router: CreateSessionRouterInput!
+  var router: CreateSessionRouterInterface!
   var createSessionView: CreateSessionView!
   
   // MARK: - Configuration

@@ -8,21 +8,8 @@
 
 import Foundation
 
-/*
-
- The SessionInProgressStore class implements the SessionInProgressStoreProtocol.
-
- The source for the data could be a database, cache, or a web service.
-
- You may remove these comments from the file.
-
- */
-
 class SessionInProgressStore: SessionInProgressStoreProtocol {
   func getData(_ completion: @escaping (Result<Session, Error>) -> Void) {
-    // Simulates an asynchronous background thread that calls back on the main thread after 2 seconds
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-      completion(Result.success(Session()))
-    }
+    completion(Result.success(Session(initialDuration: Duration(hours: 1, minutes: 0))))
   }
 }

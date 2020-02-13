@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol CreateSessionRouterInput {
+protocol CreateSessionRouterInterface {
   func navigateToDurationPicker(duration: Duration?)
   func navigateToInProgressScene(duration: Duration)
 }
 
-class CreateSessionRouter: CreateSessionRouterInput {
+class CreateSessionRouter: CreateSessionRouterInterface {
   
   weak var viewController: CreateSessionViewController!
   
@@ -27,7 +27,7 @@ class CreateSessionRouter: CreateSessionRouterInput {
   func navigateToInProgressScene(duration: Duration) {
     let initialVc = Storyboards.sessionInProgress.instantiateInitialViewController()
     guard let inProgressViewController = initialVc as? SessionInProgressViewController else { return }
-    inProgressViewController.interactor.sessionDuration = duration
+    inProgressViewController.interactor.session = Session(initialDuration: duration)
     viewController.navigationController?.setViewControllers([inProgressViewController], animated: false)
   }
 }

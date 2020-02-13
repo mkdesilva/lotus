@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol SessionInProgressRouterInput {
+protocol SessionInProgressRouterInterface {
   func navigateToSomewhere()
 }
 
-class SessionInProgressRouter: SessionInProgressRouterInput {
+class SessionInProgressRouter: SessionInProgressRouterInterface {
   weak var viewController: SessionInProgressViewController!
 
   // MARK: - Navigation

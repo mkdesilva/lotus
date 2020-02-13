@@ -9,76 +9,99 @@
 import UIKit
 
 protocol SessionInProgressViewControllerInterface: class {
-  func displaySomething(viewModel: SessionInProgress.Something.ViewModel)
+  func displayDuration(viewModel: SessionInProgress.UpdateDuration.ViewModel)
+}
+
+protocol SessionInProgressViewControllerDelegate: class {
+  func tappedEndButton()
 }
 
 class SessionInProgressViewController: UIViewController, SessionInProgressViewControllerInterface {
   var interactor: SessionInProgressInteractorInterface!
   var router: SessionInProgressRouter!
-
+  
+  var sessionInProgressView: SessionInProgressView!
+  
   // MARK: - Object lifecycle
-
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     configure(viewController: self)
   }
-
+  
   // MARK: - Configuration
-
+  
   private func configure(viewController: SessionInProgressViewController) {
     let router = SessionInProgressRouter()
     router.viewController = viewController
-
+    
     let presenter = SessionInProgressPresenter()
     presenter.viewController = viewController
-
+    
     let interactor = SessionInProgressInteractor()
     interactor.presenter = presenter
     interactor.worker = SessionInProgressWorker(store: SessionInProgressStore())
-
+    
     viewController.interactor = interactor
     viewController.router = router
   }
-
+  
   // MARK: - View lifecycle
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     createView()
   }
   
   private func createView() {
-    let inProgressView = SessionInProgressView()
-    view.addSubview(inProgressView)
-    inProgressView.setup()
+    configure(viewController: self)
+    sessionInProgressView = SessionInProgressView()
+    view.addSubview(sessionInProgressView)
+    sessionInProgressView.setup(delegate: self)
+    getInitialDuration()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    startSession()
   }
   
   // MARK: - Event handling
-
-  func doSomethingOnLoad() {
-    // NOTE: Ask the Interactor to do some work
-
-    let request = SessionInProgress.Something.Request()
-    interactor.doSomething(request: request)
+  
+  func getInitialDuration() {
+    // TODO: Delete this
+    interactor.session = Session(initialDuration: Duration(hours: 0, minutes: 2, seconds: 3))
     
+    let request = SessionInProgress.GetInitialDuration.Request()
+    interactor.getInitialDuration(request: request)
   }
-
+  
+  func startSession() {
+    let request = SessionInProgress.StartSession.Request()
+    interactor.startSession(request: request)
+    sessionInProgressView.startAnimatingProgressCircle(durationInSeconds: interactor.session.initialDuration.totalSeconds)
+  }
+  
   // MARK: - Display logic
-
-  func displaySomething(viewModel: SessionInProgress.Something.ViewModel) {
-    // NOTE: Display the result from the Presenter
-
-    // nameTextField.text = viewModel.name
+  
+  func displayDuration(viewModel: SessionInProgress.UpdateDuration.ViewModel) {
+    sessionInProgressView.setTimeText(viewModel.durationText)
   }
-
+  
   // MARK: - Router
-
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     router.passDataToNextScene(segue: segue)
   }
-
+  
   @IBAction func unwindToSessionInProgressViewController(from segue: UIStoryboardSegue) {
     print("unwind...")
     router.passDataToNextScene(segue: segue)
   }
+}
+
+extension SessionInProgressViewController: SessionInProgressViewControllerDelegate {
+  func tappedEndButton() {
+    print("Tapped end button")
+  }
+  
 }

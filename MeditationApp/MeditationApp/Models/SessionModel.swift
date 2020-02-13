@@ -8,4 +8,12 @@
 
 import Foundation
 
-struct Session {}
+struct Session {
+  let initialDuration: Duration
+  var currentDuration: Duration
+  
+  init(initialDuration: Duration) {
+    self.initialDuration = initialDuration
+    self.currentDuration = initialDuration
+  }
+}

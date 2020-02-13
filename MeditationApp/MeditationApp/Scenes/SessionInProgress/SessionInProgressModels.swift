@@ -9,13 +9,27 @@
 import UIKit
 
 struct SessionInProgress {
-  /// This structure represents a use case
-  struct Something {
-    /// Data struct sent to Interactor
+  struct GetInitialDuration {
     struct Request {}
-    /// Data struct sent to Presenter
+  }
+  
+  struct StartSession {
+    struct Request {}
     struct Response {}
-    /// Data struct sent to ViewController
     struct ViewModel {}
+  }
+  
+  struct UpdateDuration {
+    struct Request {
+      let timeInterval: Int
+    }
+    
+    struct Response {
+      var duration: Duration
+    }
+    
+    struct ViewModel {
+      let durationText: String
+    }
   }
 }

@@ -6,12 +6,65 @@
 //  Copyright © 2020 Mihindu de Silva. All rights reserved.
 //
 
-struct Duration: Codable {
-  let hours: Int
-  let minutes: Int
+import Foundation
+
+protocol Validation {
+  var isValid: Bool { get }
 }
 
-extension Duration: Equatable {}
+final class Duration: Codable {
+  var hours: Int
+  var minutes: Int
+  var seconds: Int
+  
+  init(hours: Int, minutes: Int) {
+    self.hours = hours
+    self.minutes = minutes
+    self.seconds = 0
+  }
+  
+  init(hours: Int, minutes: Int, seconds: Int) {
+    self.hours = hours
+    self.minutes = minutes
+    self.seconds = seconds
+  }
+}
+
+extension Duration {
+  
+  var isZero: Bool {
+    return hours == 0 && minutes == 0 && seconds == 0
+  }
+  
+  var totalSeconds: Int {
+    return (hours * 60 * 60) + (minutes * 60) + (seconds)
+  }
+  
+  func tickDown(bySeconds: Int) {
+    var durationInSeconds = self.totalSeconds
+    durationInSeconds -= bySeconds
+    let newDuration = durationInSeconds.duration
+    
+    print("Total Seconds: \(durationInSeconds)")
+    print("sec: \(newDuration.seconds)")
+    
+    hours = newDuration.hours
+    minutes = newDuration.minutes
+    seconds = newDuration.seconds
+  }
+}
+
+extension Duration: Equatable {
+  static func == (lhs: Duration, rhs: Duration) -> Bool {
+    return lhs.hours == rhs.hours && lhs.minutes == rhs.minutes && lhs.seconds == rhs.seconds
+  }
+}
+
+extension Duration: CustomStringConvertible {
+  var description: String {
+    return "\(hours)h:\(minutes)m:\(seconds)s"
+  }
+}
 
 extension Duration: Validation {
   var isValid: Bool {
@@ -23,6 +76,12 @@ extension Duration: Validation {
   }
 }
 
-protocol Validation {
-  var isValid: Bool { get }
+extension Int {
+  var duration: Duration {
+    let hours = self / 3600
+    let minutes = (self % 3600) / 60
+    let seconds = (self % 3600) % 60
+    print("converted to: \(hours) \(minutes) \(seconds)")
+    return Duration(hours: hours, minutes: minutes, seconds: seconds)
+  }
 }

@@ -9,17 +9,26 @@
 import UIKit
 
 protocol SessionInProgressPresenterInterface {
-  func presentSomething(response: SessionInProgress.Something.Response)
+  func presentDuration(response: SessionInProgress.UpdateDuration.Response)
 }
 
 class SessionInProgressPresenter: SessionInProgressPresenterInterface {
   weak var viewController: SessionInProgressViewControllerInterface!
-
+  
   // MARK: - Presentation logic
-
-  func presentSomething(response: SessionInProgress.Something.Response) {
+  
+  func presentDuration(response: SessionInProgress.UpdateDuration.Response) {
+    var durationText = ""
+    let formattedMinutes = String(format: "%02d", response.duration.minutes)
+    let formattedSeconds = String(format: "%02d", response.duration.seconds)
     
-    let viewModel = SessionInProgress.Something.ViewModel()
-    viewController.displaySomething(viewModel: viewModel)
+    if response.duration.hours == 0 {
+      durationText = "\(formattedMinutes):\(formattedSeconds)"
+    } else {
+      durationText = "\(response.duration.hours):\(formattedMinutes):\(formattedSeconds)"
+    }
+    
+    let viewModel = SessionInProgress.UpdateDuration.ViewModel(durationText: durationText)
+    viewController.displayDuration(viewModel: viewModel)
   }
 }

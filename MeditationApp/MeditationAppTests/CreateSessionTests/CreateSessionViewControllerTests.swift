@@ -53,7 +53,7 @@ final class CreateSessionViewControllerTests: XCTestCase {
     }
   }
   
-  final class CreateSessionRouterSpy: CreateSessionRouterInput {
+  final class CreateSessionRouterSpy: CreateSessionRouterInterface {
     
     var navigateToDurationPickerCalled = false
     var navigateToInProgressSceneCalled = false

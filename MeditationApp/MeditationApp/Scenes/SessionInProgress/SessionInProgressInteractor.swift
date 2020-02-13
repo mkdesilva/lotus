@@ -9,27 +9,49 @@
 import UIKit
 
 protocol SessionInProgressInteractorInterface {
-  func doSomething(request: SessionInProgress.Something.Request)
-  var session: Session? { get }
-  var sessionDuration: Duration! { get set }
+  func getInitialDuration(request: SessionInProgress.GetInitialDuration.Request)
+  func startSession(request: SessionInProgress.StartSession.Request)
+  func updateDuration(request: SessionInProgress.UpdateDuration.Request)
+  var session: Session! { get set }
 }
 
 class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   var presenter: SessionInProgressPresenterInterface!
   var worker: SessionInProgressWorker?
-  var session: Session?
-  var sessionDuration: Duration!
-
+  var session: Session!
+  var sessionTimer: Timer!
+  
   // MARK: - Business logic
-
-  func doSomething(request: SessionInProgress.Something.Request) {
-    worker?.doSomeWork { [weak self] in
-      if case let Result.success(data) = $0 {
-        self?.session = data
-      }
-
-      let response = SessionInProgress.Something.Response()
-      self?.presenter.presentSomething(response: response)
+  
+  func getInitialDuration(request: SessionInProgress.GetInitialDuration.Request) {
+    update(duration: session.initialDuration)
+  }
+  
+  func updateDuration(request: SessionInProgress.UpdateDuration.Request) {
+    session.currentDuration.tickDown(bySeconds: request.timeInterval)
+    
+    guard !session.currentDuration.isZero else {
+      sessionTimer.invalidate()
+      endSession()
+      return
     }
+    update(duration: session.currentDuration)
+  }
+  
+  func startSession(request: SessionInProgress.StartSession.Request) {
+    sessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+      guard let self = self else { return }
+      let request = SessionInProgress.UpdateDuration.Request(timeInterval: 1)
+      self.updateDuration(request: request)
+    }
+  }
+  
+  private func update(duration: Duration) {
+    let response = SessionInProgress.UpdateDuration.Response(duration: session.initialDuration)
+    presenter.presentDuration(response: response)
+  }
+  
+  private func endSession() {
+    // TODO: Implement this
   }
 }
