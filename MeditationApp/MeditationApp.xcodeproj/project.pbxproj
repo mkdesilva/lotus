@@ -42,6 +42,7 @@
 		4D964CB9239C035800EDD600 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D964CB8239C035800EDD600 /* UIViewExtension.swift */; };
 		4D9CB3C623AA09ED003C050A /* CreateSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9CB3C523AA09ED003C050A /* CreateSessionView.swift */; };
 		4DB0DEC123D1CFA100A0B9CF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0DEC023D1CFA100A0B9CF /* CustomView.swift */; };
+		4DB7EB3E23E2913400DD248A /* DurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7EB3D23E2913400DD248A /* DurationTests.swift */; };
 		4DD01F5623B1EFD40068621A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD01F5523B1EFD40068621A /* Constants.swift */; };
 		4DDE415E23B5C17600E8C273 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDE415D23B5C17600E8C273 /* Error.swift */; };
 		4DDE416023B5C19000E8C273 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDE415F23B5C19000E8C273 /* UserDefaultsExtension.swift */; };
@@ -101,6 +102,7 @@
 		4D964CB8239C035800EDD600 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		4D9CB3C523AA09ED003C050A /* CreateSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionView.swift; sourceTree = "<group>"; };
 		4DB0DEC023D1CFA100A0B9CF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		4DB7EB3D23E2913400DD248A /* DurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTests.swift; sourceTree = "<group>"; };
 		4DD01F5523B1EFD40068621A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4DDE415D23B5C17600E8C273 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		4DDE415F23B5C19000E8C273 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				18F1970C236D29C900582D0D /* Info.plist */,
+				4DB7EB3C23E2911C00DD248A /* Common */,
 				18F6A0F4237F47750097FAA3 /* CreateSessionTests */,
 			);
 			path = MeditationAppTests;
@@ -280,6 +283,14 @@
 				4DDE415F23B5C19000E8C273 /* UserDefaultsExtension.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		4DB7EB3C23E2911C00DD248A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4DB7EB3D23E2913400DD248A /* DurationTests.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		4DD01F5723B201BC0068621A /* Common */ = {
@@ -466,6 +477,7 @@
 				18F6A0F3237F476E0097FAA3 /* CreateSessionInteractorTests.swift in Sources */,
 				1800B32F237F56020019F49D /* CreateSessionPresenterTests.swift in Sources */,
 				1800B32D237F55D10019F49D /* CreateSessionViewControllerTests.swift in Sources */,
+				4DB7EB3E23E2913400DD248A /* DurationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
