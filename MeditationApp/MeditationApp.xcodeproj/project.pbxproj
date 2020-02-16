@@ -44,6 +44,7 @@
 		4DB0DEC123D1CFA100A0B9CF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0DEC023D1CFA100A0B9CF /* CustomView.swift */; };
 		4DB7EB3E23E2913400DD248A /* DurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7EB3D23E2913400DD248A /* DurationTests.swift */; };
 		4DD01F5623B1EFD40068621A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD01F5523B1EFD40068621A /* Constants.swift */; };
+		4DD4A2A623F6B0D100A44AAB /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */; };
 		4DDE415E23B5C17600E8C273 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDE415D23B5C17600E8C273 /* Error.swift */; };
 		4DDE416023B5C19000E8C273 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDE415F23B5C19000E8C273 /* UserDefaultsExtension.swift */; };
 		4DE9B35223AA21E8006AE27D /* BeginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9B35123AA21E8006AE27D /* BeginButton.swift */; };
@@ -104,6 +105,7 @@
 		4DB0DEC023D1CFA100A0B9CF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		4DB7EB3D23E2913400DD248A /* DurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTests.swift; sourceTree = "<group>"; };
 		4DD01F5523B1EFD40068621A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		4DDE415D23B5C17600E8C273 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		4DDE415F23B5C19000E8C273 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		4DE9B35123AA21E8006AE27D /* BeginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginButton.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				4DF5D60623ACC59F00412174 /* DurationPickerHalfView.swift */,
 				4D9CB3C523AA09ED003C050A /* CreateSessionView.swift */,
 				4DE9B35123AA21E8006AE27D /* BeginButton.swift */,
+				4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */,
 				4D8EF65523D1AA9C00C6AEB4 /* SessionInProgressView.swift */,
 				4D8EF65723D1AB3000C6AEB4 /* CircleProgressView.swift */,
 				4DB0DEC023D1CFA100A0B9CF /* CustomView.swift */,
@@ -441,6 +444,7 @@
 				4D8EF64623D195FF00C6AEB4 /* SessionInProgressPresenter.swift in Sources */,
 				1849192E2375832F000CDE20 /* CreateSessionModels.swift in Sources */,
 				4DE9B35223AA21E8006AE27D /* BeginButton.swift in Sources */,
+				4DD4A2A623F6B0D100A44AAB /* TriangleView.swift in Sources */,
 				4D8EF65423D1A15600C6AEB4 /* Storyboards.swift in Sources */,
 				4D8EF64523D195FF00C6AEB4 /* SessionInProgressStore.swift in Sources */,
 				4D8EF64923D195FF00C6AEB4 /* SessionInProgressModels.swift in Sources */,
