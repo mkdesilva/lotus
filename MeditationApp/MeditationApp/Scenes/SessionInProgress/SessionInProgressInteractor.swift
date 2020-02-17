@@ -12,6 +12,7 @@ protocol SessionInProgressInteractorInterface {
   func getInitialDuration(request: SessionInProgress.GetInitialDuration.Request)
   func startSession(request: SessionInProgress.StartSession.Request)
   func updateDuration(request: SessionInProgress.UpdateDuration.Request)
+  func togglePause(request: SessionInProgress.TogglePause.Request)
   var session: Session! { get set }
 }
 
@@ -39,16 +40,39 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   }
   
   func startSession(request: SessionInProgress.StartSession.Request) {
+    startTimer()
+  }
+  
+  private func update(duration: Duration) {
+    let response = SessionInProgress.UpdateDuration.Response(duration: session.initialDuration)
+    presenter.presentDuration(response: response)
+  }
+  
+  private func startTimer() {
+    session.isInProgress = true
     sessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
       guard let self = self else { return }
       let request = SessionInProgress.UpdateDuration.Request(timeInterval: 1)
       self.updateDuration(request: request)
     }
   }
+
+  func togglePause(request: SessionInProgress.TogglePause.Request) {
+    if session.isInProgress {
+      // Session is in progress, pause the session
+      session.isInProgress = false
+      sessionTimer.invalidate()
+      let response = SessionInProgress.TogglePause.Response(isPaused: true)
+      presenter.presentPaused(response: response)
+    } else {
+      // session is already paused, resume the session
+      resume()
+    }
+  }
   
-  private func update(duration: Duration) {
-    let response = SessionInProgress.UpdateDuration.Response(duration: session.initialDuration)
-    presenter.presentDuration(response: response)
+  private func resume() {
+    startTimer()
+    presenter.presentPaused(response: SessionInProgress.TogglePause.Response(isPaused: false))
   }
   
   private func endSession() {

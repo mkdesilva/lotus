@@ -10,6 +10,7 @@ import UIKit
 
 protocol SessionInProgressViewControllerInterface: class {
   func displayDuration(viewModel: SessionInProgress.UpdateDuration.ViewModel)
+  func displayPaused(viewModel: SessionInProgress.TogglePause.ViewModel)
 }
 
 protocol SessionInProgressViewDelegate: class {
@@ -70,7 +71,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   func getInitialDuration() {
     // TODO: Delete this
-    interactor.session = Session(initialDuration: Duration(hours: 0, minutes: 2, seconds: 3))
+    interactor.session = Session(initialDuration: Duration(hours: 0, minutes: 0, seconds: 3))
     
     let request = SessionInProgress.GetInitialDuration.Request()
     interactor.getInitialDuration(request: request)
@@ -88,6 +89,14 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
     sessionInProgressView.setTimeText(viewModel.durationText)
   }
   
+  func displayPaused(viewModel: SessionInProgress.TogglePause.ViewModel) {
+    if viewModel.isPaused {
+      sessionInProgressView.showPausedView()
+    } else {
+      sessionInProgressView.showInProgressView()
+    }
+  }
+  
   // MARK: - Router
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,6 +111,8 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
 
 extension SessionInProgressViewController: SessionInProgressViewDelegate {
   func tappedPauseButton() {
+    let request = SessionInProgress.TogglePause.Request()
+    interactor.togglePause(request: request)
   }
   
   func tappedEndButton() {

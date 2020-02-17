@@ -46,12 +46,32 @@ class CircleProgressView: UIView {
     layer.addSublayer(shapeLayer)
   }
   
+  var progressAnimation: CABasicAnimation?
+  
   func animate(durationInSeconds: Int) {
-    let animation = CABasicAnimation(keyPath: "strokeEnd")
+    let animationKeyPath = "strokeEnd"
+
+    let animation = CABasicAnimation(keyPath: animationKeyPath)
     animation.toValue = 1
     animation.duration = Double(durationInSeconds)
     animation.fillMode = .forwards
     animation.isRemovedOnCompletion = false
-    shapeLayer.add(animation, forKey: "strokeEnd")
+    shapeLayer.add(animation, forKey: animationKeyPath)
+    progressAnimation = animation
+  }
+  
+  func pauseAnimation() {
+    let pausedTime = shapeLayer.convertTime(CACurrentMediaTime(), from: nil)
+    shapeLayer.speed = 0
+    shapeLayer.timeOffset = pausedTime
+  }
+  
+  func resumeAnimation() {
+    let pausedTime = shapeLayer.timeOffset
+    shapeLayer.speed = 1
+    shapeLayer.beginTime = 0
+    
+    let timeSincePause = shapeLayer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+    shapeLayer.beginTime = timeSincePause
   }
 }

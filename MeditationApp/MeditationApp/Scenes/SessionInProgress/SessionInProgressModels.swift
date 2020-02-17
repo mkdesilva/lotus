@@ -25,11 +25,21 @@ struct SessionInProgress {
     }
     
     struct Response {
-      var duration: Duration
+      let duration: Duration
     }
     
     struct ViewModel {
       let durationText: String
+    }
+  }
+  
+  struct TogglePause {
+    struct Request {}
+    struct Response {
+      let isPaused: Bool
+    }
+    struct ViewModel {
+      let isPaused: Bool
     }
   }
 }

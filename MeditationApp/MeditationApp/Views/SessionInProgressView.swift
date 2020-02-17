@@ -42,6 +42,8 @@ final class SessionInProgressView: UIView {
   
   weak var delegate: SessionInProgressViewController!
   
+  var pauseView: UIView?
+  
   func setup(delegate: SessionInProgressViewController) {
     self.delegate = delegate
     addConstraintsEqualToSuperView()
@@ -54,7 +56,7 @@ final class SessionInProgressView: UIView {
     containerView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     containerView.addSubview(circleProgressView)
     
-    setupPauseView(containerView)
+    pauseView = setupPauseView(containerView)
     
     setupVerticalStackView(containerView)
     
@@ -76,7 +78,7 @@ final class SessionInProgressView: UIView {
     vStack.layoutIfNeeded()
   }
   
-  private func setupPauseView(_ containerView: UIView) {
+  private func setupPauseView(_ containerView: UIView) -> UIView {
     let pauseView = UIButton(type: .custom)
     containerView.addSubview(pauseView)
     pauseView.addTarget(self, action: #selector(tappedPauseButton), for: .touchUpInside)
@@ -102,6 +104,8 @@ final class SessionInProgressView: UIView {
       bar.layer.cornerRadius = 10
       bar.widthAnchor.constraint(equalTo: pauseView.widthAnchor, multiplier: 0.35).isActive = true
     }
+    
+    return pauseView
   }
 }
 
@@ -123,22 +127,40 @@ extension SessionInProgressView {
     circleProgressView.animate(durationInSeconds: durationInSeconds)
   }
   
-  func resumeCircleAnimation() {
-    // TODO: Implement this
+  private func resumeCircleAnimation() {
+    circleProgressView.resumeAnimation()
+  }
+  
+  private func pauseCircleAnimation() {
+    circleProgressView.pauseAnimation()
     
   }
   
-  func pauseCircleAnimation() {
-    // TODO: Implement this
+  func showPausedView() {
+    pauseCircleAnimation()
+    guard let pauseView = pauseView else { return }
+    guard let containerView = pauseView.superview else { return }
+    pauseView.removeFromSuperview()
     
+    let triangleView = TriangleView(frame: containerView.frame)
+    containerView.addSubview(triangleView)
+  
+    triangleView.translatesAutoresizingMaskIntoConstraints = false
+    triangleView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
+    triangleView.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
+    triangleView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: containerView.bounds.width / 3).isActive = true
+    triangleView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: containerView.bounds.height / 3).isActive = true
+    
+    let tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(tappedPauseButton))
+    triangleView.addGestureRecognizer(tapGestureRecogniser)
+    self.pauseView = triangleView
   }
-}
-
-extension UIStackView {
-  func addBackground(color: UIColor) {
-    let subView = UIView(frame: bounds)
-    subView.backgroundColor = color
-    subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    insertSubview(subView, at: 0)
+  
+  func showInProgressView() {
+    resumeCircleAnimation()
+    guard let pauseView = pauseView else { return }
+    guard let containerView = pauseView.superview else { return }
+    pauseView.removeFromSuperview()
+    self.pauseView = setupPauseView(containerView)
   }
 }

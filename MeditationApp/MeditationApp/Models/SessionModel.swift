@@ -11,6 +11,7 @@ import Foundation
 struct Session {
   let initialDuration: Duration
   var currentDuration: Duration
+  var isInProgress = false
   
   init(initialDuration: Duration) {
     self.initialDuration = initialDuration
