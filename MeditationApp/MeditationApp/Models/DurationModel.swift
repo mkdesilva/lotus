@@ -12,72 +12,97 @@ protocol Validation {
   var isValid: Bool { get }
 }
 
-final class Duration: Codable {
-  var hours: Int
-  var minutes: Int
-  var seconds: Int
+protocol Duration {
+  var hours: Int { get }
+  var minutes: Int { get }
+  var seconds: Int { get }
+  var isZero: Bool { get }
+  func getSeconds() -> TimeInterval
+  func tickDown(by seconds: Int)
+  func tickDown(by timeInterval: TimeInterval)
+  var isValid: Bool { get }
+}
+
+class SessionDuration: Codable {
+  
+  var time: TimeInterval
+  
+  init(seconds: Int) {
+    time = Double(seconds)
+  }
+  
+  init(minutes: Int, seconds: Int) {
+    let minutesInSeconds = Double(minutes) * 60
+    time = minutesInSeconds + Double(seconds)
+  }
   
   init(hours: Int, minutes: Int) {
-    self.hours = hours
-    self.minutes = minutes
-    self.seconds = 0
+    let minutesInSeconds = Int.convertToSeconds(minutes: minutes)
+    let hoursInSeconds = Int.convertToSeconds(hours: hours)
+    time = hoursInSeconds + minutesInSeconds
   }
   
   init(hours: Int, minutes: Int, seconds: Int) {
-    self.hours = hours
-    self.minutes = minutes
-    self.seconds = seconds
+    let minutesInSeconds = Int.convertToSeconds(minutes: minutes)
+    let hoursInSeconds = Int.convertToSeconds(hours: hours)
+    time = hoursInSeconds + minutesInSeconds + Double(seconds)
   }
 }
 
-extension Duration {
+extension SessionDuration: Duration {
+  var isValid: Bool {
+   return !isZero
+  }
+  
+  var hours: Int {
+    return Int.convertToHours(seconds: Int(time))
+  }
+  
+  var minutes: Int {
+    return Int.convertToMinutes(seconds: Int(time))
+  }
+  
+  var seconds: Int {
+    return (Int(time) % 3600) % 60
+  }
+  
+  private var milliseconds: Int {
+    return Int((time.truncatingRemainder(dividingBy: 1)) * 1000)
+  }
   
   var isZero: Bool {
-    return hours == 0 && minutes == 0 && seconds == 0
+    return time <= 0
   }
   
-  var totalSeconds: Int {
-    return (hours * 60 * 60) + (minutes * 60) + (seconds)
+  func getSeconds() -> TimeInterval {
+    return time
   }
   
-  func tickDown(bySeconds: Int) {
-    var durationInSeconds = self.totalSeconds
-    durationInSeconds -= bySeconds
-    let newDuration = durationInSeconds.duration
-    
-    hours = newDuration.hours
-    minutes = newDuration.minutes
-    seconds = newDuration.seconds
+  /// Subtracts the time by a number of seconds.
+  /// - Parameter seconds: How many seconds the time is decreased by.
+  func tickDown(by seconds: Int) {
+    time -= Double(seconds)
   }
-}
-
-extension Duration: Equatable {
-  static func == (lhs: Duration, rhs: Duration) -> Bool {
-    return lhs.hours == rhs.hours && lhs.minutes == rhs.minutes && lhs.seconds == rhs.seconds
-  }
-}
-
-extension Duration: CustomStringConvertible {
-  var description: String {
-    return "\(hours)h:\(minutes)m:\(seconds)s"
-  }
-}
-
-extension Duration: Validation {
-  var isValid: Bool {
-    if hours == 0 && minutes == 0 {
-      return false
-    }
-    
-    return true
+  
+  func tickDown(by timeInterval: TimeInterval) {
+    time -= timeInterval
   }
 }
 
 extension Int {
-  var duration: Duration {
-    let hours = self / 3600
-    let minutes = (self % 3600) / 60
-    let seconds = (self % 3600) % 60
-    return Duration(hours: hours, minutes: minutes, seconds: seconds)
+  static func convertToSeconds(minutes: Self) -> Double {
+    return Double(minutes) * 60
+  }
+  
+  static func convertToSeconds(hours: Self) -> Double {
+    return Double(hours) * 3600
+  }
+  
+  static func convertToHours(seconds: Self) -> Int {
+    return seconds / 3600
+  }
+  
+  static func convertToMinutes(seconds: Self) -> Int {
+    return (seconds % 3600) / 60
   }
 }

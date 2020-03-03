@@ -9,11 +9,11 @@
 import Foundation
 
 struct Session {
-  let initialDuration: Duration
-  var currentDuration: Duration
+  let initialDuration: SessionDuration
+  var currentDuration: SessionDuration
   var isInProgress = false
   
-  init(initialDuration: Duration) {
+  init(initialDuration: SessionDuration) {
     self.initialDuration = initialDuration
     self.currentDuration = initialDuration
   }

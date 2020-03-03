@@ -35,7 +35,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
       return
     }
     
-    session.currentDuration.tickDown(bySeconds: request.timeInterval)
+    session.currentDuration.tickDown(by: request.timeInterval)
     update(duration: session.currentDuration)
   }
   
@@ -43,17 +43,22 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
     startTimer()
   }
   
-  private func update(duration: Duration) {
+  private func update(duration: SessionDuration) {
     let response = SessionInProgress.UpdateDuration.Response(duration: session.initialDuration)
     presenter.presentDuration(response: response)
   }
   
+  private var timerStartTime: Double = 0
+  
   private func startTimer() {
     session.isInProgress = true
+    self.timerStartTime = Date().timeIntervalSinceReferenceDate
+
     sessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
       guard let self = self else { return }
       let request = SessionInProgress.UpdateDuration.Request(timeInterval: 1)
       self.updateDuration(request: request)
+      self.timerStartTime = Date().timeIntervalSinceReferenceDate
     }
   }
 
@@ -62,6 +67,9 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
       // Session is in progress, pause the session
       session.isInProgress = false
       sessionTimer.invalidate()
+      // Calculate time interval since timer was started
+      let pauseTime = Date().timeIntervalSinceReferenceDate - timerStartTime
+      session.currentDuration.tickDown(by: pauseTime)
       let response = SessionInProgress.TogglePause.Response(isPaused: true)
       presenter.presentPaused(response: response)
     } else {
@@ -73,9 +81,12 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   private func resume() {
     startTimer()
     presenter.presentPaused(response: SessionInProgress.TogglePause.Response(isPaused: false))
+    let response = SessionInProgress.UpdateDuration.Response(duration: session.currentDuration)
+    presenter.presentDuration(response: response)
   }
   
   private func endSession() {
     // TODO: Implement this
+    print("Session should end")
   }
 }

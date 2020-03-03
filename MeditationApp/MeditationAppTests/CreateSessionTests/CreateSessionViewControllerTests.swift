@@ -39,7 +39,7 @@ final class CreateSessionViewControllerTests: XCTestCase {
   
   final class CreateSessionInteractorSpy: CreateSessionInteractorInterface {
     
-    var sessionDuration: Duration?
+    var sessionDuration: SessionDuration?
     
     var setDurationCalled = false
     var getInitialDurationCalled = false
@@ -58,11 +58,11 @@ final class CreateSessionViewControllerTests: XCTestCase {
     var navigateToDurationPickerCalled = false
     var navigateToInProgressSceneCalled = false
     
-    func navigateToDurationPicker(duration: Duration?) {
+    func navigateToDurationPicker(duration: SessionDuration?) {
       navigateToDurationPickerCalled = true
     }
     
-    func navigateToInProgressScene(duration: Duration) {
+    func navigateToInProgressScene(duration: SessionDuration) {
       navigateToInProgressSceneCalled = true
     }
   }
@@ -106,7 +106,7 @@ final class CreateSessionViewControllerTests: XCTestCase {
       sut.router = routerSpy
       
       // When
-      sut.routeToBeginSession(duration: Duration(hours: 0, minutes: 0))
+      sut.routeToBeginSession(duration: SessionDuration(hours: 0, minutes: 0))
       
       // Then
       XCTAssertTrue(routerSpy.navigateToInProgressSceneCalled)

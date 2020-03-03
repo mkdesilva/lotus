@@ -10,6 +10,6 @@ import Foundation
 
 class SessionInProgressStore: SessionInProgressStoreProtocol {
   func getData(_ completion: @escaping (Result<Session, Error>) -> Void) {
-    completion(Result.success(Session(initialDuration: Duration(hours: 1, minutes: 0))))
+    completion(Result.success(Session(initialDuration: SessionDuration(hours: 1, minutes: 0))))
   }
 }

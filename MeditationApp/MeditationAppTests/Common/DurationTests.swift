@@ -13,32 +13,32 @@ import XCTest
 class DurationTests: XCTestCase {
   
   func testDurationWithZeroHoursZeroMinutesIsNotValid() {
-    let duration = Duration(hours: 0, minutes: 0)
+    let duration = SessionDuration(hours: 0, minutes: 0)
     let isDurationValid = duration.isValid
     XCTAssertFalse(isDurationValid)
   }
   
   func testDurationWithNonZeroMinutesIsValid() {
-    let duration = Duration(hours: 0, minutes: 5)
+    let duration = SessionDuration(hours: 0, minutes: 5)
     let isDurationValid = duration.isValid
     XCTAssertTrue(isDurationValid)
   }
   
   func testDurationWithNonZeroHoursIsValid() {
-    let duration = Duration(hours: 5, minutes: 0)
+    let duration = SessionDuration(hours: 5, minutes: 0)
     let isDurationValid = duration.isValid
     XCTAssertTrue(isDurationValid)
   }
   
   func testDurationInSecondsReturnsProperValue() {
-    let duration = Duration(hours: 3, minutes: 10)
+    let duration = SessionDuration(hours: 3, minutes: 10)
     let seconds = duration.totalSeconds
     XCTAssertEqual(seconds, 11400)
   }
   
   func testSameDurationsAreEqual() {
-    let firstDuration = Duration(hours: 3, minutes: 5, seconds: 20)
-    let secondDuration = Duration(hours: 3, minutes: 5, seconds: 20)
+    let firstDuration = SessionDuration(hours: 3, minutes: 5, seconds: 20)
+    let secondDuration = SessionDuration(hours: 3, minutes: 5, seconds: 20)
     
     let areDurationsEqual = firstDuration == secondDuration
     
@@ -46,8 +46,8 @@ class DurationTests: XCTestCase {
   }
   
   func testDifferentDurationsAreNotEqual() {
-    let firstDuration = Duration(hours: 3, minutes: 5, seconds: 20)
-    let secondDuration = Duration(hours: 7, minutes: 5, seconds: 20)
+    let firstDuration = SessionDuration(hours: 3, minutes: 5, seconds: 20)
+    let secondDuration = SessionDuration(hours: 7, minutes: 5, seconds: 20)
     
     let areDurationsEqual = firstDuration == secondDuration
     
@@ -56,7 +56,7 @@ class DurationTests: XCTestCase {
   
   func testConvertSecondsToDuration() {
     let seconds = 7808 // 2 hours, 10 minutes, 8 seconds
-    let secondsAsDuration = Duration(hours: 2, minutes: 10, seconds: 8)
+    let secondsAsDuration = SessionDuration(hours: 2, minutes: 10, seconds: 8)
     
     let duration = seconds.duration
     
@@ -66,15 +66,15 @@ class DurationTests: XCTestCase {
   }
   
   func testIsZeroWithDurationAllZeroesShouldBeTrue() {
-    let duration = Duration(hours: 0, minutes: 0, seconds: 0)
+    let duration = SessionDuration(hours: 0, minutes: 0, seconds: 0)
     XCTAssertTrue(duration.isZero)
   }
   
   func testIsZeroWithDurationNotAllZeroesShouldBeFalse() {
-    let hoursNonZero = Duration(hours: 1, minutes: 0, seconds: 0)
-    let minutesNonZero = Duration(hours: 0, minutes: 1, seconds: 0)
-    let secondsNonZero = Duration(hours: 0, minutes: 0, seconds: 1)
-    let allNonZeroes = Duration(hours: 1, minutes: 1, seconds: 1)
+    let hoursNonZero = SessionDuration(hours: 1, minutes: 0, seconds: 0)
+    let minutesNonZero = SessionDuration(hours: 0, minutes: 1, seconds: 0)
+    let secondsNonZero = SessionDuration(hours: 0, minutes: 0, seconds: 1)
+    let allNonZeroes = SessionDuration(hours: 1, minutes: 1, seconds: 1)
     
     XCTAssertFalse(hoursNonZero.isZero)
     XCTAssertFalse(minutesNonZero.isZero)
@@ -83,7 +83,7 @@ class DurationTests: XCTestCase {
   }
   
   func testDurationDescription() {
-    let duration = Duration(hours: 4, minutes: 12, seconds: 39)
+    let duration = SessionDuration(hours: 4, minutes: 12, seconds: 39)
     
     let durationDescription: String = duration.description
     
@@ -91,10 +91,10 @@ class DurationTests: XCTestCase {
   }
   
   func testDurationTickDown() {
-    let duration = Duration(hours: 3, minutes: 0, seconds: 0)
+    let duration = SessionDuration(hours: 3, minutes: 0, seconds: 0)
     
     duration.tickDown(bySeconds: 3)
     
-    XCTAssertEqual(duration, Duration(hours: 2, minutes: 59, seconds: 57))
+    XCTAssertEqual(duration, SessionDuration(hours: 2, minutes: 59, seconds: 57))
   }
 }

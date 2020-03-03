@@ -71,7 +71,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   func getInitialDuration() {
     // TODO: Delete this
-    interactor.session = Session(initialDuration: Duration(hours: 0, minutes: 0, seconds: 3))
+    interactor.session = Session(initialDuration: SessionDuration(hours: 0, minutes: 0, seconds: 13))
     
     let request = SessionInProgress.GetInitialDuration.Request()
     interactor.getInitialDuration(request: request)
@@ -80,7 +80,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   func startSession() {
     let request = SessionInProgress.StartSession.Request()
     interactor.startSession(request: request)
-    sessionInProgressView.startAnimatingProgressCircle(durationInSeconds: interactor.session.initialDuration.totalSeconds)
+    sessionInProgressView.startAnimatingProgressCircle(durationInSeconds: Int(interactor.session.initialDuration.time))
   }
   
   // MARK: - Display logic

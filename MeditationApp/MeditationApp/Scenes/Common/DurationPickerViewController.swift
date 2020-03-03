@@ -17,7 +17,7 @@ protocol DurationPickerDelegate: UIPickerViewDelegate, UIPickerViewDataSource {
 class DurationPickerViewController: UIViewController {
   
   var pickerView: UIPickerView!
-  var initialDuration: Duration?
+  var initialDuration: SessionDuration?
   
   let minutesInterval = 15 // TODO: Make this user customizable
   let hours = Array(0...8)
@@ -56,7 +56,7 @@ extension DurationPickerViewController: DurationPickerDelegate {
     case minutes = 1
   }
   
-  private func setupPickerView(for duration: Duration) {
+  private func setupPickerView(for duration: SessionDuration) {
     if let initialHours = hours.firstIndex(of: duration.hours) {
       pickerView.selectRow(initialHours, inComponent: DurationComponent.hours.rawValue, animated: false)
     }
@@ -117,7 +117,7 @@ extension DurationPickerViewController: DurationPickerDelegate {
   }
   
   func saveAndClose() {
-    let duration = Duration(
+    let duration = SessionDuration(
       hours: hours[pickerView.selectedRow(inComponent: DurationComponent.hours.rawValue)],
       minutes: minutes[pickerView.selectedRow(inComponent: DurationComponent.minutes.rawValue)]
     )

@@ -25,7 +25,7 @@ struct SessionInProgress {
     }
     
     struct Response {
-      let duration: Duration
+      let duration: SessionDuration
     }
     
     struct ViewModel {
