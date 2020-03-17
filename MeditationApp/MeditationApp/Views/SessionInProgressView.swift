@@ -17,17 +17,9 @@ final class SessionInProgressView: UIView {
   }()
   
   private var endButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    button.widthAnchor.constraint(equalToConstant: 150).isActive = true
-    button.layer.cornerRadius = 15
+    let button = RoundedRectangleButton()
     button.setTitle("END", for: .normal)
-    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-    
-    button.backgroundColor = Colors.slateBlue.color
     button.addTarget(self, action: #selector(tappedEndButton), for: .touchUpInside)
-    
     return button
   }()
   
@@ -44,27 +36,29 @@ final class SessionInProgressView: UIView {
   
   var pauseView: UIView?
   
-  func setup(delegate: SessionInProgressViewController) {
+func setup(delegate: SessionInProgressViewController) {
     self.delegate = delegate
     addConstraintsEqualToSuperView()
     let blurredBackgroundView = BlurredBackgroundView(image: Assets.lake.image)
     addSubview(blurredBackgroundView)
     
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    containerView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-    containerView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-    containerView.addSubview(circleProgressView)
+    let circleContainerView = UIView()
+    circleContainerView.translatesAutoresizingMaskIntoConstraints = false
+    circleContainerView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    circleContainerView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    circleContainerView.addSubview(circleProgressView)
     
-    pauseView = setupPauseView(containerView)
+    pauseView = setupPauseView(circleContainerView)
     
-    setupVerticalStackView(containerView)
+    setupVerticalStackView(circleContainerView)
     
-    circleProgressView.setup(centerIn: containerView)
+    circleProgressView.setup(centerIn: circleContainerView)
   }
   
-  private func setupVerticalStackView(_ containerView: UIView) {
-    let vStack = UIStackView(arrangedSubviews: [timeLabel, containerView, endButton])
+  var stackView: UIStackView?
+  
+  private func setupVerticalStackView(_ circleContainerView: UIView) {
+    let vStack = UIStackView(arrangedSubviews: [timeLabel, circleContainerView, endButton])
     vStack.axis = .vertical
     vStack.alignment = .center
     vStack.distribution = .equalCentering
@@ -76,6 +70,7 @@ final class SessionInProgressView: UIView {
       trailingSpacing: 0,
       bottomSpacing: -150)
     vStack.layoutIfNeeded()
+    stackView = vStack
   }
   
   private func setupPauseView(_ containerView: UIView) -> UIView {
@@ -162,5 +157,13 @@ extension SessionInProgressView {
     guard let containerView = pauseView.superview else { return }
     pauseView.removeFromSuperview()
     self.pauseView = setupPauseView(containerView)
+  }
+  
+  public func endSession(completion: (() -> Void)? = nil ) {
+    UIView.animate(withDuration: 0.75, animations: {
+      self.stackView?.alpha = 0
+    }, completion: { _ in
+      completion?()
+    })
   }
 }

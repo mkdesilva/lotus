@@ -42,4 +42,14 @@ struct SessionInProgress {
       let isPaused: Bool
     }
   }
+  
+  struct EndSession {
+    struct Request {}
+    struct Response {
+      let totalDuration: Duration
+    }
+    struct ViewModel {
+      let totalDuration: Duration
+    }
+  }
 }

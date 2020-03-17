@@ -11,6 +11,7 @@ import UIKit
 protocol SessionInProgressViewControllerInterface: class {
   func displayDuration(viewModel: SessionInProgress.UpdateDuration.ViewModel)
   func displayPaused(viewModel: SessionInProgress.TogglePause.ViewModel)
+  func displayEndSession(viewModel: SessionInProgress.EndSession.ViewModel)
 }
 
 protocol SessionInProgressViewDelegate: class {
@@ -52,6 +53,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("view did load")
     createView()
   }
   
@@ -71,7 +73,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   func getInitialDuration() {
     // TODO: Delete this
-    interactor.session = Session(initialDuration: SessionDuration(hours: 0, minutes: 0, seconds: 13))
+    interactor.session = Session(initialDuration: SessionDuration(hours: 0, minutes: 0, seconds: 1))
     
     let request = SessionInProgress.GetInitialDuration.Request()
     interactor.getInitialDuration(request: request)
@@ -97,15 +99,14 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
     }
   }
   
-  // MARK: - Router
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    router.passDataToNextScene(segue: segue)
+  func displayEndSession(viewModel: SessionInProgress.EndSession.ViewModel) {
+    sessionInProgressView.endSession {
+      self.router.navigateToEndSession()
+    }
   }
   
-  @IBAction func unwindToSessionInProgressViewController(from segue: UIStoryboardSegue) {
-    print("unwind...")
-    router.passDataToNextScene(segue: segue)
+  func finishedEndAnimation() {
+    
   }
 }
 

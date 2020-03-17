@@ -11,6 +11,7 @@ import UIKit
 protocol SessionInProgressPresenterInterface {
   func presentDuration(response: SessionInProgress.UpdateDuration.Response)
   func presentPaused(response: SessionInProgress.TogglePause.Response)
+  func presentEndSession(response: SessionInProgress.EndSession.Response)
 }
 
 class SessionInProgressPresenter: SessionInProgressPresenterInterface {
@@ -36,5 +37,10 @@ class SessionInProgressPresenter: SessionInProgressPresenterInterface {
   func presentPaused(response: SessionInProgress.TogglePause.Response) {
     let viewModel = SessionInProgress.TogglePause.ViewModel(isPaused: response.isPaused)
     viewController.displayPaused(viewModel: viewModel)
+  }
+  
+  func presentEndSession(response: SessionInProgress.EndSession.Response) {
+    let viewModel = SessionInProgress.EndSession.ViewModel(totalDuration: response.totalDuration)
+    viewController.displayEndSession(viewModel: viewModel)
   }
 }

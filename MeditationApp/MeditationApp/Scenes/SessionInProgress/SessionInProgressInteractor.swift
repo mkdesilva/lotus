@@ -86,7 +86,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   }
   
   private func endSession() {
-    // TODO: Implement this
-    print("Session should end")
+    let response = SessionInProgress.EndSession.Response(totalDuration: session.initialDuration)
+    presenter.presentEndSession(response: response)
   }
 }
