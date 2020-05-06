@@ -13,7 +13,10 @@ class BeginButton: UIButton, CustomView {
   var createSessionView: CreateSessionView?
   
   func setup() {
-    let size: CGFloat = 200
+    setup(size: UIScreen.main.bounds.height / 3)
+  }
+  
+  func setup(size: CGFloat) {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = Colors.slateBlue.color
     widthAnchor.constraint(equalToConstant: size).isActive = true

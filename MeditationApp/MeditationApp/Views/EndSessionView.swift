@@ -19,6 +19,16 @@ final class EndSessionView: UIView {
     return button
   }()
   
+  private var statValueLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "25 minutes"
+    label.textColor = .white
+    label.textAlignment = .center
+    label.font = UIFont.systemFont(ofSize: 35)
+    return label
+  }()
+  
   func setup(delegate: EndSessionDelegate) {
     self.delegate = delegate
     addConstraintsEqualToSuperView()
@@ -27,36 +37,29 @@ final class EndSessionView: UIView {
     
     let statTitleLabel = UILabel()
     statTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-//    statTitleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
     statTitleLabel.text = "TIME"
     statTitleLabel.textColor = .white
     statTitleLabel.textAlignment = .center
     
-    let statValueLabel = UILabel()
-    statValueLabel.translatesAutoresizingMaskIntoConstraints = false
-//    statTitleLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
-    statValueLabel.text = "25 minutes"
-    statValueLabel.textColor = .white
-    statValueLabel.textAlignment = .center
-    statValueLabel.font = statValueLabel.font.withSize(35)
-    
-    let vStack = UIStackView(arrangedSubviews: [statTitleLabel, statValueLabel, closeButton])
+    let vStack = UIStackView(arrangedSubviews: [statTitleLabel, statValueLabel])
     vStack.axis = .vertical
     vStack.alignment = .center
-    vStack.distribution = .fillProportionally
-    
+    vStack.distribution = .equalCentering
+    vStack.spacing = 16
     addSubview(vStack)
-    vStack.addConstraintsToSafeAreaSuperView(
-      topSpacing: 150,
-      leadingSpacing: 0,
-      trailingSpacing: 0,
-      bottomSpacing: -20)
-//    vStack.layoutIfNeeded()
-    //       stackView = vStack
+    addSubview(closeButton)
+    vStack.centerInSuperView()
+    closeButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -100).isActive = true
+    closeButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
+    closeButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    closeButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
   }
   
   @objc private func tappedCloseButton() {
     
+  }
+  
+  func displayStats(durationText: String) {
+    statValueLabel.text = durationText
   }
 }
