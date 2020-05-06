@@ -38,11 +38,11 @@ final class CreateSessionView: UIView, CustomView {
     let verticalStack = UIStackView()
     verticalStack.axis = .vertical
     verticalStack.alignment = .center
+    verticalStack.distribution = .fill
     
     addSubview(verticalStack)
     verticalStack.addConstraints(leadingSpacing: 16, trailingSpacing: -16)
-    verticalStack.topAnchor.constraint(lessThanOrEqualTo: topAnchor, constant: 100).isActive = true
-    verticalStack.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -150).isActive = true
+    verticalStack.centerInSuperView()
     verticalStack.spacing = 65
     
     let upperStackView = createUpperStackView(arrangedSubviews: [flavourLabel, durationButton])
@@ -51,9 +51,8 @@ final class CreateSessionView: UIView, CustomView {
     let beginButton = BeginButton()
     beginButton.createSessionView = self
     verticalStack.addArrangedSubview(beginButton)
-    beginButton.setup()
+    beginButton.setup(size: UIScreen.main.bounds.height / 3)
     setupDurationButton(verticalStack)
-    
   }
   
   private func createUpperStackView(arrangedSubviews: [UIView]) -> UIStackView {

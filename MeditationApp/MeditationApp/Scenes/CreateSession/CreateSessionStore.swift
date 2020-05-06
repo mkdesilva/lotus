@@ -9,20 +9,20 @@
 import Foundation
 
 protocol CreateSessionStoreProtocol {
-  func getDuration(_ completion: @escaping (Duration) -> Void)
-  func setDuration(duration: Duration, _ completion: @escaping (Result<Duration, CustomError>) -> Void)
-  func getDefaultDuration(completion: @escaping (Duration) -> Void)
+  func getDuration(_ completion: @escaping (SessionDuration) -> Void)
+  func setDuration(duration: SessionDuration, _ completion: @escaping (Result<SessionDuration, CustomError>) -> Void)
+  func getDefaultDuration(completion: @escaping (SessionDuration) -> Void)
 }
 
 class CreateSessionStore: CreateSessionStoreProtocol {
   
-  let defaultDuration = Duration(hours: 0, minutes: 15)
+  let defaultDuration = SessionDuration(hours: 0, minutes: 15)
   
-  func getDuration(_ completion: @escaping (Duration) -> Void) {
+  func getDuration(_ completion: @escaping (SessionDuration) -> Void) {
     let userDefaults = UserDefaults.standard
     
     if let data = userDefaults.value(forKey: .duration) as? Data {
-      if let duration = try? PropertyListDecoder().decode(Duration.self, from: data) {
+      if let duration = try? PropertyListDecoder().decode(SessionDuration.self, from: data) {
         completion(duration)
         return
       }
@@ -32,7 +32,7 @@ class CreateSessionStore: CreateSessionStoreProtocol {
     completion(defaultDuration)
   }
   
-  func setDuration(duration: Duration, _ completion: @escaping (Result<Duration, CustomError>) -> Void) {
+  func setDuration(duration: SessionDuration, _ completion: @escaping (Result<SessionDuration, CustomError>) -> Void) {
     let userDefaults = UserDefaults.standard
     
     if let encodedDuration = try? PropertyListEncoder().encode(duration) {
@@ -44,7 +44,7 @@ class CreateSessionStore: CreateSessionStoreProtocol {
     }
   }
   
-  func getDefaultDuration(completion: @escaping (Duration) -> Void) {
+  func getDefaultDuration(completion: @escaping (SessionDuration) -> Void) {
     completion(defaultDuration)
   }
 }

@@ -58,6 +58,30 @@ extension UIView {
     trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor).isActive = true
   }
   
+  func addConstraintsToSafeAreaSuperView(
+     topSpacing: CGFloat? = nil,
+     leadingSpacing: CGFloat? = nil,
+     trailingSpacing: CGFloat? = nil,
+     bottomSpacing: CGFloat? = nil) {
+     guard let superview = superview else { return }
+     translatesAutoresizingMaskIntoConstraints = false
+     
+     if let topSpacing = topSpacing {
+       topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: topSpacing).isActive = true
+     }
+     
+     if let leadingSpacing = leadingSpacing {
+       leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: leadingSpacing).isActive = true
+     }
+     if let trailingSpacing = trailingSpacing {
+       trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: trailingSpacing).isActive = true
+     }
+     
+     if let bottomSpacing = bottomSpacing {
+       bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: bottomSpacing).isActive = true
+     }
+   }
+  
   func constraintHeight(equalToConstant: CGFloat) {
     translatesAutoresizingMaskIntoConstraints = false
     heightAnchor.constraint(equalToConstant: equalToConstant).isActive = true

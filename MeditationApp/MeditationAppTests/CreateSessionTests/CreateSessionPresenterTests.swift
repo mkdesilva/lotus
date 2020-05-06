@@ -49,7 +49,7 @@ final class CreateSessionPresenterTests: XCTestCase {
   
   func testPresentSetDurationDisplaysSetDuration() {
     // Given
-    let response = CreateSession.SetDuration.Response(duration: Duration(hours: 5, minutes: 5))
+    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 5, minutes: 5))
     
     // When
     sut.presentSetDuration(response: response)
@@ -61,7 +61,7 @@ final class CreateSessionPresenterTests: XCTestCase {
   
   func testPresentSetDurationWhenHoursIsZeroShouldOmitHours() {
     // Given
-    let response = CreateSession.SetDuration.Response(duration: Duration(hours: 0, minutes: 43))
+    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 0, minutes: 43))
     
     // When
     sut.presentSetDuration(response: response)
@@ -72,7 +72,7 @@ final class CreateSessionPresenterTests: XCTestCase {
   
   func testPresentSetDurationWhenMinutesIsZeroShouldOmitMinutes() {
     // Given
-    let response = CreateSession.SetDuration.Response(duration: Duration(hours: 2, minutes: 0))
+    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 2, minutes: 0))
     
     // When
     sut.presentSetDuration(response: response)

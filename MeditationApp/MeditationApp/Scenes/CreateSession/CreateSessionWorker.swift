@@ -18,15 +18,15 @@ class CreateSessionWorker {
   
   // MARK: - Business Logic
   
-  func getDuration(completion: @escaping (Duration) -> Void) {
+  func getDuration(completion: @escaping (SessionDuration) -> Void) {
     store.getDuration(completion)
   }
   
-  func setDuration(_ duration: Duration, completion: @escaping (Result<Duration, CustomError>) -> Void) {
+  func setDuration(_ duration: SessionDuration, completion: @escaping (Result<SessionDuration, CustomError>) -> Void) {
     store.setDuration(duration: duration, completion)
   }
   
-  func getDefaultDuration(completion: @escaping (Duration) -> Void) {
+  func getDefaultDuration(completion: @escaping (SessionDuration) -> Void) {
     store.getDefaultDuration(completion: completion)
   }
 }

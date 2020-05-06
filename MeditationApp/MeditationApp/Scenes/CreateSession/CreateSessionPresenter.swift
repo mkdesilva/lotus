@@ -18,17 +18,17 @@ class CreateSessionPresenter: CreateSessionPresenterInterface {
   // MARK: - Presentation logic
   
   func presentSetDuration(response: CreateSession.SetDuration.Response) {
-    var durationString = ""
+//    var durationString = ""
+//    
+//    if response.duration.hours == 0 {
+//      durationString = "\(response.duration.minutes)m"
+//    } else if response.duration.minutes == 0 {
+//      durationString = "\(response.duration.hours)h"
+//    } else {
+//      durationString = "\(response.duration.hours)h \(response.duration.minutes)m"
+//    }
     
-    if response.duration.hours == 0 {
-      durationString = "\(response.duration.minutes)m"
-    } else if response.duration.minutes == 0 {
-      durationString = "\(response.duration.hours)h"
-    } else {
-      durationString = "\(response.duration.hours)h \(response.duration.minutes)m"
-    }
-    
-    let viewModel = CreateSession.SetDuration.ViewModel(durationTitle: durationString)
+    let viewModel = CreateSession.SetDuration.ViewModel(durationTitle: response.duration.description)
     viewController.displaySetDuration(viewModel: viewModel)
   }
   

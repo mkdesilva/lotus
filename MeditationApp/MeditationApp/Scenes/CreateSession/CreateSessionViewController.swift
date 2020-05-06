@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CreateSessionViewControllerDelegate: class {
-  func didSelectDuration(duration: Duration)
+  func didSelectDuration(duration: SessionDuration)
   func showDurationPicker()
   func beginSession()
 }
@@ -21,7 +21,7 @@ protocol CreateSessionViewControllerInterface: class {
 class CreateSessionViewController: UIViewController, CreateSessionViewControllerInterface {
   
   var interactor: CreateSessionInteractorInterface!
-  var router: CreateSessionRouterInput!
+  var router: CreateSessionRouterInterface!
   var createSessionView: CreateSessionView!
   
   // MARK: - Configuration
@@ -76,7 +76,7 @@ extension CreateSessionViewController: CreateSessionViewControllerDelegate {
   
   // MARK: - Event handling
   
-  func didSelectDuration(duration: Duration) {
+  func didSelectDuration(duration: SessionDuration) {
     let request = CreateSession.SetDuration.Request(duration: duration)
     interactor.setDuration(request: request)
   }
@@ -92,7 +92,7 @@ extension CreateSessionViewController: CreateSessionViewControllerDelegate {
     router.navigateToDurationPicker(duration: interactor.sessionDuration)
   }
   
-  func routeToBeginSession(duration: Duration) {
+  func routeToBeginSession(duration: SessionDuration) {
     router.navigateToInProgressScene(duration: duration)
   }
 }

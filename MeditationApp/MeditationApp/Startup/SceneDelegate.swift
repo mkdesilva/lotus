@@ -21,13 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     if let windowScene = scene as? UIWindowScene {
 
-        let timeline = SessionInProgressViewController()
-
+      let rootVc = UINavigationController(rootViewController: SessionInProgressViewController())
+      rootVc.navigationBar.isHidden = true
         window = UIWindow(windowScene: windowScene)
-
-//        let navigation = UINavigationController(rootViewController: timeline)
-        window?.rootViewController = timeline
-
+        window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
     }
   }

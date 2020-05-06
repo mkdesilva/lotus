@@ -13,7 +13,10 @@ class BeginButton: UIButton, CustomView {
   var createSessionView: CreateSessionView?
   
   func setup() {
-    let size: CGFloat = 200
+    setup(size: UIScreen.main.bounds.height / 3)
+  }
+  
+  func setup(size: CGFloat) {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = Colors.slateBlue.color
     widthAnchor.constraint(equalToConstant: size).isActive = true
@@ -22,34 +25,9 @@ class BeginButton: UIButton, CustomView {
     clipsToBounds = true
     addTarget(self, action: #selector(tappedBegin), for: .touchUpInside)
     layoutIfNeeded()
-    createTriangleView()
-  }
-  
-  private func createTriangleView() {
-    let triangleSizeMultiplier: CGFloat = 0.3333
-    let triangleSize: CGFloat = frame.size.width * triangleSizeMultiplier
-    let minX: CGFloat = 0
-    let minY: CGFloat = 0
-    let midY: CGFloat = triangleSize / 2
-    let maxX: CGFloat = triangleSize + 5
-    let maxY: CGFloat = triangleSize
-    
-    let triangleView = UIView()
-    let path = CGMutablePath()
-    
-    path.move(to: CGPoint(x: minX, y: minY))
-    path.addLine(to: CGPoint(x: maxX, y: midY))
-    path.addLine(to: CGPoint(x: minX, y: maxY))
-    path.addLine(to: CGPoint(x: minX, y: minY))
-    
-    let shape = CAShapeLayer()
-    shape.path = path
-    shape.fillColor = UIColor.white.cgColor
-    triangleView.layer.insertSublayer(shape, at: 0)
-    
+    let triangleView = TriangleView(frame: frame)
+    triangleView.isUserInteractionEnabled = false
     addSubview(triangleView)
-    triangleView.frame.size = CGSize(width: maxX, height: maxY)
-    triangleView.center = CGPoint(x: frame.maxX, y: frame.maxY)
     triangleView.layoutIfNeeded()
   }
   
@@ -62,6 +40,7 @@ class BeginButton: UIButton, CustomView {
 extension BeginButton {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     let radius = frame.width / 2
+    print("touches began")
     var point: CGPoint = CGPoint()
     
     if let touch = touches.first {

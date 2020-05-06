@@ -11,7 +11,7 @@ import UIKit
 protocol CreateSessionInteractorInterface {
   func setDuration(request: CreateSession.SetDuration.Request)
   func getInitialDuration(request: CreateSession.GetInitialDuration.Request)
-  var sessionDuration: Duration? { get set }
+  var sessionDuration: SessionDuration? { get set }
 }
 
 class CreateSessionInteractor: CreateSessionInteractorInterface {
@@ -19,7 +19,7 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
   var presenter: CreateSessionPresenterInterface!
   var worker: CreateSessionWorker?
   
-  var sessionDuration: Duration?
+  var sessionDuration: SessionDuration?
   
   // MARK: - Business logic
   
@@ -31,14 +31,16 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
   }
   
   func setDuration(request: CreateSession.SetDuration.Request) {
-    if !request.duration.isValid {
+    guard request.duration.isValid else {
       setDefaultDuration()
-    } else {
-      worker?.setDuration(request.duration) { [weak self] _ in
-        let response = CreateSession.SetDuration.Response(duration: request.duration)
-        self?.sessionDuration = request.duration
-        self?.presenter.presentSetDuration(response: response)
-      }
+      return
+    }
+    
+    worker?.setDuration(request.duration) { [weak self] _ in
+      guard let self = self else { return }
+      let response = CreateSession.SetDuration.Response(duration: request.duration)
+      self.sessionDuration = request.duration
+      self.presenter.presentSetDuration(response: response)
     }
   }
   

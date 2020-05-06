@@ -8,26 +8,29 @@
 
 import UIKit
 
-protocol CreateSessionRouterInput {
-  func navigateToDurationPicker(duration: Duration?)
-  func navigateToInProgressScene(duration: Duration)
+protocol CreateSessionRouterInterface {
+  func navigateToDurationPicker(duration: SessionDuration?)
+  func navigateToInProgressScene(duration: SessionDuration)
 }
 
-class CreateSessionRouter: CreateSessionRouterInput {
+class CreateSessionRouter: CreateSessionRouterInterface {
   
   weak var viewController: CreateSessionViewController!
   
-  func navigateToDurationPicker(duration: Duration?) {
+  func navigateToDurationPicker(duration: SessionDuration?) {
     let durationPickerViewController = DurationPickerViewController()
     durationPickerViewController.initialDuration = duration
     durationPickerViewController.delegate = viewController
     viewController.present(durationPickerViewController, animated: true)
   }
   
-  func navigateToInProgressScene(duration: Duration) {
+  func navigateToInProgressScene(duration: SessionDuration) {
     let initialVc = Storyboards.sessionInProgress.instantiateInitialViewController()
     guard let inProgressViewController = initialVc as? SessionInProgressViewController else { return }
-    inProgressViewController.interactor.sessionDuration = duration
+    
+    inProgressViewController.awakeFromNib()
+    
+    inProgressViewController.interactor.session = Session(initialDuration: duration)
     viewController.navigationController?.setViewControllers([inProgressViewController], animated: false)
   }
 }

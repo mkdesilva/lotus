@@ -14,22 +14,22 @@ struct CreateSession {
     struct Request {}
     
     struct Response {
-      let duration: Duration
+      let duration: SessionDuration
     }
     
     struct ViewModel {
-      let duration: Duration
+      let duration: SessionDuration
     }
   }
   
   struct SetDuration {
     
     struct Request {
-      let duration: Duration
+      let duration: SessionDuration
     }
     
     struct Response {
-      let duration: Duration
+      let duration: SessionDuration
     }
     
     struct ViewModel {

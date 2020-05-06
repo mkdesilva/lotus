@@ -57,14 +57,14 @@ final class CreateSessionInteractorTests: XCTestCase {
     var getDurationCalled = false
     var setDurationCalled = false
     
-    override func getDuration(completion: @escaping (Duration) -> Void) {
+    override func getDuration(completion: @escaping (SessionDuration) -> Void) {
       getDurationCalled = true
-      completion(Duration(hours: 0, minutes: 0))
+      completion(SessionDuration(hours: 0, minutes: 0))
     }
     
-    override func setDuration(_ duration: Duration, completion: @escaping (Result<Duration, CustomError>) -> Void) {
+    override func setDuration(_ duration: SessionDuration, completion: @escaping (Result<SessionDuration, CustomError>) -> Void) {
       setDurationCalled = true
-      completion(.success(Duration(hours: 5, minutes: 5)))
+      completion(.success(SessionDuration(hours: 5, minutes: 5)))
     }
   }
   
@@ -84,14 +84,14 @@ final class CreateSessionInteractorTests: XCTestCase {
   
   func testSetDurationAsksPresenterToPresentSetDuration() {
     // Given
-    let request = CreateSession.SetDuration.Request(duration: Duration(hours: 5, minutes: 3))
+    let request = CreateSession.SetDuration.Request(duration: SessionDuration(hours: 5, minutes: 3))
     
     // When
     sut.setDuration(request: request)
     
     // Then
     XCTAssertTrue(presenterSpy.presentSetDurationCalled)
-    XCTAssertEqual(sut.sessionDuration, Duration(hours: 5, minutes: 3))
+    XCTAssertEqual(sut.sessionDuration, SessionDuration(hours: 5, minutes: 3))
   }
   
 }
