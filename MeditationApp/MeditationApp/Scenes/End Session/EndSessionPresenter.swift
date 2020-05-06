@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EndSessionPresenterInterface {
-  func presentSomething(response: EndSession.Something.Response)
+  func presentGetSessionStats(response: EndSession.GetSessionStats.Response)
 }
 
 class EndSessionPresenter: EndSessionPresenterInterface {
@@ -17,8 +17,16 @@ class EndSessionPresenter: EndSessionPresenterInterface {
 
   // MARK: - Presentation logic
 
-  func presentSomething(response: EndSession.Something.Response) {
-    let viewModel = EndSession.Something.ViewModel()
-    viewController.displaySomething(viewModel: viewModel)
+  func presentGetSessionStats(response: EndSession.GetSessionStats.Response) {
+    var viewModel: EndSession.GetSessionStats.ViewModel!
+    
+    switch response.result {
+    case .failure(let error):
+      viewModel = EndSession.GetSessionStats.ViewModel(content: .customError(error))
+    case .success(let stats):
+      viewModel = EndSession.GetSessionStats.ViewModel(content: .success(data: stats.duration.fullDescription))
+    }
+        
+    viewController.displayGetSessionStats(viewModel: viewModel)
   }
 }

@@ -6,6 +6,12 @@
 //  Copyright © 2019 Mihindu de Silva. All rights reserved.
 //
 
-enum CustomError: Error {
+enum CustomError: String, Error {
+  case generic = "Something went wrong."
   case archiveFailed
+}
+
+enum Content<T> {
+  case customError(CustomError)
+  case success(data: T)
 }

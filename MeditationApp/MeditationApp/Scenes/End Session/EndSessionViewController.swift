@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EndSessionViewControllerInterface: class {
-  func displaySomething(viewModel: EndSession.Something.ViewModel)
+  func displayGetSessionStats(viewModel: EndSession.GetSessionStats.ViewModel)
 }
 
 protocol EndSessionDelegate: class {
@@ -35,9 +35,9 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
     let presenter = EndSessionPresenter()
     presenter.viewController = viewController
     
+    print("Creating new interactor")
     let interactor = EndSessionInteractor()
     interactor.presenter = presenter
-    interactor.worker = EndSessionWorker(store: EndSessionStore())
     
     viewController.interactor = interactor
     viewController.router = router
@@ -47,32 +47,36 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configure(viewController: self)
     createView()
-    doSomethingOnLoad()
+    getSessionStats()
   }
   
+  var endSessionView: EndSessionView!
+  
   private func createView() {
-    let endSessionView = EndSessionView(frame: view.frame)
+    endSessionView = EndSessionView(frame: view.frame)
     view.addSubview(endSessionView)
     endSessionView.setup(delegate: self)
   }
   
   // MARK: - Event handling
   
-  func doSomethingOnLoad() {
+  func getSessionStats() {
     // NOTE: Ask the Interactor to do some work
-    
-    let request = EndSession.Something.Request()
-    interactor.doSomething(request: request)
+    print("Get session stats")
+    let request = EndSession.GetSessionStats.Request()
+    interactor.getSessionStats(request: request)
   }
   
   // MARK: - Display logic
   
-  func displaySomething(viewModel: EndSession.Something.ViewModel) {
-    // NOTE: Display the result from the Presenter
-    
-    // nameTextField.text = viewModel.name
+  func displayGetSessionStats(viewModel: EndSession.GetSessionStats.ViewModel) {
+    switch viewModel.content {
+    case .customError(_):
+      return
+    case .success(data: let text):
+      endSessionView.displayStats(durationText: text)
+    }
   }
   
   // MARK: - Router

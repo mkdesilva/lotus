@@ -53,12 +53,10 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    print("view did load")
     createView()
   }
   
   private func createView() {
-    configure(viewController: self)
     sessionInProgressView = SessionInProgressView()
     view.addSubview(sessionInProgressView)
     sessionInProgressView.setup(delegate: self)
@@ -72,9 +70,6 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   // MARK: - Event handling
   
   func getInitialDuration() {
-    // TODO: Delete this
-    interactor.session = Session(initialDuration: SessionDuration(hours: 0, minutes: 0, seconds: 1))
-    
     let request = SessionInProgress.GetInitialDuration.Request()
     interactor.getInitialDuration(request: request)
   }
@@ -101,13 +96,10 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   func displayEndSession(viewModel: SessionInProgress.EndSession.ViewModel) {
     sessionInProgressView.endSession {
-      self.router.navigateToEndSession()
+      self.router.navigateToEndSession(duration: viewModel.duration)
     }
   }
   
-  func finishedEndAnimation() {
-    
-  }
 }
 
 extension SessionInProgressViewController: SessionInProgressViewDelegate {
@@ -117,7 +109,7 @@ extension SessionInProgressViewController: SessionInProgressViewDelegate {
   }
   
   func tappedEndButton() {
-    print("Tapped end button")
+    let request = SessionInProgress.EndSession.Request()
+    interactor.endSession(request: request)
   }
-  
 }

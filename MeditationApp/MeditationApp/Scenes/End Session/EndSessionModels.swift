@@ -9,13 +9,14 @@
 import UIKit
 
 struct EndSession {
-  /// This structure represents a use case
-  struct Something {
-    /// Data struct sent to Interactor
-    struct Request {}
-    /// Data struct sent to Presenter
-    struct Response {}
-    /// Data struct sent to ViewController
-    struct ViewModel {}
+  struct GetSessionStats {
+    struct Request {
+    }
+    struct Response {
+      let result: Result<SessionStats, CustomError>
+    }
+    struct ViewModel {
+      let content: Content<String>
+    }
   }
 }

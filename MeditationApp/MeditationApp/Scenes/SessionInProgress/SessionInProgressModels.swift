@@ -46,10 +46,10 @@ struct SessionInProgress {
   struct EndSession {
     struct Request {}
     struct Response {
-      let totalDuration: Duration
+      let duration: Duration
     }
     struct ViewModel {
-      let totalDuration: Duration
+      let duration: Duration
     }
   }
 }

@@ -9,28 +9,19 @@
 import UIKit
 
 protocol SessionInProgressRouterInterface {
-  func navigateToEndSession()
+  func navigateToEndSession(duration: Duration)
 }
 
 class SessionInProgressRouter: SessionInProgressRouterInterface {
   weak var viewController: SessionInProgressViewController!
-
+  
   // MARK: - Navigation
-
-  func navigateToEndSession() {
-    let endSessionVc = EndSessionViewController()
-    print("navigating")
-    viewController.modalPresentationStyle = .fullScreen
-
-    viewController.navigationController?.setViewControllers([endSessionVc], animated: false)
-
+  
+  func navigateToEndSession(duration: Duration) {
+//    let endSessionVc = EndSessionViewController()
+//    viewController.modalPresentationStyle = .fullScreen
+//    viewController.navigationController?.setViewControllers([endSessionVc], animated: false)
+//    endSessionVc.awakeFromNib()
+//    endSessionVc.interactor.sessionStats = SessionStats(duration: duration)
   }
-
-  // MARK: - Communication
-
-//  func passDataToNextScene(viewController: EndSessionViewController) {
-//
-//
-//  }
-
 }

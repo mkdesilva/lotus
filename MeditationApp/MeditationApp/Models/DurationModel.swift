@@ -12,7 +12,7 @@ protocol Validation {
   var isValid: Bool { get }
 }
 
-protocol Duration {
+protocol Duration: CustomStringConvertible {
   var hours: Int { get }
   var minutes: Int { get }
   var seconds: Int { get }
@@ -87,6 +87,14 @@ extension SessionDuration: Duration {
   func tickDown(by timeInterval: TimeInterval) {
     time -= timeInterval
   }
+  
+  static func - (lhs: SessionDuration, rhs: SessionDuration) -> SessionDuration {
+    return SessionDuration(seconds: lhs.seconds - rhs.seconds)
+  }
+  
+  static func + (lhs: SessionDuration, rhs: SessionDuration) -> SessionDuration {
+    return SessionDuration(seconds: lhs.seconds + rhs.seconds)
+  }
 }
 
 extension Int {
@@ -104,5 +112,35 @@ extension Int {
   
   static func convertToMinutes(seconds: Self) -> Int {
     return (seconds % 3600) / 60
+  }
+}
+
+extension SessionDuration: CustomStringConvertible {
+  var description: String {
+    var durationString = ""
+    
+    if self.hours == 0 {
+      durationString = "\(self.minutes)m"
+    } else if self.minutes == 0 {
+      durationString = "\(self.hours)h"
+    } else {
+      durationString = "\(self.hours)h \(self.minutes)m"
+    }
+    return durationString
+  }
+}
+
+extension Duration {
+  var fullDescription: String {
+    var durationString = ""
+    
+    if self.hours == 0 {
+      durationString = "\(self.minutes) minutes"
+    } else if self.minutes == 0 {
+      durationString = "\(self.hours) hours"
+    } else {
+      durationString = "\(self.hours) hours \(self.minutes) minutes"
+    }
+    return durationString
   }
 }

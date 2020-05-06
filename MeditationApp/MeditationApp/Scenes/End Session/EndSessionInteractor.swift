@@ -9,26 +9,24 @@
 import UIKit
 
 protocol EndSessionInteractorInterface {
-  func doSomething(request: EndSession.Something.Request)
-  var model: Entity? { get }
+  func getSessionStats(request: EndSession.GetSessionStats.Request)
+  var sessionStats: SessionStats? { get set }
 }
 
 class EndSessionInteractor: EndSessionInteractorInterface {
   var presenter: EndSessionPresenterInterface!
-  var worker: EndSessionWorker?
-  var model: Entity?
-
+  var sessionStats: SessionStats?
+  
   // MARK: - Business logic
-
-  func doSomething(request: EndSession.Something.Request) {
-    worker?.doSomeWork { [weak self] in
-      if case let Result.success(data) = $0 {
-        // If the result was successful, we keep the data so that we can deliver it to another view controller through the router.
-        self?.model = data
-      }
-
-      let response = EndSession.Something.Response()
-      self?.presenter.presentSomething(response: response)
+  
+  func getSessionStats(request: EndSession.GetSessionStats.Request) {
+    guard let stats = sessionStats else {
+      let response = EndSession.GetSessionStats.Response(result: .failure(.generic))
+      self.presenter.presentGetSessionStats(response: response)
+      return
     }
+    
+    let response = EndSession.GetSessionStats.Response(result: .success(stats))
+    self.presenter.presentGetSessionStats(response: response)
   }
 }

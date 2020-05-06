@@ -27,6 +27,9 @@ class CreateSessionRouter: CreateSessionRouterInterface {
   func navigateToInProgressScene(duration: SessionDuration) {
     let initialVc = Storyboards.sessionInProgress.instantiateInitialViewController()
     guard let inProgressViewController = initialVc as? SessionInProgressViewController else { return }
+    
+    inProgressViewController.awakeFromNib()
+    
     inProgressViewController.interactor.session = Session(initialDuration: duration)
     viewController.navigationController?.setViewControllers([inProgressViewController], animated: false)
   }
