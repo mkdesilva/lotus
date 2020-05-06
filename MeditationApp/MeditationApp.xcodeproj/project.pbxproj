@@ -42,9 +42,7 @@
 		4D964CB7239C007600EDD600 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D964CB6239C007600EDD600 /* BlurredBackgroundView.swift */; };
 		4D964CB9239C035800EDD600 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D964CB8239C035800EDD600 /* UIViewExtension.swift */; };
 		4D9CB3C623AA09ED003C050A /* CreateSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9CB3C523AA09ED003C050A /* CreateSessionView.swift */; };
-		4D9E0D4C2410E35400AFF9A4 /* EndSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D442410E35400AFF9A4 /* EndSessionStore.swift */; };
 		4D9E0D4D2410E35400AFF9A4 /* EndSessionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D452410E35400AFF9A4 /* EndSessionPresenter.swift */; };
-		4D9E0D4E2410E35400AFF9A4 /* EndSessionWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D462410E35400AFF9A4 /* EndSessionWorker.swift */; };
 		4D9E0D4F2410E35400AFF9A4 /* EndSessionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D472410E35400AFF9A4 /* EndSessionRouter.swift */; };
 		4D9E0D502410E35400AFF9A4 /* EndSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D482410E35400AFF9A4 /* EndSessionModels.swift */; };
 		4D9E0D512410E35400AFF9A4 /* EndSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D492410E35400AFF9A4 /* EndSessionViewController.swift */; };
@@ -114,9 +112,7 @@
 		4D964CB6239C007600EDD600 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 		4D964CB8239C035800EDD600 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		4D9CB3C523AA09ED003C050A /* CreateSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionView.swift; sourceTree = "<group>"; };
-		4D9E0D442410E35400AFF9A4 /* EndSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionStore.swift; sourceTree = "<group>"; };
 		4D9E0D452410E35400AFF9A4 /* EndSessionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionPresenter.swift; sourceTree = "<group>"; };
-		4D9E0D462410E35400AFF9A4 /* EndSessionWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionWorker.swift; sourceTree = "<group>"; };
 		4D9E0D472410E35400AFF9A4 /* EndSessionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionRouter.swift; sourceTree = "<group>"; };
 		4D9E0D482410E35400AFF9A4 /* EndSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionModels.swift; sourceTree = "<group>"; };
 		4D9E0D492410E35400AFF9A4 /* EndSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionViewController.swift; sourceTree = "<group>"; };
@@ -316,9 +312,7 @@
 		4D9E0D552410E36B00AFF9A4 /* End Session */ = {
 			isa = PBXGroup;
 			children = (
-				4D9E0D442410E35400AFF9A4 /* EndSessionStore.swift */,
 				4D9E0D452410E35400AFF9A4 /* EndSessionPresenter.swift */,
-				4D9E0D462410E35400AFF9A4 /* EndSessionWorker.swift */,
 				4D9E0D472410E35400AFF9A4 /* EndSessionRouter.swift */,
 				4D9E0D482410E35400AFF9A4 /* EndSessionModels.swift */,
 				4D9E0D492410E35400AFF9A4 /* EndSessionViewController.swift */,
@@ -485,7 +479,6 @@
 				4DF5D60723ACC59F00412174 /* DurationPickerHalfView.swift in Sources */,
 				4D9E0D4D2410E35400AFF9A4 /* EndSessionPresenter.swift in Sources */,
 				4D8EF64623D195FF00C6AEB4 /* SessionInProgressPresenter.swift in Sources */,
-				4D9E0D4E2410E35400AFF9A4 /* EndSessionWorker.swift in Sources */,
 				1849192E2375832F000CDE20 /* CreateSessionModels.swift in Sources */,
 				4DE9B35223AA21E8006AE27D /* BeginButton.swift in Sources */,
 				4DD4A2A623F6B0D100A44AAB /* TriangleView.swift in Sources */,
@@ -505,7 +498,6 @@
 				18F196F4236D29C800582D0D /* AppDelegate.swift in Sources */,
 				1849192D2375832F000CDE20 /* CreateSessionRouter.swift in Sources */,
 				4D9E0D532410E35400AFF9A4 /* EndSessionEntity.swift in Sources */,
-				4D9E0D4C2410E35400AFF9A4 /* EndSessionStore.swift in Sources */,
 				4DDE416023B5C19000E8C273 /* UserDefaultsExtension.swift in Sources */,
 				4D964CB7239C007600EDD600 /* BlurredBackgroundView.swift in Sources */,
 				4D8EF65823D1AB3000C6AEB4 /* CircleProgressView.swift in Sources */,
@@ -686,14 +678,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4TFEU94KP6;
+				DEVELOPMENT_TEAM = 7JAH43KLJU;
 				INFOPLIST_FILE = "MeditationApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mkdesilva.MeditationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mkdesilva.MeditationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -705,14 +697,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4TFEU94KP6;
+				DEVELOPMENT_TEAM = 7JAH43KLJU;
 				INFOPLIST_FILE = "MeditationApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mkdesilva.MeditationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mkdesilva.MeditationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

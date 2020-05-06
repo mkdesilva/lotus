@@ -40,8 +40,10 @@ class DurationPickerHalfView: UIView, CustomView {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.widthAnchor.constraint(equalToConstant: 50).isActive = true
-    button.setImage(Assets.xmark.image, for: .normal)
+    button.setTitle("X", for: .normal)
+    button.setTitleColor(.black, for: .normal)
     button.addTarget(self, action: #selector(tapCancel), for: .touchUpInside)
+    
     return button
   }()
   
@@ -133,7 +135,7 @@ class DurationPickerHalfView: UIView, CustomView {
   }
   
   // MARK: - Handling user events
-    
+  
   @objc func tapClose() {
     //    let duration =
     pickerDelegate.saveAndClose()
