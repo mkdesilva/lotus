@@ -17,7 +17,7 @@ protocol Duration: CustomStringConvertible {
   var minutes: Int { get }
   var seconds: Int { get }
   var isZero: Bool { get }
-  func getSeconds() -> TimeInterval
+  func getTotalSeconds() -> TimeInterval
   func tickDown(by seconds: Int)
   func tickDown(by timeInterval: TimeInterval)
   var isValid: Bool { get }
@@ -74,7 +74,7 @@ extension SessionDuration: Duration {
     return time <= 0
   }
   
-  func getSeconds() -> TimeInterval {
+  func getTotalSeconds() -> TimeInterval {
     return time
   }
   
@@ -115,6 +115,13 @@ extension Int {
   }
 }
 
+extension SessionDuration: Equatable {
+  static func == (lhs: SessionDuration, rhs: SessionDuration) -> Bool {
+    return lhs.time == rhs.time
+  }
+  
+}
+
 extension SessionDuration: CustomStringConvertible {
   var description: String {
     var durationString = ""
@@ -123,14 +130,17 @@ extension SessionDuration: CustomStringConvertible {
       durationString = "\(self.minutes)m"
     } else if self.minutes == 0 {
       durationString = "\(self.hours)h"
-    } else {
+    } else if self.seconds == 0 {
       durationString = "\(self.hours)h \(self.minutes)m"
+    } else {
+      durationString = "\(self.hours)h \(self.minutes)m \(self.seconds)s"
     }
     return durationString
   }
 }
 
 extension Duration {
+  /// Returns a string in the format "x hours y minutes z seconds"
   var fullDescription: String {
     var durationString = ""
     
@@ -138,8 +148,10 @@ extension Duration {
       durationString = "\(self.minutes) minutes"
     } else if self.minutes == 0 {
       durationString = "\(self.hours) hours"
-    } else {
+    } else if self.seconds == 0{
       durationString = "\(self.hours) hours \(self.minutes) minutes"
+    } else {
+       durationString = "\(self.hours) hours \(self.minutes) minutes \(self.seconds) seconds"
     }
     return durationString
   }
