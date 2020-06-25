@@ -25,7 +25,6 @@
 		18F6A0F3237F476E0097FAA3 /* CreateSessionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0F2237F476E0097FAA3 /* CreateSessionInteractorTests.swift */; };
 		4D2911B223ACA3A30033CB1E /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */; };
 		4D674B0B2418E35500433138 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D674B0A2418E35500433138 /* StatViewController.swift */; };
-		4D73BC9623B20A1F0042D70B /* DurationPickerViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73BC9523B20A1E0042D70B /* DurationPickerViewControllerTests.swift */; };
 		4D8EF64523D195FF00C6AEB4 /* SessionInProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63D23D195FF00C6AEB4 /* SessionInProgressStore.swift */; };
 		4D8EF64623D195FF00C6AEB4 /* SessionInProgressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63E23D195FF00C6AEB4 /* SessionInProgressPresenter.swift */; };
 		4D8EF64723D195FF00C6AEB4 /* SessionInProgressWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63F23D195FF00C6AEB4 /* SessionInProgressWorker.swift */; };
@@ -95,7 +94,6 @@
 		4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		4D408D0D23B3449400C2D9DF /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4D674B0A2418E35500433138 /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
-		4D73BC9523B20A1E0042D70B /* DurationPickerViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerViewControllerTests.swift; sourceTree = "<group>"; };
 		4D8EF63D23D195FF00C6AEB4 /* SessionInProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressStore.swift; sourceTree = "<group>"; };
 		4D8EF63E23D195FF00C6AEB4 /* SessionInProgressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressPresenter.swift; sourceTree = "<group>"; };
 		4D8EF63F23D195FF00C6AEB4 /* SessionInProgressWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressWorker.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				1800B32C237F55D10019F49D /* CreateSessionViewControllerTests.swift */,
-				4D73BC9523B20A1E0042D70B /* DurationPickerViewControllerTests.swift */,
 				18F6A0F2237F476E0097FAA3 /* CreateSessionInteractorTests.swift */,
 				1800B32E237F56020019F49D /* CreateSessionPresenterTests.swift */,
 			);
@@ -521,7 +518,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D73BC9623B20A1F0042D70B /* DurationPickerViewControllerTests.swift in Sources */,
 				18F6A0F3237F476E0097FAA3 /* CreateSessionInteractorTests.swift in Sources */,
 				1800B32F237F56020019F49D /* CreateSessionPresenterTests.swift in Sources */,
 				1800B32D237F55D10019F49D /* CreateSessionViewControllerTests.swift in Sources */,

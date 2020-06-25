@@ -32,7 +32,7 @@ class DurationTests: XCTestCase {
   
   func testDurationInSecondsReturnsProperValue() {
     let duration = SessionDuration(hours: 3, minutes: 10)
-    let seconds = duration.totalSeconds
+    let seconds = duration.getTotalSeconds()
     XCTAssertEqual(seconds, 11400)
   }
   
@@ -58,7 +58,7 @@ class DurationTests: XCTestCase {
     let seconds = 7808 // 2 hours, 10 minutes, 8 seconds
     let secondsAsDuration = SessionDuration(hours: 2, minutes: 10, seconds: 8)
     
-    let duration = seconds.duration
+    let duration = SessionDuration(seconds: seconds)
     
     XCTAssertEqual(duration.hours, 2)
     XCTAssertEqual(duration.minutes, 10)
@@ -87,13 +87,21 @@ class DurationTests: XCTestCase {
     
     let durationDescription: String = duration.description
     
-    XCTAssertEqual(durationDescription, "4h:12m:39s")
+    XCTAssertEqual(durationDescription, "4h 12m 39s")
+  }
+  
+  func testDurationFullDescription() {
+    let duration = SessionDuration(hours: 4, minutes: 12, seconds: 39)
+    
+    let durationDescription: String = duration.fullDescription
+    
+    XCTAssertEqual(durationDescription, "4 hours 12 minutes 39 seconds")
   }
   
   func testDurationTickDown() {
     let duration = SessionDuration(hours: 3, minutes: 0, seconds: 0)
     
-    duration.tickDown(bySeconds: 3)
+    duration.tickDown(by: 3)
     
     XCTAssertEqual(duration, SessionDuration(hours: 2, minutes: 59, seconds: 57))
   }
