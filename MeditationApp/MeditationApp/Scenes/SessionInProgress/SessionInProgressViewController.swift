@@ -53,6 +53,12 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    if (interactor == nil) {
+      configure(viewController: self)
+    }
+    
+    // TODO: Delete
+    interactor.session = Session(initialDuration: SessionDuration(seconds: 10))
     createView()
   }
   
