@@ -19,7 +19,6 @@ protocol SessionInProgressInteractorInterface {
 
 class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   var presenter: SessionInProgressPresenterInterface!
-  var worker: SessionInProgressWorker?
   var session: Session!
   var sessionTimer: Timer!
   
