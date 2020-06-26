@@ -86,7 +86,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   }
   
   func endSession(request: SessionInProgress.EndSession.Request) {
-    if sessionTimer.isValid {
+    if (sessionTimer != nil), sessionTimer.isValid {
       sessionTimer.invalidate()
     }
     
