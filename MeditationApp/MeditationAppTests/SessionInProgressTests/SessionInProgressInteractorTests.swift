@@ -18,6 +18,13 @@ class SessionInProgressInteractorTests: XCTestCase {
   var presenterSpy: SessionInProgressPresenterSpy!
   let initialDuration = SessionDuration(hours: 5, minutes: 2)
   
+  var mockTimer: Timer {
+    let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+      return
+    }
+    return timer;
+  }
+  
   // MARK: - Test lifecycle
   
   override func setUp() {
@@ -26,6 +33,7 @@ class SessionInProgressInteractorTests: XCTestCase {
   }
   
   override func tearDown() {
+    mockTimer.invalidate()
     if (sut.sessionTimer != nil) {
       sut.sessionTimer.invalidate()
     }
@@ -91,6 +99,17 @@ class SessionInProgressInteractorTests: XCTestCase {
     XCTAssertEqual(presenterSpy.presentDurationResponse.duration, expectedDuration)
   }
   
+  func testUpdateDurationWithNoRemainingTime() {
+    let request = SessionInProgress.UpdateDuration.Request(timeInterval: 0)
+    sut.session = Session(initialDuration: SessionDuration(seconds: 0))
+    sut.sessionTimer = mockTimer;
+    
+    sut.updateDuration(request: request)
+    
+    XCTAssert(presenterSpy.presentEndSessionCalled)
+    XCTAssertFalse(sut.sessionTimer.isValid)
+  }
+  
   func testStartSession() {
     let request = SessionInProgress.StartSession.Request()
     
@@ -105,11 +124,7 @@ class SessionInProgressInteractorTests: XCTestCase {
     let request = SessionInProgress.TogglePause.Request()
     sut.session.isInProgress = true;
     
-    let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-      return
-    }
-    
-    sut.sessionTimer = timer
+    sut.sessionTimer = mockTimer;
     
     sut.togglePause(request: request)
     
@@ -133,8 +148,10 @@ class SessionInProgressInteractorTests: XCTestCase {
   }
   
   func testEndSessionWithValidTimer() {
+    sut.sessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in return }
     let request = SessionInProgress.EndSession.Request()
     sut.endSession(request: request)
     XCTAssert(presenterSpy.presentEndSessionCalled)
+    XCTAssertFalse(sut.sessionTimer.isValid)
   }
 }
