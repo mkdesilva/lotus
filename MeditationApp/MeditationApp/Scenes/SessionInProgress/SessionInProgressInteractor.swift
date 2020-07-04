@@ -44,7 +44,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   }
   
   private func update(duration: SessionDuration) {
-    let response = SessionInProgress.UpdateDuration.Response(duration: session.initialDuration)
+    let response = SessionInProgress.UpdateDuration.Response(duration: session.remainingDuration)
     presenter.presentDuration(response: response)
   }
   
@@ -90,7 +90,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
       sessionTimer.invalidate()
     }
     
-    let elapsedDuration = session.remainingDuration - session.initialDuration
+    let elapsedDuration = session.initialDuration - session.remainingDuration 
     let response = SessionInProgress.EndSession.Response(duration: elapsedDuration)
     presenter.presentEndSession(response: response)
   }
