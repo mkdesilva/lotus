@@ -51,7 +51,7 @@ class SessionDuration: Codable {
 
 extension SessionDuration: Duration {
   var isValid: Bool {
-   return !isZero
+    return !isZero
   }
   
   var hours: Int {
@@ -126,15 +126,9 @@ extension SessionDuration: CustomStringConvertible {
   var description: String {
     var durationString = ""
     
-    if self.hours == 0 {
-      durationString = "\(self.minutes)m"
-    } else if self.minutes == 0 {
-      durationString = "\(self.hours)h"
-    } else if self.seconds == 0 {
-      durationString = "\(self.hours)h \(self.minutes)m"
-    } else {
-      durationString = "\(self.hours)h \(self.minutes)m \(self.seconds)s"
-    }
+    durationString = "\(hours != 0 ? "\(hours)h " : "" )\(minutes != 0 ? "\(minutes)m " : "" )\(seconds != 0 ? "\(seconds)s  " : "" )"
+    
+    durationString = durationString.trimmingCharacters(in: .whitespaces)
     return durationString
   }
 }
@@ -144,15 +138,10 @@ extension Duration {
   var fullDescription: String {
     var durationString = ""
     
-    if self.hours == 0 {
-      durationString = "\(self.minutes) minutes"
-    } else if self.minutes == 0 {
-      durationString = "\(self.hours) hours"
-    } else if self.seconds == 0{
-      durationString = "\(self.hours) hours \(self.minutes) minutes"
-    } else {
-       durationString = "\(self.hours) hours \(self.minutes) minutes \(self.seconds) seconds"
-    }
+    durationString = "\(hours != 0 ? "\(hours) hours " : "" )\(minutes != 0 ? "\(minutes) minutes " : "" )\(seconds != 0 ? "\(seconds) seconds " : "" )"
+    
+    durationString = durationString.trimmingCharacters(in: .whitespaces)
+
     return durationString
   }
 }
