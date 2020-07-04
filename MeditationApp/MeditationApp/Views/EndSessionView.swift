@@ -50,13 +50,11 @@ final class EndSessionView: UIView {
     addSubview(closeButton)
     vStack.centerInSuperView()
     closeButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -100).isActive = true
-    closeButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-    closeButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
     closeButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
   }
   
   @objc private func tappedCloseButton() {
-    
+    delegate.closeView()
   }
   
   func displayStats(durationText: String) {

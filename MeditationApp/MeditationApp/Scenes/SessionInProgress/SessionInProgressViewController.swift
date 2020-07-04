@@ -43,7 +43,6 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
     
     let interactor = SessionInProgressInteractor()
     interactor.presenter = presenter
-    interactor.worker = SessionInProgressWorker(store: SessionInProgressStore())
     
     viewController.interactor = interactor
     viewController.router = router
@@ -53,6 +52,10 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    if (interactor == nil) {
+      configure(viewController: self)
+    }
+    
     createView()
   }
   

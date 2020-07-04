@@ -13,6 +13,7 @@ protocol EndSessionViewControllerInterface: class {
 }
 
 protocol EndSessionDelegate: class {
+  func closeView()
 }
 
 class EndSessionViewController: UIViewController, EndSessionViewControllerInterface {
@@ -35,7 +36,6 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
     let presenter = EndSessionPresenter()
     presenter.viewController = viewController
     
-    print("Creating new interactor")
     let interactor = EndSessionInteractor()
     interactor.presenter = presenter
     
@@ -63,7 +63,6 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
   
   func getSessionStats() {
     // NOTE: Ask the Interactor to do some work
-    print("Get session stats")
     let request = EndSession.GetSessionStats.Request()
     interactor.getSessionStats(request: request)
   }
@@ -83,17 +82,7 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
 }
 
 extension EndSessionViewController: EndSessionDelegate {
-  
-}
-
-extension EndSessionViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-  func pageViewController(_ pageViewController: UIPageViewController,
-                          viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    return UIViewController()
-  }
-  
-  func pageViewController(_ pageViewController: UIPageViewController,
-                          viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    return UIViewController()
+  func closeView() {
+    // TODO: Navigate to landing page
   }
 }

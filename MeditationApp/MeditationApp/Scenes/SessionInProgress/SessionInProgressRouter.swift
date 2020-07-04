@@ -18,10 +18,10 @@ class SessionInProgressRouter: SessionInProgressRouterInterface {
   // MARK: - Navigation
   
   func navigateToEndSession(duration: Duration) {
-//    let endSessionVc = EndSessionViewController()
-//    viewController.modalPresentationStyle = .fullScreen
-//    viewController.navigationController?.setViewControllers([endSessionVc], animated: false)
-//    endSessionVc.awakeFromNib()
-//    endSessionVc.interactor.sessionStats = SessionStats(duration: duration)
+    let endSessionVc = EndSessionViewController()
+    viewController.modalPresentationStyle = .fullScreen
+    viewController.navigationController?.setViewControllers([endSessionVc], animated: false)
+    endSessionVc.awakeFromNib()
+    endSessionVc.interactor.sessionStats = SessionStats(duration: duration)
   }
 }

@@ -25,8 +25,6 @@
 		18F6A0F3237F476E0097FAA3 /* CreateSessionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6A0F2237F476E0097FAA3 /* CreateSessionInteractorTests.swift */; };
 		4D2911B223ACA3A30033CB1E /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */; };
 		4D674B0B2418E35500433138 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D674B0A2418E35500433138 /* StatViewController.swift */; };
-		4D73BC9623B20A1F0042D70B /* DurationPickerViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73BC9523B20A1E0042D70B /* DurationPickerViewControllerTests.swift */; };
-		4D8EF64523D195FF00C6AEB4 /* SessionInProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63D23D195FF00C6AEB4 /* SessionInProgressStore.swift */; };
 		4D8EF64623D195FF00C6AEB4 /* SessionInProgressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63E23D195FF00C6AEB4 /* SessionInProgressPresenter.swift */; };
 		4D8EF64723D195FF00C6AEB4 /* SessionInProgressWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63F23D195FF00C6AEB4 /* SessionInProgressWorker.swift */; };
 		4D8EF64823D195FF00C6AEB4 /* SessionInProgressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF64023D195FF00C6AEB4 /* SessionInProgressRouter.swift */; };
@@ -48,6 +46,7 @@
 		4D9E0D512410E35400AFF9A4 /* EndSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D492410E35400AFF9A4 /* EndSessionViewController.swift */; };
 		4D9E0D522410E35400AFF9A4 /* EndSessionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D4A2410E35400AFF9A4 /* EndSessionInteractor.swift */; };
 		4D9E0D532410E35400AFF9A4 /* EndSessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D4B2410E35400AFF9A4 /* EndSessionEntity.swift */; };
+		4D9FA93524A57B9300DB00FA /* SessionInProgressInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9FA93424A57B9300DB00FA /* SessionInProgressInteractorTests.swift */; };
 		4DB0DEC123D1CFA100A0B9CF /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0DEC023D1CFA100A0B9CF /* CustomView.swift */; };
 		4DB7EB3E23E2913400DD248A /* DurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7EB3D23E2913400DD248A /* DurationTests.swift */; };
 		4DD01F5623B1EFD40068621A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD01F5523B1EFD40068621A /* Constants.swift */; };
@@ -95,8 +94,6 @@
 		4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		4D408D0D23B3449400C2D9DF /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4D674B0A2418E35500433138 /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
-		4D73BC9523B20A1E0042D70B /* DurationPickerViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerViewControllerTests.swift; sourceTree = "<group>"; };
-		4D8EF63D23D195FF00C6AEB4 /* SessionInProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressStore.swift; sourceTree = "<group>"; };
 		4D8EF63E23D195FF00C6AEB4 /* SessionInProgressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressPresenter.swift; sourceTree = "<group>"; };
 		4D8EF63F23D195FF00C6AEB4 /* SessionInProgressWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressWorker.swift; sourceTree = "<group>"; };
 		4D8EF64023D195FF00C6AEB4 /* SessionInProgressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressRouter.swift; sourceTree = "<group>"; };
@@ -118,6 +115,7 @@
 		4D9E0D492410E35400AFF9A4 /* EndSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionViewController.swift; sourceTree = "<group>"; };
 		4D9E0D4A2410E35400AFF9A4 /* EndSessionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionInteractor.swift; sourceTree = "<group>"; };
 		4D9E0D4B2410E35400AFF9A4 /* EndSessionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionEntity.swift; sourceTree = "<group>"; };
+		4D9FA93424A57B9300DB00FA /* SessionInProgressInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressInteractorTests.swift; sourceTree = "<group>"; };
 		4DB0DEC023D1CFA100A0B9CF /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		4DB7EB3D23E2913400DD248A /* DurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTests.swift; sourceTree = "<group>"; };
 		4DD01F5523B1EFD40068621A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -250,6 +248,7 @@
 				18F1970C236D29C900582D0D /* Info.plist */,
 				4DB7EB3C23E2911C00DD248A /* Common */,
 				18F6A0F4237F47750097FAA3 /* CreateSessionTests */,
+				4D9FA93324A57B5800DB00FA /* SessionInProgressTests */,
 			);
 			path = MeditationAppTests;
 			sourceTree = "<group>";
@@ -269,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				1800B32C237F55D10019F49D /* CreateSessionViewControllerTests.swift */,
-				4D73BC9523B20A1E0042D70B /* DurationPickerViewControllerTests.swift */,
 				18F6A0F2237F476E0097FAA3 /* CreateSessionInteractorTests.swift */,
 				1800B32E237F56020019F49D /* CreateSessionPresenterTests.swift */,
 			);
@@ -279,7 +277,6 @@
 		4D8EF64D23D1961400C6AEB4 /* SessionInProgress */ = {
 			isa = PBXGroup;
 			children = (
-				4D8EF63D23D195FF00C6AEB4 /* SessionInProgressStore.swift */,
 				4D8EF63E23D195FF00C6AEB4 /* SessionInProgressPresenter.swift */,
 				4D8EF63F23D195FF00C6AEB4 /* SessionInProgressWorker.swift */,
 				4D8EF64023D195FF00C6AEB4 /* SessionInProgressRouter.swift */,
@@ -321,6 +318,14 @@
 				4D674B0A2418E35500433138 /* StatViewController.swift */,
 			);
 			path = "End Session";
+			sourceTree = "<group>";
+		};
+		4D9FA93324A57B5800DB00FA /* SessionInProgressTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D9FA93424A57B9300DB00FA /* SessionInProgressInteractorTests.swift */,
+			);
+			path = SessionInProgressTests;
 			sourceTree = "<group>";
 		};
 		4DB7EB3C23E2911C00DD248A /* Common */ = {
@@ -484,7 +489,6 @@
 				4DD4A2A623F6B0D100A44AAB /* TriangleView.swift in Sources */,
 				4D9E0D502410E35400AFF9A4 /* EndSessionModels.swift in Sources */,
 				4D8EF65423D1A15600C6AEB4 /* Storyboards.swift in Sources */,
-				4D8EF64523D195FF00C6AEB4 /* SessionInProgressStore.swift in Sources */,
 				4D8EF64923D195FF00C6AEB4 /* SessionInProgressModels.swift in Sources */,
 				4D8EF64B23D195FF00C6AEB4 /* SessionInProgressInteractor.swift in Sources */,
 				4D8EF65023D1967200C6AEB4 /* DurationModel.swift in Sources */,
@@ -521,11 +525,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D73BC9623B20A1F0042D70B /* DurationPickerViewControllerTests.swift in Sources */,
 				18F6A0F3237F476E0097FAA3 /* CreateSessionInteractorTests.swift in Sources */,
 				1800B32F237F56020019F49D /* CreateSessionPresenterTests.swift in Sources */,
 				1800B32D237F55D10019F49D /* CreateSessionViewControllerTests.swift in Sources */,
 				4DB7EB3E23E2913400DD248A /* DurationTests.swift in Sources */,
+				4D9FA93524A57B9300DB00FA /* SessionInProgressInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

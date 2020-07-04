@@ -15,6 +15,6 @@ struct Session {
   
   init(initialDuration: SessionDuration) {
     self.initialDuration = initialDuration
-    self.remainingDuration = initialDuration
+    self.remainingDuration = SessionDuration(sessionDuration: initialDuration)
   }
 }

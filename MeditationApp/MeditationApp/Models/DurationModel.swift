@@ -17,7 +17,7 @@ protocol Duration: CustomStringConvertible {
   var minutes: Int { get }
   var seconds: Int { get }
   var isZero: Bool { get }
-  func getSeconds() -> TimeInterval
+  func getTotalSeconds() -> TimeInterval
   func tickDown(by seconds: Int)
   func tickDown(by timeInterval: TimeInterval)
   var isValid: Bool { get }
@@ -47,11 +47,15 @@ class SessionDuration: Codable {
     let hoursInSeconds = Int.convertToSeconds(hours: hours)
     time = hoursInSeconds + minutesInSeconds + Double(seconds)
   }
+  
+  init(sessionDuration: SessionDuration) {
+    time = sessionDuration.time
+  }
 }
 
 extension SessionDuration: Duration {
   var isValid: Bool {
-   return !isZero
+    return !isZero
   }
   
   var hours: Int {
@@ -74,7 +78,7 @@ extension SessionDuration: Duration {
     return time <= 0
   }
   
-  func getSeconds() -> TimeInterval {
+  func getTotalSeconds() -> TimeInterval {
     return time
   }
   
@@ -115,32 +119,33 @@ extension Int {
   }
 }
 
+extension SessionDuration: Equatable {
+  static func == (lhs: SessionDuration, rhs: SessionDuration) -> Bool {
+    return lhs.time == rhs.time
+  }
+  
+}
+
 extension SessionDuration: CustomStringConvertible {
   var description: String {
     var durationString = ""
     
-    if self.hours == 0 {
-      durationString = "\(self.minutes)m"
-    } else if self.minutes == 0 {
-      durationString = "\(self.hours)h"
-    } else {
-      durationString = "\(self.hours)h \(self.minutes)m"
-    }
+    durationString = "\(hours != 0 ? "\(hours)h " : "" )\(minutes != 0 ? "\(minutes)m " : "" )\(seconds != 0 ? "\(seconds)s  " : "" )"
+    
+    durationString = durationString.trimmingCharacters(in: .whitespaces)
     return durationString
   }
 }
 
 extension Duration {
+  /// Returns a string in the format "x hours y minutes z seconds"
   var fullDescription: String {
     var durationString = ""
     
-    if self.hours == 0 {
-      durationString = "\(self.minutes) minutes"
-    } else if self.minutes == 0 {
-      durationString = "\(self.hours) hours"
-    } else {
-      durationString = "\(self.hours) hours \(self.minutes) minutes"
-    }
+    durationString = "\(hours != 0 ? "\(hours) hours " : "" )\(minutes != 0 ? "\(minutes) minutes " : "" )\(seconds != 0 ? "\(seconds) seconds " : "" )"
+    
+    durationString = durationString.trimmingCharacters(in: .whitespaces)
+
     return durationString
   }
 }

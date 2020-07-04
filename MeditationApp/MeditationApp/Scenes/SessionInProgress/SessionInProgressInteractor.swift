@@ -19,7 +19,6 @@ protocol SessionInProgressInteractorInterface {
 
 class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   var presenter: SessionInProgressPresenterInterface!
-  var worker: SessionInProgressWorker?
   var session: Session!
   var sessionTimer: Timer!
   
@@ -45,7 +44,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   }
   
   private func update(duration: SessionDuration) {
-    let response = SessionInProgress.UpdateDuration.Response(duration: session.initialDuration)
+    let response = SessionInProgress.UpdateDuration.Response(duration: session.remainingDuration)
     presenter.presentDuration(response: response)
   }
   
@@ -87,11 +86,11 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   }
   
   func endSession(request: SessionInProgress.EndSession.Request) {
-    if sessionTimer.isValid {
+    if (sessionTimer != nil), sessionTimer.isValid {
       sessionTimer.invalidate()
     }
     
-    let elapsedDuration = session.remainingDuration - session.initialDuration
+    let elapsedDuration = session.initialDuration - session.remainingDuration 
     let response = SessionInProgress.EndSession.Response(duration: elapsedDuration)
     presenter.presentEndSession(response: response)
   }

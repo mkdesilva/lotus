@@ -40,7 +40,6 @@ class BeginButton: UIButton, CustomView {
 extension BeginButton {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     let radius = frame.width / 2
-    print("touches began")
     var point: CGPoint = CGPoint()
     
     if let touch = touches.first {
