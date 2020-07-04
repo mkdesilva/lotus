@@ -56,8 +56,6 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
       configure(viewController: self)
     }
     
-    // TODO: Delete
-    interactor.session = Session(initialDuration: SessionDuration(seconds: 10))
     createView()
   }
   
