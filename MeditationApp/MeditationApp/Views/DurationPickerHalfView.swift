@@ -137,7 +137,6 @@ class DurationPickerHalfView: UIView, CustomView {
   // MARK: - Handling user events
   
   @objc func tapClose() {
-    //    let duration =
     pickerDelegate.saveAndClose()
   }
   

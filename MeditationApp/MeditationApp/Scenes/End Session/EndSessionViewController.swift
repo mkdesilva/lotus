@@ -35,7 +35,6 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
     let presenter = EndSessionPresenter()
     presenter.viewController = viewController
     
-    print("Creating new interactor")
     let interactor = EndSessionInteractor()
     interactor.presenter = presenter
     
@@ -63,7 +62,6 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
   
   func getSessionStats() {
     // NOTE: Ask the Interactor to do some work
-    print("Get session stats")
     let request = EndSession.GetSessionStats.Request()
     interactor.getSessionStats(request: request)
   }
