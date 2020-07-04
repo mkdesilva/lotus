@@ -48,8 +48,12 @@ class SessionDuration: Codable {
     time = hoursInSeconds + minutesInSeconds + Double(seconds)
   }
   
-  init(sessionDuration: SessionDuration) {
-    time = sessionDuration.time
+  init(timeInterval: TimeInterval) {
+    time = timeInterval
+  }
+  
+  convenience init(sessionDuration: SessionDuration) {
+    self.init(timeInterval: sessionDuration.time)
   }
 }
 
@@ -93,11 +97,13 @@ extension SessionDuration: Duration {
   }
   
   static func - (lhs: SessionDuration, rhs: SessionDuration) -> SessionDuration {
-    return SessionDuration(seconds: lhs.seconds - rhs.seconds)
+    let time = lhs.time - rhs.time
+    return SessionDuration(timeInterval: time)
   }
   
   static func + (lhs: SessionDuration, rhs: SessionDuration) -> SessionDuration {
-    return SessionDuration(seconds: lhs.seconds + rhs.seconds)
+    let time = lhs.time + rhs.time
+    return SessionDuration(timeInterval: time)
   }
 }
 
@@ -145,7 +151,7 @@ extension Duration {
     durationString = "\(hours != 0 ? "\(hours) hours " : "" )\(minutes != 0 ? "\(minutes) minutes " : "" )\(seconds != 0 ? "\(seconds) seconds " : "" )"
     
     durationString = durationString.trimmingCharacters(in: .whitespaces)
-
+    
     return durationString
   }
 }
