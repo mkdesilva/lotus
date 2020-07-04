@@ -47,6 +47,10 @@ class SessionDuration: Codable {
     let hoursInSeconds = Int.convertToSeconds(hours: hours)
     time = hoursInSeconds + minutesInSeconds + Double(seconds)
   }
+  
+  init(sessionDuration: SessionDuration) {
+    time = sessionDuration.time
+  }
 }
 
 extension SessionDuration: Duration {

@@ -105,4 +105,12 @@ class DurationTests: XCTestCase {
     
     XCTAssertEqual(duration, SessionDuration(hours: 2, minutes: 59, seconds: 57))
   }
+  
+  func testCreateDurationWithSessionDuration() {
+    let initialDuration = SessionDuration(hours: 4, minutes: 2, seconds: 1)
+    
+    let newDuration = SessionDuration(sessionDuration: initialDuration)
+    
+    XCTAssertEqual(initialDuration, newDuration)
+  }
 }
