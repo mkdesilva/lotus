@@ -13,6 +13,7 @@ protocol EndSessionViewControllerInterface: class {
 }
 
 protocol EndSessionDelegate: class {
+  func closeView()
 }
 
 class EndSessionViewController: UIViewController, EndSessionViewControllerInterface {
@@ -81,7 +82,9 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
 }
 
 extension EndSessionViewController: EndSessionDelegate {
-  
+  func closeView() {
+    // TODO: Navigate to landing page
+  }
 }
 
 extension EndSessionViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {

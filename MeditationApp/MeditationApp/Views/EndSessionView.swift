@@ -54,7 +54,7 @@ final class EndSessionView: UIView {
   }
   
   @objc private func tappedCloseButton() {
-    
+    delegate.closeView()
   }
   
   func displayStats(durationText: String) {
