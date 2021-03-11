@@ -27,6 +27,8 @@
 		4D08812B25B5A98400081E89 /* MainLandingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08812825B5A98300081E89 /* MainLandingPresenter.swift */; };
 		4D08812D25B5A98400081E89 /* MainLandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08812A25B5A98400081E89 /* MainLandingRouter.swift */; };
 		4D2911B223ACA3A30033CB1E /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */; };
+		4D5017AF25FA5F5E003AE589 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5017AE25FA5F5E003AE589 /* Quotes.swift */; };
+		4D5017B625FA5FBE003AE589 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5017B525FA5FBE003AE589 /* Quote.swift */; };
 		4D62AFD125CED83600F2323B /* MainLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4CE59124B03D99002D0F08 /* MainLandingViewController.swift */; };
 		4D8EF64623D195FF00C6AEB4 /* SessionInProgressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63E23D195FF00C6AEB4 /* SessionInProgressPresenter.swift */; };
 		4D8EF64723D195FF00C6AEB4 /* SessionInProgressWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8EF63F23D195FF00C6AEB4 /* SessionInProgressWorker.swift */; };
@@ -100,6 +102,8 @@
 		4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		4D408D0D23B3449400C2D9DF /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4D4CE59124B03D99002D0F08 /* MainLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLandingViewController.swift; sourceTree = "<group>"; };
+		4D5017AE25FA5F5E003AE589 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
+		4D5017B525FA5FBE003AE589 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		4D8EF63E23D195FF00C6AEB4 /* SessionInProgressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressPresenter.swift; sourceTree = "<group>"; };
 		4D8EF63F23D195FF00C6AEB4 /* SessionInProgressWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressWorker.swift; sourceTree = "<group>"; };
 		4D8EF64023D195FF00C6AEB4 /* SessionInProgressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressRouter.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				18832B2A2371BB79000F720F /* Views */,
 				1849191E23755DCA000CDE20 /* Resources */,
 				1849191F23755DE5000CDE20 /* Supporting Files */,
+				4D5017B225FA5F62003AE589 /* Data */,
 			);
 			path = Lotus;
 			sourceTree = "<group>";
@@ -292,6 +297,14 @@
 			path = MainLanding;
 			sourceTree = "<group>";
 		};
+		4D5017B225FA5F62003AE589 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4D5017AE25FA5F5E003AE589 /* Quotes.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		4D8EF64D23D1961400C6AEB4 /* SessionInProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				4D8EF64423D195FF00C6AEB4 /* SessionModel.swift */,
+				4D5017B525FA5FBE003AE589 /* Quote.swift */,
 				4D8EF64F23D1967200C6AEB4 /* DurationModel.swift */,
 			);
 			path = Models;
@@ -500,6 +514,7 @@
 				4D9E0D522410E35400AFF9A4 /* EndSessionInteractor.swift in Sources */,
 				4DF5D60723ACC59F00412174 /* DurationPickerHalfView.swift in Sources */,
 				4D9E0D4D2410E35400AFF9A4 /* EndSessionPresenter.swift in Sources */,
+				4D5017B625FA5FBE003AE589 /* Quote.swift in Sources */,
 				4D8EF64623D195FF00C6AEB4 /* SessionInProgressPresenter.swift in Sources */,
 				4D08812B25B5A98400081E89 /* MainLandingPresenter.swift in Sources */,
 				1849192E2375832F000CDE20 /* CreateSessionModels.swift in Sources */,
@@ -511,6 +526,7 @@
 				4D8EF64B23D195FF00C6AEB4 /* SessionInProgressInteractor.swift in Sources */,
 				4D8EF65023D1967200C6AEB4 /* DurationModel.swift in Sources */,
 				4DE1412B2410FF07004B6BD4 /* RoundedRectangleButton.swift in Sources */,
+				4D5017AF25FA5F5E003AE589 /* Quotes.swift in Sources */,
 				4D8EF64C23D195FF00C6AEB4 /* SessionModel.swift in Sources */,
 				4DEEAFB1239AA57100A2944E /* Assets.swift in Sources */,
 				1849192A2375832F000CDE20 /* CreateSessionStore.swift in Sources */,

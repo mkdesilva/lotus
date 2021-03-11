@@ -41,16 +41,31 @@ final class EndSessionView: UIView {
     statTitleLabel.textColor = .white
     statTitleLabel.textAlignment = .center
     
-    let vStack = UIStackView(arrangedSubviews: [statTitleLabel, statValueLabel])
+    let quoteLabel = UILabel()
+    quoteLabel.translatesAutoresizingMaskIntoConstraints = false
+    quoteLabel.textAlignment = .center
+    quoteLabel.textColor = .white
+    quoteLabel.text = "Quote"
+
+    let vStack = UIStackView(arrangedSubviews: [statTitleLabel])
     vStack.axis = .vertical
     vStack.alignment = .center
     vStack.distribution = .equalCentering
     vStack.spacing = 16
+    
     addSubview(vStack)
+    addSubview(quoteLabel)
     addSubview(closeButton)
+    
     vStack.centerInSuperView()
+    
     closeButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -100).isActive = true
     closeButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+  
+    quoteLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -300).isActive = true
+    quoteLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    quoteLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+    quoteLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
   }
   
   @objc private func tappedCloseButton() {
