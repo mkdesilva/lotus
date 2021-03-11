@@ -43,4 +43,5 @@ public enum Colors {
 public enum Assets {
   static let lake = ImageAsset(named: "lake")
   static let xmark = ImageAsset(named: "xmark")
+  static let ring = ImageAsset(named: "ring")
 }
