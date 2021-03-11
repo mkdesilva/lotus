@@ -11,24 +11,32 @@ import UIKit
 protocol MainLandingViewControllerInterface: class {
 }
 
-class MainLandingViewController: UIViewController, MainLandingViewControllerInterface {
+class MainLandingViewController: UITabBarController, MainLandingViewControllerInterface {
+  
+  let createSessionViewController = CreateSessionViewController()
   
   // MARK: - Object lifecycle
   
   override func awakeFromNib() {
     super.awakeFromNib()
-  }
+    
+    viewControllers = [createSessionViewController]
+    setTabBarItems()
+  }  
   
   // MARK: - Configuration
   
- 
+  private func setTabBarItems() {
+    guard let items = tabBar.items else { return }
+    items[0].title = "Meditate"
+    items[0].image = Assets.ring.image
+  }
   
   // MARK: - View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    selectedViewController = createSessionViewController
   }
   
 }
-
-//class MainTabBarViewController: UITab
