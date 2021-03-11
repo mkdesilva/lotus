@@ -22,7 +22,7 @@ class SessionInProgressInteractorTests: XCTestCase {
     let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
       return
     }
-    return timer;
+    return timer
   }
   
   // MARK: - Test lifecycle
@@ -34,7 +34,7 @@ class SessionInProgressInteractorTests: XCTestCase {
   
   override func tearDown() {
     mockTimer.invalidate()
-    if (sut.sessionTimer != nil) {
+    if sut.sessionTimer != nil {
       sut.sessionTimer.invalidate()
     }
     sut = nil
@@ -60,7 +60,6 @@ class SessionInProgressInteractorTests: XCTestCase {
       presentDurationCalled = true
       presentDurationResponse = response
     }
-    
     
     var presentPausedCalled = false
     var presentPausedResponse: SessionInProgress.TogglePause.Response!
@@ -102,7 +101,7 @@ class SessionInProgressInteractorTests: XCTestCase {
   func testUpdateDurationWithNoRemainingTime() {
     let request = SessionInProgress.UpdateDuration.Request(timeInterval: 0)
     sut.session = Session(initialDuration: SessionDuration(seconds: 0))
-    sut.sessionTimer = mockTimer;
+    sut.sessionTimer = mockTimer
     
     sut.updateDuration(request: request)
     
@@ -122,9 +121,9 @@ class SessionInProgressInteractorTests: XCTestCase {
   
   func testTogglePauseWhenSessionInProgress() {
     let request = SessionInProgress.TogglePause.Request()
-    sut.session.isInProgress = true;
+    sut.session.isInProgress = true
     
-    sut.sessionTimer = mockTimer;
+    sut.sessionTimer = mockTimer
     
     sut.togglePause(request: request)
     
@@ -135,7 +134,7 @@ class SessionInProgressInteractorTests: XCTestCase {
   
   func testTogglePauseWhenSessionIsPaused() {
     let request = SessionInProgress.TogglePause.Request()
-    sut.session.isInProgress = false;
+    sut.session.isInProgress = false
     
     sut.togglePause(request: request)
     

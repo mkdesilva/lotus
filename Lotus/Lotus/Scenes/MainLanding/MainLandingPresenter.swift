@@ -15,6 +15,5 @@ class MainLandingPresenter: MainLandingPresenterInterface {
   weak var viewController: MainLandingViewControllerInterface!
 
   // MARK: - Presentation logic
-
  
 }

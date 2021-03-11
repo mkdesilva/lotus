@@ -71,7 +71,7 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
   
   func displayGetSessionStats(viewModel: EndSession.GetSessionStats.ViewModel) {
     switch viewModel.content {
-    case .customError(_):
+    case .customError:
       return
     case .success(data: let text):
       endSessionView.displayStats(durationText: text)

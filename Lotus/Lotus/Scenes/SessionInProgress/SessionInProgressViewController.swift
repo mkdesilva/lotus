@@ -52,7 +52,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    if (interactor == nil) {
+    if interactor == nil {
       configure(viewController: self)
     }
     
