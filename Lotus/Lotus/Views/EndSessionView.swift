@@ -29,6 +29,17 @@ final class EndSessionView: UIView {
     return label
   }()
   
+  private var quoteLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.textAlignment = .center
+    label.textColor = .white
+    label.text = "Quote"
+    label.numberOfLines = 0
+    label.lineBreakMode = .byWordWrapping
+    return label
+  }()
+  
   func setup(delegate: EndSessionDelegate) {
     self.delegate = delegate
     addConstraintsEqualToSuperView()
@@ -40,12 +51,6 @@ final class EndSessionView: UIView {
     statTitleLabel.text = "TIME"
     statTitleLabel.textColor = .white
     statTitleLabel.textAlignment = .center
-    
-    let quoteLabel = UILabel()
-    quoteLabel.translatesAutoresizingMaskIntoConstraints = false
-    quoteLabel.textAlignment = .center
-    quoteLabel.textColor = .white
-    quoteLabel.text = "Quote"
 
     let vStack = UIStackView(arrangedSubviews: [statTitleLabel])
     vStack.axis = .vertical
@@ -62,10 +67,12 @@ final class EndSessionView: UIView {
     closeButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -100).isActive = true
     closeButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
   
-    quoteLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -300).isActive = true
+    // TODO: Fix this layout 
+    quoteLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -200).isActive = true
     quoteLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     quoteLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
     quoteLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
+    quoteLabel.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 16).isActive = true
   }
   
   @objc private func tappedCloseButton() {
@@ -74,5 +81,9 @@ final class EndSessionView: UIView {
   
   func displayStats(durationText: String) {
     statValueLabel.text = durationText
+  }
+  
+  func displayQuote(text: String) {
+    quoteLabel.text = text
   }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol EndSessionViewControllerInterface: class {
   func displayGetSessionStats(viewModel: EndSession.GetSessionStats.ViewModel)
+  func displayGetQuote(viewModel: EndSession.GetQuote.ViewModel)
 }
 
 protocol EndSessionDelegate: class {
@@ -49,6 +50,7 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
     super.viewDidLoad()
     createView()
     getSessionStats()
+    getQuote()
   }
   
   var endSessionView: EndSessionView!
@@ -62,9 +64,13 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
   // MARK: - Event handling
   
   func getSessionStats() {
-    // NOTE: Ask the Interactor to do some work
     let request = EndSession.GetSessionStats.Request()
     interactor.getSessionStats(request: request)
+  }
+  
+  func getQuote() {
+    let request = EndSession.GetQuote.Request()
+    interactor.getQuote(request: request)
   }
   
   // MARK: - Display logic
@@ -78,6 +84,16 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
     }
   }
   
+  func displayGetQuote(viewModel: EndSession.GetQuote.ViewModel) {
+    switch viewModel.content {
+    case .customError:
+      endSessionView.displayQuote(text: "")
+      return
+    case .success(data: let data):
+      endSessionView.displayQuote(text: data)
+    }
+  }
+
   // MARK: - Router
 }
 

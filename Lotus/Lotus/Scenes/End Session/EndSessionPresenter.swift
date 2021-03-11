@@ -10,6 +10,7 @@ import UIKit
 
 protocol EndSessionPresenterInterface {
   func presentGetSessionStats(response: EndSession.GetSessionStats.Response)
+  func presentGetQuote(response: EndSession.GetQuote.Response)
 }
 
 class EndSessionPresenter: EndSessionPresenterInterface {
@@ -29,4 +30,22 @@ class EndSessionPresenter: EndSessionPresenterInterface {
         
     viewController.displayGetSessionStats(viewModel: viewModel)
   }
+  
+  func presentGetQuote(response: EndSession.GetQuote.Response) {
+    var viewModel: EndSession.GetQuote.ViewModel
+    
+    switch response.result {
+    case .failure(let error):
+      viewModel = EndSession.GetQuote.ViewModel(content: .customError(error))
+    case .success(let quote):
+      
+      let data = "\"\(quote.text)\"\n  -\(quote.author)"
+      
+      viewModel = EndSession.GetQuote.ViewModel(content: .success(data: data))
+    }
+    
+    viewController.displayGetQuote(viewModel: viewModel)
+    
+  }
+  
 }

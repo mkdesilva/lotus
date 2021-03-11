@@ -19,4 +19,15 @@ struct EndSession {
       let content: Content<String>
     }
   }
+  
+  struct GetQuote {
+    struct Request {
+    }
+    struct Response {
+      let result: Result<Quote, CustomError>
+    }
+    struct ViewModel {
+      let content: Content<String>
+    }
+  }
 }
