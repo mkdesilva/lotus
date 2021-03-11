@@ -83,6 +83,6 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
 
 extension EndSessionViewController: EndSessionDelegate {
   func closeView() {
-    // TODO: Navigate to landing page
+    self.router.navigateToLanding()
   }
 }
