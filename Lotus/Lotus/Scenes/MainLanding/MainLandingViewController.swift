@@ -15,15 +15,6 @@ class MainLandingViewController: UITabBarController, MainLandingViewControllerIn
   
   let createSessionViewController = CreateSessionViewController()
   
-  // MARK: - Object lifecycle
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    
-    viewControllers = [createSessionViewController]
-    setTabBarItems()
-  }  
-  
   // MARK: - Configuration
   
   private func setTabBarItems() {
@@ -36,6 +27,8 @@ class MainLandingViewController: UITabBarController, MainLandingViewControllerIn
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    viewControllers = [createSessionViewController]
+    setTabBarItems()
     selectedViewController = createSessionViewController
   }
   
