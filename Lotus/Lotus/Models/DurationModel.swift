@@ -148,8 +148,11 @@ extension Duration {
   var fullDescription: String {
     var durationString = ""
     
-    durationString = "\(hours != 0 ? "\(hours) hours " : "" )\(minutes != 0 ? "\(minutes) minutes " : "" )\(seconds != 0 ? "\(seconds) seconds " : "" )"
+    let hourString = "\(hours != 0 ? "\(hours) hours " : "")"
+    let minuteString = "\(minutes != 0 ? "\(minutes) minutes " : "")"
+    let secondString = "\(seconds != 0 ? "\(seconds) seconds " : "")"
     
+    durationString = "\(hourString)\(minuteString)\(secondString)"
     durationString = durationString.trimmingCharacters(in: .whitespaces)
     
     return durationString
