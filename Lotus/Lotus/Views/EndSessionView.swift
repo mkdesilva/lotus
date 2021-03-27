@@ -22,7 +22,6 @@ final class EndSessionView: UIView {
   private var statValueLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "25 minutes"
     label.textColor = .white
     label.textAlignment = .center
     label.font = UIFont.systemFont(ofSize: 35)
@@ -51,8 +50,8 @@ final class EndSessionView: UIView {
     statTitleLabel.text = "TIME"
     statTitleLabel.textColor = .white
     statTitleLabel.textAlignment = .center
-
-    let vStack = UIStackView(arrangedSubviews: [statTitleLabel])
+    
+    let vStack = UIStackView(arrangedSubviews: [statTitleLabel, statValueLabel])
     vStack.axis = .vertical
     vStack.alignment = .center
     vStack.distribution = .equalCentering
