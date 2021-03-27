@@ -65,10 +65,10 @@ func setup(delegate: SessionInProgressViewController) {
     
     addSubview(vStack)
     vStack.addConstraintsToSafeAreaSuperView(
-      topSpacing: 150,
+      topSpacing: 50,
       leadingSpacing: 0,
       trailingSpacing: 0,
-      bottomSpacing: -150)
+      bottomSpacing: -50)
     vStack.layoutIfNeeded()
     stackView = vStack
   }
