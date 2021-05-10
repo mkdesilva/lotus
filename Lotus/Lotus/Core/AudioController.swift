@@ -8,9 +8,16 @@
 
 import AVFoundation
 
+protocol AudioControllerInterface {
+  func playAudio(fileName: String, fileExtension: String)
+  func disableAudioSession()
+  func getFileDuration(fileName: String, fileExtension: String) -> Double
+}
+
 var player: AVAudioPlayer?
 
-class AudioController {
+
+class AudioController: AudioControllerInterface {
   func playAudio(fileName: String, fileExtension: String = "wav") {
     guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
       print("url not found")
@@ -35,5 +42,15 @@ class AudioController {
   
   func disableAudioSession() {
     try? AVAudioSession.sharedInstance().setActive(false)
+  }
+  
+  func getFileDuration(fileName: String, fileExtension: String = "wav") -> Double {
+    guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
+      print("url not found")
+      return 0
+    }
+    
+    let asset = AVURLAsset(url: url)
+    return Double(CMTimeGetSeconds(asset.duration))
   }
 }

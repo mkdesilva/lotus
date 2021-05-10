@@ -31,7 +31,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
   func updateDuration(request: SessionInProgress.UpdateDuration.Request) {
     guard !session.remainingDuration.isZero else {
       sessionTimer.invalidate()
-      endSession(request: SessionInProgress.EndSession.Request())
+      endSession(request: SessionInProgress.EndSession.Request(playEndSound: true))
       return
     }
     
@@ -91,7 +91,7 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
     }
     
     let elapsedDuration = session.initialDuration - session.remainingDuration 
-    let response = SessionInProgress.EndSession.Response(duration: elapsedDuration)
+    let response = SessionInProgress.EndSession.Response(duration: elapsedDuration, playEndSound: request.playEndSound)
     presenter.presentEndSession(response: response)
   }
 }

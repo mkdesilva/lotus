@@ -44,12 +44,16 @@ struct SessionInProgress {
   }
   
   struct EndSession {
-    struct Request {}
+    struct Request {
+      let playEndSound: Bool
+    }
     struct Response {
       let duration: Duration
+      let playEndSound: Bool
     }
     struct ViewModel {
       let duration: Duration
+      let playEndSound: Bool
     }
   }
 }

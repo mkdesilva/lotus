@@ -20,6 +20,7 @@ protocol SessionInProgressViewDelegate: class {
 }
 
 class SessionInProgressViewController: UIViewController, SessionInProgressViewControllerInterface {
+  var endSessionInProgress = false
   var interactor: SessionInProgressInteractorInterface!
   var router: SessionInProgressRouter!
   
@@ -81,7 +82,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   func startSession() {
     let request = SessionInProgress.StartSession.Request()
     interactor.startSession(request: request)
-    audioController.playAudio(fileName: "bowl-hit")
+    ringBowl()
     
     sessionInProgressView.startAnimatingProgressCircle(durationInSeconds: Int(interactor.session.initialDuration.time))
   }
@@ -100,7 +101,25 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
     }
   }
   
+  func ringBowl() {
+    audioController.playAudio(fileName: "bowl-hit")
+  }
+  
+  func ringBowl(numberOfTimes: Int) {
+    // Going to skip duration for now as it's quite long but the volume tapers off
+//    let duration = audioController.getFileDuration(fileName: "bowl-hit")
+    for _ in 1...numberOfTimes {
+      audioController.playAudio(fileName: "bowl-hit")
+      sleep(2)
+    }
+  }
+  
   func displayEndSession(viewModel: SessionInProgress.EndSession.ViewModel) {
+    endSessionInProgress = true
+    if viewModel.playEndSound {
+      ringBowl(numberOfTimes: 3)
+    }
+    
     audioController.disableAudioSession()
     sessionInProgressView.endSession {
       self.router.navigateToEndSession(duration: viewModel.duration)
@@ -116,7 +135,8 @@ extension SessionInProgressViewController: SessionInProgressViewDelegate {
   }
   
   func tappedEndButton() {
-    let request = SessionInProgress.EndSession.Request()
+    guard !endSessionInProgress else { return }
+    let request = SessionInProgress.EndSession.Request(playEndSound: false)
     interactor.endSession(request: request)
   }
 }
