@@ -26,6 +26,8 @@
 		4D08812525B5A96B00081E89 /* MainLandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08812425B5A96B00081E89 /* MainLandingInteractor.swift */; };
 		4D08812B25B5A98400081E89 /* MainLandingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08812825B5A98300081E89 /* MainLandingPresenter.swift */; };
 		4D08812D25B5A98400081E89 /* MainLandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08812A25B5A98400081E89 /* MainLandingRouter.swift */; };
+		4D1BF95F260F4B9F0019D6E6 /* bowl-hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BF95C260F4B8A0019D6E6 /* bowl-hit.wav */; };
+		4D1BF964260F4C630019D6E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1BF963260F4C630019D6E6 /* AVFoundation.framework */; };
 		4D2911B223ACA3A30033CB1E /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */; };
 		4D5017AF25FA5F5E003AE589 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5017AE25FA5F5E003AE589 /* Quotes.swift */; };
 		4D5017B625FA5FBE003AE589 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5017B525FA5FBE003AE589 /* Quote.swift */; };
@@ -58,6 +60,7 @@
 		4DD4A2A623F6B0D100A44AAB /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */; };
 		4DDE415E23B5C17600E8C273 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDE415D23B5C17600E8C273 /* Error.swift */; };
 		4DDE416023B5C19000E8C273 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDE415F23B5C19000E8C273 /* UserDefaultsExtension.swift */; };
+		4DE105AC2649823A00D42C8F /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE105AB2649823A00D42C8F /* AudioController.swift */; };
 		4DE141292410FBCF004B6BD4 /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE141282410FBCF004B6BD4 /* EndSessionView.swift */; };
 		4DE1412B2410FF07004B6BD4 /* RoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1412A2410FF07004B6BD4 /* RoundedRectangleButton.swift */; };
 		4DE9B35223AA21E8006AE27D /* BeginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9B35123AA21E8006AE27D /* BeginButton.swift */; };
@@ -99,6 +102,8 @@
 		4D08812425B5A96B00081E89 /* MainLandingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLandingInteractor.swift; sourceTree = "<group>"; };
 		4D08812825B5A98300081E89 /* MainLandingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLandingPresenter.swift; sourceTree = "<group>"; };
 		4D08812A25B5A98400081E89 /* MainLandingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLandingRouter.swift; sourceTree = "<group>"; };
+		4D1BF95C260F4B8A0019D6E6 /* bowl-hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bowl-hit.wav"; sourceTree = "<group>"; };
+		4D1BF963260F4C630019D6E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		4D408D0D23B3449400C2D9DF /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4D4CE59124B03D99002D0F08 /* MainLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLandingViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +137,7 @@
 		4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		4DDE415D23B5C17600E8C273 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		4DDE415F23B5C19000E8C273 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		4DE105AB2649823A00D42C8F /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		4DE141282410FBCF004B6BD4 /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
 		4DE1412A2410FF07004B6BD4 /* RoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButton.swift; sourceTree = "<group>"; };
 		4DE9B35123AA21E8006AE27D /* BeginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginButton.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D1BF964260F4C630019D6E6 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +167,7 @@
 		1849191E23755DCA000CDE20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D1BF95B260F4B780019D6E6 /* Sounds */,
 				4DEEAFB0239AA57100A2944E /* Assets.swift */,
 				4DD01F5523B1EFD40068621A /* Constants.swift */,
 				4D8EF65323D1A15600C6AEB4 /* Storyboards.swift */,
@@ -227,6 +235,7 @@
 				18F196F2236D29C800582D0D /* Lotus */,
 				18F19709236D29C900582D0D /* LotusTests */,
 				18F196F1236D29C800582D0D /* Products */,
+				4D1BF962260F4C630019D6E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,6 +251,7 @@
 		18F196F2236D29C800582D0D /* Lotus */ = {
 			isa = PBXGroup;
 			children = (
+				4DE105B12649824000D42C8F /* Core */,
 				4D8EF64E23D1964A00C6AEB4 /* Models */,
 				4DDE415C23B5C16A00E8C273 /* Utilities */,
 				18F19715236D2B5F00582D0D /* Startup */,
@@ -284,6 +294,22 @@
 				1800B32E237F56020019F49D /* CreateSessionPresenterTests.swift */,
 			);
 			path = CreateSessionTests;
+			sourceTree = "<group>";
+		};
+		4D1BF95B260F4B780019D6E6 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4D1BF95C260F4B8A0019D6E6 /* bowl-hit.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		4D1BF962260F4C630019D6E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D1BF963260F4C630019D6E6 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4D4CE58F24B03C85002D0F08 /* MainLanding */ = {
@@ -384,6 +410,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		4DE105B12649824000D42C8F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4DE105AB2649823A00D42C8F /* AudioController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,6 +500,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D1BF95F260F4B9F0019D6E6 /* bowl-hit.wav in Resources */,
 				1849192123757CCC000CDE20 /* FeatureWishlist.md in Resources */,
 				18F19700236D29C800582D0D /* LaunchScreen.storyboard in Resources */,
 				18F196FD236D29C800582D0D /* Assets.xcassets in Resources */,
@@ -531,6 +566,7 @@
 				4DEEAFB1239AA57100A2944E /* Assets.swift in Sources */,
 				1849192A2375832F000CDE20 /* CreateSessionStore.swift in Sources */,
 				4D9CB3C623AA09ED003C050A /* CreateSessionView.swift in Sources */,
+				4DE105AC2649823A00D42C8F /* AudioController.swift in Sources */,
 				4D8EF65623D1AA9C00C6AEB4 /* SessionInProgressView.swift in Sources */,
 				18F196F4236D29C800582D0D /* AppDelegate.swift in Sources */,
 				1849192D2375832F000CDE20 /* CreateSessionRouter.swift in Sources */,

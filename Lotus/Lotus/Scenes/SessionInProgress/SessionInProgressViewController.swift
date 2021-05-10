@@ -24,7 +24,8 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   var router: SessionInProgressRouter!
   
   var sessionInProgressView: SessionInProgressView!
-  
+  let audioController = AudioController()
+
   // MARK: - Object lifecycle
   
   override func awakeFromNib() {
@@ -80,6 +81,8 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   func startSession() {
     let request = SessionInProgress.StartSession.Request()
     interactor.startSession(request: request)
+    audioController.playAudio(fileName: "bowl-hit")
+    
     sessionInProgressView.startAnimatingProgressCircle(durationInSeconds: Int(interactor.session.initialDuration.time))
   }
   
@@ -98,6 +101,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   }
   
   func displayEndSession(viewModel: SessionInProgress.EndSession.ViewModel) {
+    audioController.disableAudioSession()
     sessionInProgressView.endSession {
       self.router.navigateToEndSession(duration: viewModel.duration)
     }
