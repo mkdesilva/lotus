@@ -19,14 +19,11 @@ class DurationPickerViewController: UIViewController {
   var pickerView: UIPickerView!
   var initialDuration: SessionDuration?
   
-  let minutesInterval = 15 // TODO: Make this user customizable
-  let hours = Array(0...8)
+  let hours = Array(0...12)
+  let minutes = Array(0...59)
+  let seconds = Array(0...59)
   
   weak var delegate: CreateSessionViewControllerDelegate!
-  
-  lazy var minutes: [Int] = {
-    return Array(0...59).filter { $0.isMultiple(of: minutesInterval) }
-  }()
   
   init(modalPresentationStyle: UIModalPresentationStyle = .overFullScreen) {
     super.init(nibName: nil, bundle: nil)
@@ -54,6 +51,7 @@ extension DurationPickerViewController: DurationPickerDelegate {
   enum DurationComponent: Int, CaseIterable {
     case hours = 0
     case minutes = 1
+    case seconds = 2
   }
   
   private func setupPickerView(for duration: SessionDuration) {
@@ -78,6 +76,8 @@ extension DurationPickerViewController: DurationPickerDelegate {
       return hours.count
     case .minutes:
       return minutes.count
+    case .seconds:
+      return seconds.count
     }
   }
   
@@ -102,9 +102,11 @@ extension DurationPickerViewController: DurationPickerDelegate {
     
     switch durationComponent {
     case .hours:
-      return "\(hours[row])h"
+      return "\(hours[row]) hour"
     case .minutes:
-      return "\(minutes[row])m"
+      return "\(minutes[row]) min"
+    case .seconds:
+      return "\(seconds[row]) sec"
     }
   }
   
@@ -119,7 +121,8 @@ extension DurationPickerViewController: DurationPickerDelegate {
   func saveAndClose() {
     let duration = SessionDuration(
       hours: hours[pickerView.selectedRow(inComponent: DurationComponent.hours.rawValue)],
-      minutes: minutes[pickerView.selectedRow(inComponent: DurationComponent.minutes.rawValue)]
+      minutes: minutes[pickerView.selectedRow(inComponent: DurationComponent.minutes.rawValue)],
+      seconds: seconds[pickerView.selectedRow(inComponent: DurationComponent.seconds.rawValue)]
     )
     
     delegate.didSelectDuration(duration: duration)
