@@ -28,7 +28,6 @@
 		4D08812D25B5A98400081E89 /* MainLandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D08812A25B5A98400081E89 /* MainLandingRouter.swift */; };
 		4D1BF95F260F4B9F0019D6E6 /* bowl-hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4D1BF95C260F4B8A0019D6E6 /* bowl-hit.wav */; };
 		4D1BF964260F4C630019D6E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1BF963260F4C630019D6E6 /* AVFoundation.framework */; };
-		4D2911B223ACA3A30033CB1E /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */; };
 		4D5017AF25FA5F5E003AE589 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5017AE25FA5F5E003AE589 /* Quotes.swift */; };
 		4D5017B625FA5FBE003AE589 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5017B525FA5FBE003AE589 /* Quote.swift */; };
 		4D62AFD125CED83600F2323B /* MainLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4CE59124B03D99002D0F08 /* MainLandingViewController.swift */; };
@@ -65,7 +64,6 @@
 		4DE1412B2410FF07004B6BD4 /* RoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1412A2410FF07004B6BD4 /* RoundedRectangleButton.swift */; };
 		4DE9B35223AA21E8006AE27D /* BeginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9B35123AA21E8006AE27D /* BeginButton.swift */; };
 		4DEEAFB1239AA57100A2944E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEEAFB0239AA57100A2944E /* Assets.swift */; };
-		4DF5D60723ACC59F00412174 /* DurationPickerHalfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF5D60623ACC59F00412174 /* DurationPickerHalfView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +102,6 @@
 		4D08812A25B5A98400081E89 /* MainLandingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLandingRouter.swift; sourceTree = "<group>"; };
 		4D1BF95C260F4B8A0019D6E6 /* bowl-hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bowl-hit.wav"; sourceTree = "<group>"; };
 		4D1BF963260F4C630019D6E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		4D408D0D23B3449400C2D9DF /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4D4CE59124B03D99002D0F08 /* MainLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLandingViewController.swift; sourceTree = "<group>"; };
 		4D5017AE25FA5F5E003AE589 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
@@ -142,7 +139,6 @@
 		4DE1412A2410FF07004B6BD4 /* RoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButton.swift; sourceTree = "<group>"; };
 		4DE9B35123AA21E8006AE27D /* BeginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginButton.swift; sourceTree = "<group>"; };
 		4DEEAFB0239AA57100A2944E /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		4DF5D60623ACC59F00412174 /* DurationPickerHalfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerHalfView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				4D964CB6239C007600EDD600 /* BlurredBackgroundView.swift */,
-				4DF5D60623ACC59F00412174 /* DurationPickerHalfView.swift */,
 				4D9CB3C523AA09ED003C050A /* CreateSessionView.swift */,
 				4DE9B35123AA21E8006AE27D /* BeginButton.swift */,
 				4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */,
@@ -396,7 +391,6 @@
 		4DD01F5723B201BC0068621A /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4D2911B123ACA3A30033CB1E /* DurationPickerViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -543,11 +537,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D2911B223ACA3A30033CB1E /* DurationPickerViewController.swift in Sources */,
 				4DB0DEC123D1CFA100A0B9CF /* CustomView.swift in Sources */,
 				4D8EF64A23D195FF00C6AEB4 /* SessionInProgressViewController.swift in Sources */,
 				4D9E0D522410E35400AFF9A4 /* EndSessionInteractor.swift in Sources */,
-				4DF5D60723ACC59F00412174 /* DurationPickerHalfView.swift in Sources */,
 				4D9E0D4D2410E35400AFF9A4 /* EndSessionPresenter.swift in Sources */,
 				4D5017B625FA5FBE003AE589 /* Quote.swift in Sources */,
 				4D8EF64623D195FF00C6AEB4 /* SessionInProgressPresenter.swift in Sources */,

@@ -14,21 +14,12 @@ final class CreateSessionView: UIView, CustomView {
   
   let startingMinutes = 5
   
-  var flavourLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.textAlignment = .center
-    label.text = "Starting your journey"
-    return label
-  }()
-  
-  var durationButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    button.layer.cornerRadius = 15
-    button.backgroundColor = Colors.slateBlue.color
-    return button
+  let picker: UIPickerView = {
+    let pickerView = UIPickerView()
+    pickerView.translatesAutoresizingMaskIntoConstraints = false
+    pickerView.addConstraints(topSpacing: 16, leadingSpacing: 16, trailingSpacing: 16)
+    pickerView.constraintHeight(equalToConstant: 200)
+    return pickerView
   }()
   
   // MARK: - View Setup
@@ -45,14 +36,17 @@ final class CreateSessionView: UIView, CustomView {
     verticalStack.centerInSuperView()
     verticalStack.spacing = 65
     
-    let upperStackView = createUpperStackView(arrangedSubviews: [flavourLabel, durationButton])
+    picker.dataSource = delegate
+    picker.delegate = delegate
+    delegate.pickerView = picker
+    
+    let upperStackView = createUpperStackView(arrangedSubviews: [picker])
     verticalStack.addArrangedSubview(upperStackView)
     
     let beginButton = BeginButton()
     beginButton.createSessionView = self
     verticalStack.addArrangedSubview(beginButton)
     beginButton.setup(size: UIScreen.main.bounds.height / 3)
-    setupDurationButton(verticalStack)
   }
   
   private func createUpperStackView(arrangedSubviews: [UIView]) -> UIStackView {
@@ -62,30 +56,13 @@ final class CreateSessionView: UIView, CustomView {
     stackView.spacing = 35
     return stackView
   }
-  
-  private func setupDurationButton(_ verticalStack: UIStackView) {
-    durationButton.setTitle("\(startingMinutes) minutes", for: .normal)
-    durationButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-    durationButton.leadingAnchor.constraint(equalTo: verticalStack.leadingAnchor).isActive = true
-    durationButton.trailingAnchor.constraint(equalTo: verticalStack.trailingAnchor).isActive = true
-    
-    durationButton.addTarget(self, action: #selector(tappedDuration), for: .touchUpInside)
-  }
 }
 
 extension CreateSessionView {
   
   // MARK: - Event Handling
   
-  @objc func tappedDuration() {
-    delegate.showDurationPicker()
-  }
-  
   func tappedBegin() {
     delegate.beginSession()
-  }
-  
-  func displayDuration(durationTitle: String) {
-    durationButton.setTitle(durationTitle, for: .normal)
   }
 }

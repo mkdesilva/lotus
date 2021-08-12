@@ -9,20 +9,12 @@
 import UIKit
 
 protocol CreateSessionRouterInterface {
-  func navigateToDurationPicker(duration: SessionDuration?)
   func navigateToInProgressScene(duration: SessionDuration)
 }
 
 class CreateSessionRouter: CreateSessionRouterInterface {
   
   weak var viewController: CreateSessionViewController!
-  
-  func navigateToDurationPicker(duration: SessionDuration?) {
-    let durationPickerViewController = DurationPickerViewController()
-    durationPickerViewController.initialDuration = duration
-    durationPickerViewController.delegate = viewController
-    viewController.present(durationPickerViewController, animated: true)
-  }
   
   func navigateToInProgressScene(duration: SessionDuration) {
     let initialVc = Storyboards.sessionInProgress.instantiateInitialViewController()
