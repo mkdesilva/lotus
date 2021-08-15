@@ -46,7 +46,7 @@ final class CreateSessionView: UIView, CustomView {
     let beginButton = BeginButton()
     beginButton.createSessionView = self
     verticalStack.addArrangedSubview(beginButton)
-    beginButton.setup(size: UIScreen.main.bounds.height / 3)
+    beginButton.setup(size: 100)
   }
   
   private func createUpperStackView(arrangedSubviews: [UIView]) -> UIStackView {

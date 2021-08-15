@@ -18,17 +18,20 @@ class BeginButton: UIButton, CustomView {
   
   func setup(size: CGFloat) {
     translatesAutoresizingMaskIntoConstraints = false
-    backgroundColor = Colors.slateBlue.color
+    backgroundColor = Colors.darkBlack.color
     widthAnchor.constraint(equalToConstant: size).isActive = true
     heightAnchor.constraint(equalToConstant: size).isActive = true
     layer.cornerRadius = size / 2
     clipsToBounds = true
     addTarget(self, action: #selector(tappedBegin), for: .touchUpInside)
-    layoutIfNeeded()
-    let triangleView = TriangleView(frame: frame)
-    triangleView.isUserInteractionEnabled = false
-    addSubview(triangleView)
-    triangleView.layoutIfNeeded()
+    
+    let startLabel = UILabel()
+    addSubview(startLabel)
+    startLabel.text = "Start"
+    startLabel.textAlignment = .center
+    startLabel.translatesAutoresizingMaskIntoConstraints = false
+    startLabel.textColor = Colors.slateBlue.color
+    startLabel.addConstraints(topSpacing: 0, leadingSpacing: 0, trailingSpacing: 0, bottomSpacing: 0)
   }
   
   @objc func tappedBegin() {

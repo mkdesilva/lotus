@@ -36,6 +36,7 @@ extension ColorAsset {
 
 public enum Colors {
   static let slateBlue = ColorAsset(named: "slateBlue")
+  static let darkBlack = ColorAsset(named: "darkBlack")
   static let backgroundSlateBlue = ColorAsset(named: "backgroundSlateBlue")
   static let primaryCancel = ColorAsset(named: "primaryCancel")
 }

@@ -177,6 +177,9 @@ extension CreateSessionViewController: UIPickerViewDelegate, UIPickerViewDataSou
   }
   
   func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    if component == DurationComponent.hours.rawValue {
+      return 80
+    }
     return 60
   }
   
