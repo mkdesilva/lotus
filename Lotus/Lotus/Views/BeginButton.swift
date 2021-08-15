@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeginButton: UIButton, CustomView {
+class BeginButton: UIButton {
   
   var createSessionView: CreateSessionView?
   

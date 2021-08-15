@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class BlurredBackgroundView: UIImageView, CustomView {
+final class BlurredBackgroundView: UIImageView {
   
   var visualEffectView: UIVisualEffectView?
   
