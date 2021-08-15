@@ -148,7 +148,7 @@ class SessionInProgressInteractorTests: XCTestCase {
   
   func testEndSessionWithValidTimer() {
     sut.sessionTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in return }
-    let request = SessionInProgress.EndSession.Request()
+    let request = SessionInProgress.EndSession.Request(playEndSound: false)
     sut.endSession(request: request)
     XCTAssert(presenterSpy.presentEndSessionCalled)
     XCTAssertFalse(sut.sessionTimer.isValid)

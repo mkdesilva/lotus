@@ -11,7 +11,7 @@ import XCTest
 @testable import Lotus
 
 final class CreateSessionViewControllerTests: XCTestCase {
-  
+
   // MARK: - Subject under test
   
   var sut: CreateSessionViewController!
@@ -75,31 +75,6 @@ final class CreateSessionViewControllerTests: XCTestCase {
     XCTAssertNotNil(sut.router)
   }
   
-  func testDisplaySetDurationShouldDisplayDurationInButton() {
-    // Given
-    let viewModel = CreateSession.SetDuration.ViewModel(durationTitle: "5h 4m")
-    
-    // When
-    sut.displaySetDuration(viewModel: viewModel)
-    
-    // Then
-    XCTAssertNotNil(sut.createSessionView.durationButton.titleLabel)
-    XCTAssertNotNil(sut.createSessionView.durationButton.titleLabel!.text)
-    XCTAssertEqual(sut.createSessionView.durationButton.titleLabel!.text!, "5h 4m")
-  }
-  
-  func testShowDurationPickerShouldCallNavigateToDurationPicker() {
-    // Given
-    let routerSpy = CreateSessionRouterSpy()
-    sut.router = routerSpy
-    
-    // When
-    sut.showDurationPicker()
-    
-    // Then
-    XCTAssertTrue(routerSpy.navigateToDurationPickerCalled)
-  }
-  
   func testRouteToBeginSessionShouldCallNavigateToInProgressScene() {
     // Given
       let routerSpy = CreateSessionRouterSpy()
@@ -110,6 +85,15 @@ final class CreateSessionViewControllerTests: XCTestCase {
       
       // Then
       XCTAssertTrue(routerSpy.navigateToInProgressSceneCalled)
+  }
+  
+  func testBeginSessionWithoutPickerShouldNotRouteToBeginSession() {
+    let routerSpy = CreateSessionRouterSpy()
+    sut.router = routerSpy
+    
+    sut.beginSession()
+    
+    XCTAssertFalse(routerSpy.navigateToInProgressSceneCalled)
   }
   
 }

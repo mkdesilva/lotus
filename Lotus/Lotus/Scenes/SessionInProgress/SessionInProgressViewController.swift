@@ -22,10 +22,10 @@ protocol SessionInProgressViewDelegate: class {
 class SessionInProgressViewController: UIViewController, SessionInProgressViewControllerInterface {
   var endSessionInProgress = false
   var interactor: SessionInProgressInteractorInterface!
-  var router: SessionInProgressRouter!
+  var router: SessionInProgressRouterInterface!
   
   var sessionInProgressView: SessionInProgressView!
-  let audioController = AudioController()
+  var audioController: AudioControllerInterface!
 
   // MARK: - Object lifecycle
   
@@ -48,6 +48,8 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
     
     viewController.interactor = interactor
     viewController.router = router
+    
+    audioController = AudioController()
   }
   
   // MARK: - View lifecycle
@@ -102,14 +104,14 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
   }
   
   func ringBowl() {
-    audioController.playAudio(fileName: "bowl-hit")
+    audioController.playAudio(fileName: "bowl-hit", fileExtension: "wav")
   }
   
   func ringBowl(numberOfTimes: Int) {
     // Going to skip duration for now as it's quite long but the volume tapers off
 //    let duration = audioController.getFileDuration(fileName: "bowl-hit")
     for _ in 1...numberOfTimes {
-      audioController.playAudio(fileName: "bowl-hit")
+      audioController.playAudio(fileName: "bowl-hit", fileExtension: "wav")
       sleep(2)
     }
   }
