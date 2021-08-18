@@ -18,8 +18,7 @@ class CreateSessionPresenter: CreateSessionPresenterInterface {
   // MARK: - Presentation logic
   
   func presentInitialDuration(response: CreateSession.SetDuration.Response) {
-    
-    let viewModel = CreateSession.SetDuration.ViewModel(durationTitle: response.duration.description)
+    let viewModel = CreateSession.SetDuration.ViewModel(hours: response.duration.hours, minutes: response.duration.minutes, seconds: response.duration.seconds)
     viewController.displayInitialDuration(viewModel: viewModel)
   }
   

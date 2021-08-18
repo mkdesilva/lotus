@@ -33,7 +33,9 @@ struct CreateSession {
     }
     
     struct ViewModel {
-      let durationTitle: String
+      let hours: Int
+      let minutes: Int
+      let seconds: Int
     }
   }
 }

@@ -59,7 +59,6 @@ class CreateSessionViewController: UIViewController, CreateSessionViewController
     super.viewDidLoad()
     configure(viewController: self)
     createView()
-    
     getInitialDuration()
   }
   
@@ -80,6 +79,17 @@ class CreateSessionViewController: UIViewController, CreateSessionViewController
   // MARK: - Display logic
   
   func displayInitialDuration(viewModel: CreateSession.SetDuration.ViewModel) {
+    pickerView.selectRow(viewModel.hours,
+                         inComponent: DurationComponent.hours.rawValue,
+                         animated: false)
+    
+    pickerView.selectRow(viewModel.minutes,
+                         inComponent: DurationComponent.minutes.rawValue,
+                         animated: false)
+    
+    pickerView.selectRow(viewModel.seconds,
+                         inComponent: DurationComponent.seconds.rawValue,
+                         animated: false)
   }
 }
 

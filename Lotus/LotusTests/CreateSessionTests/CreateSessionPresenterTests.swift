@@ -49,14 +49,16 @@ final class CreateSessionPresenterTests: XCTestCase {
   
   func testPresentSetDurationDisplaysSetDuration() {
     // Given
-    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 5, minutes: 5))
+    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 5, minutes: 3))
     
     // When
     sut.presentInitialDuration(response: response)
     
     // Then
     XCTAssertTrue(viewControllerSpy.displaySetDurationCalled)
-    XCTAssertEqual(viewControllerSpy.setDurationViewModel.durationTitle, "5h 5m")
+    XCTAssertEqual(viewControllerSpy.setDurationViewModel.hours, 5)
+    XCTAssertEqual(viewControllerSpy.setDurationViewModel.minutes, 3)
+    XCTAssertEqual(viewControllerSpy.setDurationViewModel.seconds, 0)
   }
   
   func testPresentSetDurationWhenHoursIsZeroShouldOmitHours() {
@@ -67,7 +69,7 @@ final class CreateSessionPresenterTests: XCTestCase {
     sut.presentInitialDuration(response: response)
     
     // Then
-    XCTAssertEqual(viewControllerSpy.setDurationViewModel.durationTitle, "43m")
+    XCTAssertEqual(viewControllerSpy.setDurationViewModel.minutes, 43)
   }
   
   func testPresentSetDurationWhenMinutesIsZeroShouldOmitMinutes() {
@@ -78,7 +80,7 @@ final class CreateSessionPresenterTests: XCTestCase {
     sut.presentInitialDuration(response: response)
     
     // Then
-    XCTAssertEqual(viewControllerSpy.setDurationViewModel.durationTitle, "2h")
+    XCTAssertEqual(viewControllerSpy.setDurationViewModel.hours, 2)
   }
   
 }
