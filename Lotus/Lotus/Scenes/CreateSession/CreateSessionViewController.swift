@@ -14,7 +14,7 @@ protocol CreateSessionViewControllerDelegate: class, UIPickerViewDelegate, UIPic
 }
 
 protocol CreateSessionViewControllerInterface: class {
-  func displaySetDuration(viewModel: CreateSession.SetDuration.ViewModel)
+  func displayInitialDuration(viewModel: CreateSession.SetDuration.ViewModel)
 }
 
 class CreateSessionViewController: UIViewController, CreateSessionViewControllerInterface {
@@ -79,7 +79,7 @@ class CreateSessionViewController: UIViewController, CreateSessionViewController
   
   // MARK: - Display logic
   
-  func displaySetDuration(viewModel: CreateSession.SetDuration.ViewModel) {
+  func displayInitialDuration(viewModel: CreateSession.SetDuration.ViewModel) {
   }
 }
 

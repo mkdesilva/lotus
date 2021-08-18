@@ -39,7 +39,7 @@ final class CreateSessionPresenterTests: XCTestCase {
     var displaySetDurationCalled = false
     var setDurationViewModel: CreateSession.SetDuration.ViewModel!
     
-    func displaySetDuration(viewModel: CreateSession.SetDuration.ViewModel) {
+    func displayInitialDuration(viewModel: CreateSession.SetDuration.ViewModel) {
       displaySetDurationCalled = true
       setDurationViewModel = viewModel
     }
@@ -52,7 +52,7 @@ final class CreateSessionPresenterTests: XCTestCase {
     let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 5, minutes: 5))
     
     // When
-    sut.presentSetDuration(response: response)
+    sut.presentInitialDuration(response: response)
     
     // Then
     XCTAssertTrue(viewControllerSpy.displaySetDurationCalled)
@@ -64,7 +64,7 @@ final class CreateSessionPresenterTests: XCTestCase {
     let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 0, minutes: 43))
     
     // When
-    sut.presentSetDuration(response: response)
+    sut.presentInitialDuration(response: response)
     
     // Then
     XCTAssertEqual(viewControllerSpy.setDurationViewModel.durationTitle, "43m")
@@ -75,7 +75,7 @@ final class CreateSessionPresenterTests: XCTestCase {
     let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 2, minutes: 0))
     
     // When
-    sut.presentSetDuration(response: response)
+    sut.presentInitialDuration(response: response)
     
     // Then
     XCTAssertEqual(viewControllerSpy.setDurationViewModel.durationTitle, "2h")

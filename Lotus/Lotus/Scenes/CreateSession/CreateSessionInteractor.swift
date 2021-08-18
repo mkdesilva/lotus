@@ -40,7 +40,7 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
       guard let self = self else { return }
       let response = CreateSession.SetDuration.Response(duration: request.duration)
       self.sessionDuration = request.duration
-      self.presenter.presentSetDuration(response: response)
+      self.presenter.presentInitialDuration(response: response)
     }
   }
   
@@ -49,7 +49,7 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
       self?.worker?.setDuration(duration) { [weak self] _ in
         let response = CreateSession.SetDuration.Response(duration: duration)
         self?.sessionDuration = duration
-        self?.presenter.presentSetDuration(response: response)
+        self?.presenter.presentInitialDuration(response: response)
       }
     }
   }
