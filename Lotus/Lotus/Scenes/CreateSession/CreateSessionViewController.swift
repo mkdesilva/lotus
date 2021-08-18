@@ -57,7 +57,10 @@ class CreateSessionViewController: UIViewController, CreateSessionViewController
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configure(viewController: self)
+    if interactor == nil {
+      configure(viewController: self)
+    }
+    
     createView()
     getInitialDuration()
   }

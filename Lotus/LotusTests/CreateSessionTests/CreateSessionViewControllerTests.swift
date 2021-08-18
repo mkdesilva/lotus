@@ -87,9 +87,13 @@ final class CreateSessionViewControllerTests: XCTestCase {
       XCTAssertTrue(routerSpy.navigateToInProgressSceneCalled)
   }
   
-  func testBeginSessionWithoutPickerShouldNotRouteToBeginSession() {
+  func testBeginSessionWithoutPickerSetShouldNotRouteToBeginSession() {
     let routerSpy = CreateSessionRouterSpy()
     sut.router = routerSpy
+    let interactor = CreateSessionInteractorSpy()
+    interactor.sessionDuration = SessionDuration(seconds: 0)
+    sut.interactor = interactor
+    sut.viewDidLoad()
     
     sut.beginSession()
     
