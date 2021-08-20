@@ -9,7 +9,6 @@
 import UIKit
 
 protocol CreateSessionInteractorInterface {
-  func setDuration(request: CreateSession.SetDuration.Request)
   func getInitialDuration(request: CreateSession.GetInitialDuration.Request)
   func storeDuration(request: CreateSession.StoreDuration.Request)
   var sessionDuration: SessionDuration? { get set }
@@ -26,12 +25,12 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
   
   func getInitialDuration(request: CreateSession.GetInitialDuration.Request) {
     worker?.getDuration { [weak self] (duration) in
-      let setDurationRequest = CreateSession.SetDuration.Request(duration: duration)
-      self?.setDuration(request: setDurationRequest)
+      let setDurationRequest = CreateSession.ShowDuration.Request(duration: duration)
+      self?.showDuration(request: setDurationRequest)
     }
   }
   
-  func setDuration(request: CreateSession.SetDuration.Request) {
+  private func showDuration(request: CreateSession.ShowDuration.Request) {
     guard request.duration.isValid else {
       setDefaultDuration()
       return
@@ -39,7 +38,7 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
     
     worker?.setDuration(request.duration) { [weak self] _ in
       guard let self = self else { return }
-      let response = CreateSession.SetDuration.Response(duration: request.duration)
+      let response = CreateSession.ShowDuration.Response(duration: request.duration)
       self.sessionDuration = request.duration
       self.presenter.presentInitialDuration(response: response)
     }
@@ -53,7 +52,7 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
   private func setDefaultDuration() {
     worker?.getDefaultDuration { [weak self] (duration) in
       self?.worker?.setDuration(duration) { [weak self] _ in
-        let response = CreateSession.SetDuration.Response(duration: duration)
+        let response = CreateSession.ShowDuration.Response(duration: duration)
         self?.sessionDuration = duration
         self?.presenter.presentInitialDuration(response: response)
       }

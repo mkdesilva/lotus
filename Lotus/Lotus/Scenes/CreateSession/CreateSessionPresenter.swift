@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CreateSessionPresenterInterface {
-  func presentInitialDuration(response: CreateSession.SetDuration.Response)
+  func presentInitialDuration(response: CreateSession.ShowDuration.Response)
 }
 
 class CreateSessionPresenter: CreateSessionPresenterInterface {
@@ -17,8 +17,8 @@ class CreateSessionPresenter: CreateSessionPresenterInterface {
   
   // MARK: - Presentation logic
   
-  func presentInitialDuration(response: CreateSession.SetDuration.Response) {
-    let viewModel = CreateSession.SetDuration.ViewModel(hours: response.duration.hours, minutes: response.duration.minutes, seconds: response.duration.seconds)
+  func presentInitialDuration(response: CreateSession.ShowDuration.Response) {
+    let viewModel = CreateSession.ShowDuration.ViewModel(hours: response.duration.hours, minutes: response.duration.minutes, seconds: response.duration.seconds)
     viewController.displayInitialDuration(viewModel: viewModel)
   }
   

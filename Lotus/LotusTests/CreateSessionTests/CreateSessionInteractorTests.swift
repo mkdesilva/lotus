@@ -47,7 +47,7 @@ final class CreateSessionInteractorTests: XCTestCase {
   final class CreateSessionPresenterSpy: CreateSessionPresenterInterface {
     
     var presentSetDurationCalled = false
-    func presentInitialDuration(response: CreateSession.SetDuration.Response) {
+    func presentInitialDuration(response: CreateSession.ShowDuration.Response) {
       presentSetDurationCalled = true
     }
   }
@@ -84,7 +84,7 @@ final class CreateSessionInteractorTests: XCTestCase {
   
   func testSetDurationAsksPresenterToPresentSetDuration() {
     // Given
-    let request = CreateSession.SetDuration.Request(duration: SessionDuration(hours: 5, minutes: 3))
+    let request = CreateSession.ShowDuration.Request(duration: SessionDuration(hours: 5, minutes: 3))
     
     // When
     sut.setDuration(request: request)

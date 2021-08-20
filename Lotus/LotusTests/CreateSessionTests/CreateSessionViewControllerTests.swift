@@ -44,7 +44,7 @@ final class CreateSessionViewControllerTests: XCTestCase {
     var setDurationCalled = false
     var getInitialDurationCalled = false
     
-    func setDuration(request: CreateSession.SetDuration.Request) {
+    func setDuration(request: CreateSession.ShowDuration.Request) {
       setDurationCalled = true
     }
     

@@ -37,9 +37,9 @@ final class CreateSessionPresenterTests: XCTestCase {
   final class CreateSessionViewControllerSpy: CreateSessionViewControllerInterface {
 
     var displaySetDurationCalled = false
-    var setDurationViewModel: CreateSession.SetDuration.ViewModel!
+    var setDurationViewModel: CreateSession.ShowDuration.ViewModel!
     
-    func displayInitialDuration(viewModel: CreateSession.SetDuration.ViewModel) {
+    func displayInitialDuration(viewModel: CreateSession.ShowDuration.ViewModel) {
       displaySetDurationCalled = true
       setDurationViewModel = viewModel
     }
@@ -49,7 +49,7 @@ final class CreateSessionPresenterTests: XCTestCase {
   
   func testPresentSetDurationDisplaysSetDuration() {
     // Given
-    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 5, minutes: 3))
+    let response = CreateSession.ShowDuration.Response(duration: SessionDuration(hours: 5, minutes: 3))
     
     // When
     sut.presentInitialDuration(response: response)
@@ -63,7 +63,7 @@ final class CreateSessionPresenterTests: XCTestCase {
   
   func testPresentSetDurationWhenHoursIsZeroShouldOmitHours() {
     // Given
-    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 0, minutes: 43))
+    let response = CreateSession.ShowDuration.Response(duration: SessionDuration(hours: 0, minutes: 43))
     
     // When
     sut.presentInitialDuration(response: response)
@@ -74,7 +74,7 @@ final class CreateSessionPresenterTests: XCTestCase {
   
   func testPresentSetDurationWhenMinutesIsZeroShouldOmitMinutes() {
     // Given
-    let response = CreateSession.SetDuration.Response(duration: SessionDuration(hours: 2, minutes: 0))
+    let response = CreateSession.ShowDuration.Response(duration: SessionDuration(hours: 2, minutes: 0))
     
     // When
     sut.presentInitialDuration(response: response)

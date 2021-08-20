@@ -9,7 +9,6 @@
 import UIKit
 
 struct CreateSession {
-  
   struct GetInitialDuration {
     struct Request {}
     
@@ -22,10 +21,11 @@ struct CreateSession {
     }
   }
   
-  struct SetDuration {
+  struct ShowDuration {
     struct Request {
       let duration: SessionDuration
     }
+    
     struct Response {
       let duration: SessionDuration
     }

@@ -14,7 +14,7 @@ protocol CreateSessionViewControllerDelegate: class, UIPickerViewDelegate, UIPic
 }
 
 protocol CreateSessionViewControllerInterface: class {
-  func displayInitialDuration(viewModel: CreateSession.SetDuration.ViewModel)
+  func displayInitialDuration(viewModel: CreateSession.ShowDuration.ViewModel)
 }
 
 class CreateSessionViewController: UIViewController, CreateSessionViewControllerInterface {
@@ -81,7 +81,7 @@ class CreateSessionViewController: UIViewController, CreateSessionViewController
   
   // MARK: - Display logic
   
-  func displayInitialDuration(viewModel: CreateSession.SetDuration.ViewModel) {
+  func displayInitialDuration(viewModel: CreateSession.ShowDuration.ViewModel) {
     pickerView.selectRow(viewModel.hours,
                          inComponent: DurationComponent.hours.rawValue,
                          animated: false)
