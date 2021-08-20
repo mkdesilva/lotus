@@ -82,16 +82,4 @@ final class CreateSessionInteractorTests: XCTestCase {
     XCTAssertTrue(workerSpy.setDurationCalled)
   }
   
-  func testSetDurationAsksPresenterToPresentSetDuration() {
-    // Given
-    let request = CreateSession.ShowDuration.Request(duration: SessionDuration(hours: 5, minutes: 3))
-    
-    // When
-    sut.setDuration(request: request)
-    
-    // Then
-    XCTAssertTrue(presenterSpy.presentSetDurationCalled)
-    XCTAssertEqual(sut.sessionDuration, SessionDuration(hours: 5, minutes: 3))
-  }
-  
 }

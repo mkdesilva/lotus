@@ -38,7 +38,7 @@ final class CreateSessionViewControllerTests: XCTestCase {
   // MARK: - Test Doubles
   
   final class CreateSessionInteractorSpy: CreateSessionInteractorInterface {
-    
+  
     var sessionDuration: SessionDuration?
     
     var setDurationCalled = false
@@ -51,6 +51,8 @@ final class CreateSessionViewControllerTests: XCTestCase {
     func getInitialDuration(request: CreateSession.GetInitialDuration.Request) {
       getInitialDurationCalled = true
     }
+    
+    func storeDuration(request: CreateSession.StoreDuration.Request) {}
   }
   
   final class CreateSessionRouterSpy: CreateSessionRouterInterface {
