@@ -11,6 +11,7 @@ import UIKit
 protocol CreateSessionInteractorInterface {
   func setDuration(request: CreateSession.SetDuration.Request)
   func getInitialDuration(request: CreateSession.GetInitialDuration.Request)
+  func storeDuration(request: CreateSession.StoreDuration.Request)
   var sessionDuration: SessionDuration? { get set }
 }
 
@@ -42,6 +43,11 @@ class CreateSessionInteractor: CreateSessionInteractorInterface {
       self.sessionDuration = request.duration
       self.presenter.presentInitialDuration(response: response)
     }
+  }
+  
+  func storeDuration(request: CreateSession.StoreDuration.Request) {
+    guard request.duration.isValid else { return }
+    worker?.setDuration(request.duration, completion: {_ in })
   }
   
   private func setDefaultDuration() {

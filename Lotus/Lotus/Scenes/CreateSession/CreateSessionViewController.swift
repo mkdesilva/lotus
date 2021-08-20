@@ -110,6 +110,8 @@ extension CreateSessionViewController: CreateSessionViewControllerDelegate {
     
     // Don't allow a session to start if the duration is zero
     guard !duration.isZero else { return }
+    interactor.storeDuration(request: CreateSession.StoreDuration.Request(duration: duration))
+    
     
     routeToBeginSession(duration: duration)
   }

@@ -23,11 +23,9 @@ struct CreateSession {
   }
   
   struct SetDuration {
-    
     struct Request {
       let duration: SessionDuration
     }
-    
     struct Response {
       let duration: SessionDuration
     }
@@ -36,6 +34,12 @@ struct CreateSession {
       let hours: Int
       let minutes: Int
       let seconds: Int
+    }
+  }
+  
+  struct StoreDuration {
+    struct Request {
+      let duration: SessionDuration
     }
   }
 }
