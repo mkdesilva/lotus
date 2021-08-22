@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol EndSessionViewControllerInterface: class {
+protocol EndSessionViewControllerInterface: AnyObject {
   func displayGetSessionStats(viewModel: EndSession.GetSessionStats.ViewModel)
   func displayGetQuote(viewModel: EndSession.GetQuote.ViewModel)
 }
 
-protocol EndSessionDelegate: class {
+protocol EndSessionDelegate: AnyObject {
   func closeView()
 }
 

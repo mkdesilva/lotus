@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol SessionInProgressViewControllerInterface: class {
+protocol SessionInProgressViewControllerInterface: AnyObject {
   func displayDuration(viewModel: SessionInProgress.UpdateDuration.ViewModel)
   func displayPaused(viewModel: SessionInProgress.TogglePause.ViewModel)
   func displayEndSession(viewModel: SessionInProgress.EndSession.ViewModel)
 }
 
-protocol SessionInProgressViewDelegate: class {
+protocol SessionInProgressViewDelegate: AnyObject {
   func tappedEndButton()
   func tappedPauseButton()
 }

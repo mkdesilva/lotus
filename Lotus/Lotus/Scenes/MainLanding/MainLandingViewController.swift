@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MainLandingViewControllerInterface: class {
+protocol MainLandingViewControllerInterface: AnyObject {
 }
 
 class MainLandingViewController: UITabBarController, MainLandingViewControllerInterface {

@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol CreateSessionViewControllerDelegate: class, UIPickerViewDelegate, UIPickerViewDataSource {
+protocol CreateSessionViewControllerDelegate: UIPickerViewDelegate, UIPickerViewDataSource {
   func beginSession()
   var pickerView: UIPickerView! { get set }
 }
 
-protocol CreateSessionViewControllerInterface: class {
+protocol CreateSessionViewControllerInterface: AnyObject {
   func displayInitialDuration(viewModel: CreateSession.ShowDuration.ViewModel)
 }
 
@@ -111,7 +111,6 @@ extension CreateSessionViewController: CreateSessionViewControllerDelegate {
     // Don't allow a session to start if the duration is zero
     guard !duration.isZero else { return }
     interactor.storeDuration(request: CreateSession.StoreDuration.Request(duration: duration))
-    
     
     routeToBeginSession(duration: duration)
   }
