@@ -14,6 +14,7 @@ protocol MainLandingViewControllerInterface: AnyObject {
 class MainLandingViewController: UITabBarController, MainLandingViewControllerInterface {
   
   let createSessionViewController = CreateSessionViewController()
+  let historyViewController = HistoryViewController()
   
   // MARK: - Configuration
   
@@ -21,13 +22,17 @@ class MainLandingViewController: UITabBarController, MainLandingViewControllerIn
     guard let items = tabBar.items else { return }
     items[0].title = "Meditate"
     items[0].image = Assets.ring.image
+    items[1].title = "History"
+    
+    let image = UIImage(systemName: "clock")
+    items[1].image = image
   }
   
   // MARK: - View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewControllers = [createSessionViewController]
+    viewControllers = [createSessionViewController, historyViewController]
     setTabBarItems()
     selectedViewController = createSessionViewController
   }
