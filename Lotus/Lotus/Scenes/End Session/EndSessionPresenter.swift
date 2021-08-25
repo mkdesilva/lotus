@@ -25,7 +25,13 @@ class EndSessionPresenter: EndSessionPresenterInterface {
     case .failure(let error):
       viewModel = EndSession.GetSessionStats.ViewModel(content: .customError(error))
     case .success(let stats):
-      viewModel = EndSession.GetSessionStats.ViewModel(content: .success(data: stats.duration.fullDescription))
+      viewModel = EndSession.GetSessionStats.ViewModel(
+        content: .success(
+          data: SessionDuration(
+            timeInterval: stats.duration
+          ).fullDescription
+        )
+      )
     }
         
     viewController.displayGetSessionStats(viewModel: viewModel)

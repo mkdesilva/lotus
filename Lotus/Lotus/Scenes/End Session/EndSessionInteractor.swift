@@ -10,6 +10,7 @@ import UIKit
 
 protocol EndSessionInteractorInterface {
   func getSessionStats(request: EndSession.GetSessionStats.Request)
+  func saveSessionStats(request: EndSession.SaveSessionStats.Request)
   func getQuote(request: EndSession.GetQuote.Request)
   var sessionStats: SessionStats? { get set }
 }
@@ -29,6 +30,16 @@ class EndSessionInteractor: EndSessionInteractorInterface {
     
     let response = EndSession.GetSessionStats.Response(result: .success(stats))
     self.presenter.presentGetSessionStats(response: response)
+  }
+  
+  func saveSessionStats(request: EndSession.SaveSessionStats.Request) {
+    guard let stats = sessionStats else {
+      return
+    }
+    
+    var previousSessions = DefaultsManager.shared.sessions
+    previousSessions.append(stats)
+    DefaultsManager.shared.sessions = previousSessions
   }
   
   func getQuote(request: EndSession.GetQuote.Request) {

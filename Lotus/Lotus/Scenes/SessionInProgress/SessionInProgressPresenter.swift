@@ -40,7 +40,7 @@ class SessionInProgressPresenter: SessionInProgressPresenterInterface {
   }
   
   func presentEndSession(response: SessionInProgress.EndSession.Response) {
-    let viewModel = SessionInProgress.EndSession.ViewModel(duration: response.duration, playEndSound: response.playEndSound)
+    let viewModel = SessionInProgress.EndSession.ViewModel(sessionStats: response.sessionStats, playEndSound: response.playEndSound)
     viewController.displayEndSession(viewModel: viewModel)
   }
 }

@@ -90,8 +90,12 @@ class SessionInProgressInteractor: SessionInProgressInteractorInterface {
       sessionTimer.invalidate()
     }
     
-    let elapsedDuration = session.initialDuration - session.remainingDuration 
-    let response = SessionInProgress.EndSession.Response(duration: elapsedDuration, playEndSound: request.playEndSound)
+    let elapsedDuration = session.initialDuration - session.remainingDuration
+    
+    let date = Date()
+    let sessionStats = SessionStats(duration: elapsedDuration.time, date: date)
+    
+    let response = SessionInProgress.EndSession.Response(sessionStats: sessionStats, playEndSound: request.playEndSound)
     presenter.presentEndSession(response: response)
   }
 }

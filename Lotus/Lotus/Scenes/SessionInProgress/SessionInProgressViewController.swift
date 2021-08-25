@@ -124,7 +124,7 @@ class SessionInProgressViewController: UIViewController, SessionInProgressViewCo
     
     audioController.disableAudioSession()
     sessionInProgressView.endSession {
-      self.router.navigateToEndSession(duration: viewModel.duration)
+      self.router.navigateToEndSession(sessionStats: viewModel.sessionStats)
     }
   }
   

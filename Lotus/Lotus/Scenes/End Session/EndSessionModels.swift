@@ -30,4 +30,9 @@ struct EndSession {
       let content: Content<String>
     }
   }
+  
+  struct SaveSessionStats {
+    struct Request {
+    }
+  }
 }

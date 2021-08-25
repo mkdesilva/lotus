@@ -49,6 +49,7 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
   override func viewDidLoad() {
     super.viewDidLoad()
     createView()
+    saveSessionStats()
     getSessionStats()
     getQuote()
   }
@@ -63,12 +64,17 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
   
   // MARK: - Event handling
   
-  func getSessionStats() {
+  private func getSessionStats() {
     let request = EndSession.GetSessionStats.Request()
     interactor.getSessionStats(request: request)
   }
   
-  func getQuote() {
+  private func saveSessionStats() {
+    let request = EndSession.SaveSessionStats.Request()
+    interactor.saveSessionStats(request: request)
+  }
+  
+  private func getQuote() {
     let request = EndSession.GetQuote.Request()
     interactor.getQuote(request: request)
   }

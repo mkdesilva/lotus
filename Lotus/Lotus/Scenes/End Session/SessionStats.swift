@@ -8,6 +8,7 @@
 
 import Foundation
 
-struct SessionStats {
-  let duration: Duration
+struct SessionStats: Codable {
+  let duration: TimeInterval
+  let date: Date
 }

@@ -48,11 +48,11 @@ struct SessionInProgress {
       let playEndSound: Bool
     }
     struct Response {
-      let duration: Duration
+      let sessionStats: SessionStats
       let playEndSound: Bool
     }
     struct ViewModel {
-      let duration: Duration
+      let sessionStats: SessionStats
       let playEndSound: Bool
     }
   }

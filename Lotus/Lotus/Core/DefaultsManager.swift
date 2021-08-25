@@ -18,17 +18,24 @@ final class DefaultsManager {
   
   public var sessions: [SessionStats] {
     get {
-      return userDefaults?.array(forKey: UserDefaultKeys.sessions.rawValue) as? [SessionStats] ?? []
+      guard let data = userDefaults?.value(forKey: UserDefaultKeys.sessions.rawValue) as? Data,
+            let decodedValue = try? PropertyListDecoder().decode([SessionStats].self, from: data)
+            else { return [] }
+      
+      return decodedValue
+      
     }
     set {
-      userDefaults?.set(newValue, forKey: UserDefaultKeys.sessions.rawValue)
+      if let encoded = try? PropertyListEncoder().encode(newValue) {
+        userDefaults?.set(encoded, forKey: UserDefaultKeys.sessions.rawValue)
+      }
     }
   }
 }
 
 extension DefaultsManager {
   func configure() {
-    guard let defaults = UserDefaults(suiteName: "dev.mkdesilva.lotus") else { return }
+    guard let defaults = UserDefaults(suiteName: "dev.mkdesilva.lotus.defaults") else { return }
     DefaultsManager.shared.inject(userDefaults: defaults)
   }
 }

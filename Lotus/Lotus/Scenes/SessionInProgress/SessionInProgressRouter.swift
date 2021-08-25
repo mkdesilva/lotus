@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SessionInProgressRouterInterface {
-  func navigateToEndSession(duration: Duration)
+  func navigateToEndSession(sessionStats: SessionStats)
 }
 
 class SessionInProgressRouter: SessionInProgressRouterInterface {
@@ -17,11 +17,11 @@ class SessionInProgressRouter: SessionInProgressRouterInterface {
   
   // MARK: - Navigation
   
-  func navigateToEndSession(duration: Duration) {
+  func navigateToEndSession(sessionStats: SessionStats) {
     let endSessionVc = EndSessionViewController()
     viewController.modalPresentationStyle = .fullScreen
     viewController.navigationController?.setViewControllers([endSessionVc], animated: false)
     endSessionVc.awakeFromNib()
-    endSessionVc.interactor.sessionStats = SessionStats(duration: duration)
+    endSessionVc.interactor.sessionStats = sessionStats
   }
 }
