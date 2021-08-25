@@ -8,4 +8,5 @@
 
 enum UserDefaultKeys: String {
   case duration
+  case sessions = "dev.mkdesilva.lotus.sessions"
 }

@@ -55,6 +55,7 @@
 		4D9E0D522410E35400AFF9A4 /* EndSessionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D4A2410E35400AFF9A4 /* EndSessionInteractor.swift */; };
 		4D9E0D532410E35400AFF9A4 /* SessionStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E0D4B2410E35400AFF9A4 /* SessionStats.swift */; };
 		4D9FA93524A57B9300DB00FA /* SessionInProgressInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9FA93424A57B9300DB00FA /* SessionInProgressInteractorTests.swift */; };
+		4DA9B6A826D697CB00B9CC1F /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9B6A726D697CB00B9CC1F /* DefaultsManager.swift */; };
 		4DB7EB3E23E2913400DD248A /* DurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB7EB3D23E2913400DD248A /* DurationTests.swift */; };
 		4DD01F5623B1EFD40068621A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD01F5523B1EFD40068621A /* Constants.swift */; };
 		4DD4A2A623F6B0D100A44AAB /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */; };
@@ -132,6 +133,7 @@
 		4D9E0D4A2410E35400AFF9A4 /* EndSessionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionInteractor.swift; sourceTree = "<group>"; };
 		4D9E0D4B2410E35400AFF9A4 /* SessionStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStats.swift; sourceTree = "<group>"; };
 		4D9FA93424A57B9300DB00FA /* SessionInProgressInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressInteractorTests.swift; sourceTree = "<group>"; };
+		4DA9B6A726D697CB00B9CC1F /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		4DB7EB3D23E2913400DD248A /* DurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTests.swift; sourceTree = "<group>"; };
 		4DD01F5523B1EFD40068621A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4DD4A2A523F6B0D100A44AAB /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE105AB2649823A00D42C8F /* AudioController.swift */,
+				4DA9B6A726D697CB00B9CC1F /* DefaultsManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				4D08812D25B5A98400081E89 /* MainLandingRouter.swift in Sources */,
 				4D08812525B5A96B00081E89 /* MainLandingInteractor.swift in Sources */,
 				4D964CB9239C035800EDD600 /* UIViewExtension.swift in Sources */,
+				4DA9B6A826D697CB00B9CC1F /* DefaultsManager.swift in Sources */,
 				4D9E0D4F2410E35400AFF9A4 /* EndSessionRouter.swift in Sources */,
 				4D8EF64823D195FF00C6AEB4 /* SessionInProgressRouter.swift in Sources */,
 				1849192C2375832F000CDE20 /* CreateSessionWorker.swift in Sources */,
