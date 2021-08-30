@@ -78,8 +78,9 @@ class SessionInProgressViewControllerTests: XCTestCase {
   }
   
   final class SessionInProgressRouterSpy: SessionInProgressRouterInterface {
+    
     var navigateToEndSessionCalled = false
-    func navigateToEndSession(duration: Duration) {
+    func navigateToEndSession(sessionStats: SessionStats) {
       navigateToEndSessionCalled = true
     }
   }
