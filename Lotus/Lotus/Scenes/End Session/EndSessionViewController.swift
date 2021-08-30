@@ -51,7 +51,7 @@ class EndSessionViewController: UIViewController, EndSessionViewControllerInterf
     createView()
     saveSessionStats()
     getSessionStats()
-    getQuote()
+//    getQuote()
   }
   
   var endSessionView: EndSessionView!

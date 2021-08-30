@@ -33,7 +33,7 @@ final class EndSessionView: UIView {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .center
     label.textColor = .white
-    label.text = "Quote"
+    label.text = ""
     label.numberOfLines = 0
     label.lineBreakMode = .byWordWrapping
     return label
