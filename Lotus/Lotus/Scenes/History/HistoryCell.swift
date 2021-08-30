@@ -9,7 +9,7 @@
 import UIKit
 
 final class HistoryCell: UITableViewCell {
-  var session: HistoryViewController.Session? {
+  var session: History.Session? {
     didSet {
       timeLabel.text = session?.date
       durationLabel.text = session?.duration

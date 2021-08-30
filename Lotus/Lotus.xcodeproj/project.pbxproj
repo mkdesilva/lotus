@@ -64,6 +64,8 @@
 		4DE105AC2649823A00D42C8F /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE105AB2649823A00D42C8F /* AudioController.swift */; };
 		4DE141292410FBCF004B6BD4 /* EndSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE141282410FBCF004B6BD4 /* EndSessionView.swift */; };
 		4DE1412B2410FF07004B6BD4 /* RoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1412A2410FF07004B6BD4 /* RoundedRectangleButton.swift */; };
+		4DE2AFC326DD0A9F00482657 /* HistoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2AFC226DD0A9F00482657 /* HistoryModels.swift */; };
+		4DE2AFC526DD0B8300482657 /* HistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2AFC426DD0B8300482657 /* HistoryInteractor.swift */; };
 		4DE9632826C8D29100182BB1 /* SessionInProgressViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9632726C8D29100182BB1 /* SessionInProgressViewControllerTests.swift */; };
 		4DE9B35223AA21E8006AE27D /* BeginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9B35123AA21E8006AE27D /* BeginButton.swift */; };
 		4DEEAFB1239AA57100A2944E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEEAFB0239AA57100A2944E /* Assets.swift */; };
@@ -142,6 +144,8 @@
 		4DE105AB2649823A00D42C8F /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		4DE141282410FBCF004B6BD4 /* EndSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndSessionView.swift; sourceTree = "<group>"; };
 		4DE1412A2410FF07004B6BD4 /* RoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButton.swift; sourceTree = "<group>"; };
+		4DE2AFC226DD0A9F00482657 /* HistoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModels.swift; sourceTree = "<group>"; };
+		4DE2AFC426DD0B8300482657 /* HistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryInteractor.swift; sourceTree = "<group>"; };
 		4DE9632726C8D29100182BB1 /* SessionInProgressViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInProgressViewControllerTests.swift; sourceTree = "<group>"; };
 		4DE9B35123AA21E8006AE27D /* BeginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginButton.swift; sourceTree = "<group>"; };
 		4DEEAFB0239AA57100A2944E /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 			isa = PBXGroup;
 			children = (
 				4D78B78426D26CDF008BC1B7 /* HistoryViewController.swift */,
+				4DE2AFC426DD0B8300482657 /* HistoryInteractor.swift */,
+				4DE2AFC226DD0A9F00482657 /* HistoryModels.swift */,
 				4D3BC66026D54E8600F44270 /* HistoryCell.swift */,
 			);
 			path = History;
@@ -573,9 +579,11 @@
 				4D8EF64C23D195FF00C6AEB4 /* SessionModel.swift in Sources */,
 				4DEEAFB1239AA57100A2944E /* Assets.swift in Sources */,
 				1849192A2375832F000CDE20 /* CreateSessionStore.swift in Sources */,
+				4DE2AFC326DD0A9F00482657 /* HistoryModels.swift in Sources */,
 				4D9CB3C623AA09ED003C050A /* CreateSessionView.swift in Sources */,
 				4DE105AC2649823A00D42C8F /* AudioController.swift in Sources */,
 				4D8EF65623D1AA9C00C6AEB4 /* SessionInProgressView.swift in Sources */,
+				4DE2AFC526DD0B8300482657 /* HistoryInteractor.swift in Sources */,
 				18F196F4236D29C800582D0D /* AppDelegate.swift in Sources */,
 				1849192D2375832F000CDE20 /* CreateSessionRouter.swift in Sources */,
 				4D9E0D532410E35400AFF9A4 /* SessionStats.swift in Sources */,

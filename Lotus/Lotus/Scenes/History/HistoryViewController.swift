@@ -8,29 +8,25 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController {
+protocol HistoryViewControllerInterface {}
+
+class HistoryViewController: UIViewController, HistoryViewControllerInterface {
   
   let tableView = UITableView()
+  var interactor: HistoryInteractorInterface!
+  
+  private func configure(viewController: HistoryViewController) {
+    interactor = HistoryInteractor()
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     createView()
+    if interactor == nil {
+      configure(viewController: self)
+    }
+    interactor.getSessions(request: History.GetSessions.Request())
   }
-  
-  struct Session {
-    let date: String
-    let duration: String
-    let notes: String?
-  }
-  
-  var sessions = [Session(
-                    date: "12 May 21 - 12:00 am",
-                    duration: "25 minutes",
-                    notes: ""),
-                  Session(
-                    date: "10 May 21 - 12:00 am",
-                    duration: "3 hours 12 minutes 32 seconds",
-                    notes: "")]
   
   private func createView() {
     let blurredBackgroundView = BlurredBackgroundView(image: Assets.lake.image)
@@ -39,7 +35,7 @@ class HistoryViewController: UIViewController {
     tableView.translatesAutoresizingMaskIntoConstraints = false
     
     tableView.estimatedRowHeight = 300
-    
+    tableView.allowsSelection = false
     tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
     tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -54,7 +50,7 @@ class HistoryViewController: UIViewController {
 
 extension HistoryViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sessions.count
+    return interactor.sessions.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,23 +58,23 @@ extension HistoryViewController: UITableViewDataSource {
       return UITableViewCell()
     }
     
-    cell.session = sessions[indexPath.row]
-    
-    if let image = UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate) {
-      
-      let disclosureImageView = UIImageView(
-        frame: CGRect(
-          x: 0,
-          y: 0,
-          width: image.size.width,
-          height: image.size.height
-        )
-      )
-      
-      disclosureImageView.tintColor = .white
-      disclosureImageView.image = image
-      cell.accessoryView = disclosureImageView
-    }
+    cell.session = interactor.sessions[indexPath.row]
+    // TODO: Uncomment this when adding tap functionality back
+//    if let image = UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate) {
+//
+//      let disclosureImageView = UIImageView(
+//        frame: CGRect(
+//          x: 0,
+//          y: 0,
+//          width: image.size.width,
+//          height: image.size.height
+//        )
+//      )
+//
+//      disclosureImageView.tintColor = .white
+//      disclosureImageView.image = image
+//      cell.accessoryView = disclosureImageView
+//    }
     
     return cell
   }
